@@ -1,6 +1,6 @@
 """
-EN pythonexiste un gran nnumero de 29 letras que son palabras 
-reservadasa
+Estamos trabajando con operadores logicos 
+son aquellos que manipulan datos numericos
 
 """
 
