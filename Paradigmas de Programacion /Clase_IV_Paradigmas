@@ -1,0 +1,262 @@
+Vamos a ver diseño orientado a objetos
+
+Objetivo de las clase de hoy es : Crear diseños que esten orientado a objetos
+
+Se van a ver 2 ejercicios puntuales de diseño 
+---------------------------------------
+Presentacion1: 
+
+
+01 EL problema
+Es una api de funciones para un graficador (Recordar concepto de funciones)
+Aplicacion programing interface API
+
+¿Que es lo mas importante de un objeto ??
+El comportamiento, veo un objeto y debo preguntarme que sabes hacer, lo que mas me importa es saber que es lo que hace un objeto o sea su comportamiento.
+
+Vamos a ver una api de funciones, vamos a ver
+
+-Evaluacion de funciones matematicas de uina variable f(x)
+-Soporte de funciones basicas: sumas restas division etc 
+-soprte de funciones compuestas
+-evaluacion de aprocimacion
+-INdicar los punto de interseccion
+-Indicar los maximo y minimos  de una derivada
+
+
+¿Como codeamos todo esto ?
+¿Como usuario como lo hacemos ?
+
+Hacemos un diagrama de clases 
+
+
+Vimos e tipo de diagramas uml  
+    -Funcion
+    -Parser
+    -Arbol
+
+¿Que es Parser ?
+
+A que hace referencia ???
+Traducto de 2 mundos , a que nos referimos con parser?
+
+Esto es un objeto que no tiene nada que ver ?, veremos herramientas ?, Se hace hincapie en las herramientas que nos ofrece la catedra, herramientas que ayudan al desarrolllo de software.
+
+¡Es importante hacer preguntas si tenemos dudas!
+
+EL parser es un traductor entre 2 mundos, hay 2 mundos entre el mundo de las computadoras y el mundo real de los humanos,
+
+Mundo humano
+
+mundo Computacional -> Estructura de datos( 
+
+El parser toma lo que escribimos y lo convierte en algo que las maquinas pueden procesar
+
+Hace referencia a las entidades 
+
+Ejemplo de aplicaion de un parcel
+
+Se vio un ejemplo de codigo de java 
+
+Se hace una clase en la cual nosotros le mandamos un input 
+
+En los parses suele estar el codigo mas feo, y esta bien que asi sea.
+
+En el parcel esta lleno de chanchadas, en los parcel esta el codigo mas feo con todos los condicionales mas feos, lo vamos a ver como logica de parseo.
+
+termino que se usa seguido es lo esta parseando, 
+
+El parser tanbien tiene las pre y post condiciones 
+Es muy importante entnder que los parser tiene condiciones ultrrigidas
+
+
+Los parser el 99% son estaticos, lo unico que me importan es su logica.
+
+Solo me interesa el como se hace. 
+Conlusion los parser son los traductores entre los 2 mundos
+
+Es recomendable que los parser encapsulen la logica mas fea sino queda en todo el codigo dentro 
+de el codig o metodo principal y no queda prolijo
+
+
+Ahora que ya sabemos que es un parser 
+
+En el ejemplo el parser devuelve un arbol del tipo arbol
+Seguimo viendo ejemplo de codigo en java
+
+Que limitaciones podemos ver ??
+
+-EL metodo calcular crecera en complejidad a medida dque agreguemos funcionalidades
+-Es poco extensible, 
+
+
+4 Buscando objetos 
+La solucion rapida traera problemas y eso esta bien 
+Se agregaron varios diagrama de UML
+
+se hizo un refresh sobre las clases abstractas que no se pueden instanciar
+Los ultimos diagramas UML son clases que tienen metodos constructores, hay que inyectarle todo lo que necesite.
+
+-Cada funcion encapsula la forma de calcular y la cantidad de operaciones
+
+Se vio el ejemplo de java con un codigo de una manera mucho mas legible 
+
+
+5 Buscando mas objetos 
+EL ejemplo quedo mucho mas lindo pero se puede buscar mas objetos, se menciona mucho sobre la verbalizacion.
+
+EL modelo de dominio en el caso de las matenmaticas , hay que llevar a nuestro codigo lo mas posible al modelo del dominio que requiera nuestro codigo, 
+en la presentacion hay que abstraerse porque necesitamos que nos facilite la lectura de nuestro codigo, debemos modelarlo correctamente, permite implemenatar intervalos disjuntos.
+
+¿Como quedan los modelos de uml?
+
+se ven 5 nuevos diagramas uml con los que es mucho mas facil hacer la lectura 
+
+Vimos un nuevo ejemplo de codigo en java 
+
+
+Cuando leemos el codigo esta muy fuertemente a nivel linguistico, debemos llegar despues de varias iteraciones.
+
+El desafio consiste en aplicar todos los pilares del paradigma orientado a objetos.
+
+
+QUe cosas quedan pendientes ??
+
+
+
+---------------------------------------------------
+1 Otro problema 
+El segundo problema esta vinculado a un caso real de la prpgramacion
+EL caso de galaga (VEr un video sobre el juego)
+
+
+
+2 SOlucion rapida 
+Se agregaron varios diagramas UML en este caso 5(ver imagen de la presentacion)
+
+Se tiene el diseño base.
+
+Se vio el ejemplo de codigo 
+
+Se necesita iterar varias veces para llegar a un codigo que sea mas limpio deberiamos llegar a la iteracion numero 3
+Hay que practicar mucho para llegar 
+
+3 Limitaciones
+
+Repeticion de codigos, no habia clases abstarctas
+recomendacion convertir en clases abstractas los que sea necesario
+Esto va empeorando cada vez que se agrea un nuevo caso 
+
+
+4 Buscando objetos 
+Es importante empezar a realizar refactors, hay que tener presente el modelo de dominio 
+
+Se vio un diagramas UML que fueron 9 en total , despues de realizarse el refactor 
+
+-En el galaga las naves delegan en movimiento la logica de mover.
+-
+
+
+Vamos a ver la propuesta de codigo, la propuesta habla en terminos del dominio,
+leer codigo deberia ser mas facil, el hecho de que sea mas facil de leer, permite realizar cambios de manera mas facil, lo ideal si uno quiere agregar modificaciones se deberia agregar una nuevas clase, modelar orientado a objetos permite que todo el juego sera mas ecalables, tal que me permite realizar unos cambios mas faciles para poder sacar version mas nuevas, el POO es mas facil de leer, Deberiamos poder producir codigo que me permite describir y leer el codigo de manera mas clara. 
+
+Resumen de la clase, 
+Estos son tips, tratemos de generar codigo que no tenga olor.
+-Encapsular todo lo posible(Me permite tener un codigo mas limpio)
+-Pensar de quien es la responsabilidad
+-Revisar metodos largos( Es posible que sea un candidato para hacer un refactor)
+-Revisar clases con sus geter y seter para todos sus atributos.
+-Revisar el uso de condicionales y estructuras case.
+-Revisar el uso de tipos standar (primitivos, string ,LIst)
+como parametros de entrada y retornos.
+
+
+Recomendacion para la lectura, 
+-lo ideal primero es leerla todo de corrido, 
+-en la segunda pasada reslatar las partes mas importantes,
+-en la tercera pasada con la birome empezar a transcribir en una hoja porque permite aprender de manera mas facil el texto.
+En lo posible realizar resumenes
+
+buscar la metodologia para estudiar que se enseña en finlandia.
+
+Hay que tratar de llegar a versiones mas orientadas a objetos, vamos 
+
+
+
+Lo mas importante de los objetos es saber que tipo de comportamiento tienen, la ideal q¡es que encapsulemos , leer  *tell dont ask*
+
+FInalizacion
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
