@@ -1,0 +1,53 @@
+"Implementar un calendario de feriados.
+El calendario debe tener la siguiente funcionalidad:
+ 
+	Permitir especificar feriados semanales
+	(ejemplo: todos los domingos son feriados)
+
+	Permitir especificar feriados anuales
+	(ejemplo: el 25/12 es feriado)
+
+	Permitir especificar feriados puntuales
+	(ejemplo: el 24/09 es feriado, solo el 2012)
+
+	Permitir especificar feriados anuales a partir de un año
+	(ejemplo: el 24/3 es feriado todos los años a partir del 2006)
+
+	Permitir determinar si una fecha( ejemplos 25/12/2020 o 23/03/2001) es feriado ,
+	
+ Hacer un analisis Linguistico 
+
+1.- Detectar Sustantivos (Me permite definir candidatos a ser posibles objeto de mi problema principal sera mis clases tal vez )
+	-Fecha -->> si
+	Dia de la Semana (Domingo) ->> si
+	-Dia ->> si
+	-Mes ->> si
+	-Año ->> si
+	-Semana->> Dudoso
+	-Feriado ->> si
+	-Calendario ->> si
+	
+2.- QUe mensajes reciben nuestras clases 
+	-Fecha
+		#Dia 
+		#Mes 
+		#Año 
+		#esFeriado
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+
+
+

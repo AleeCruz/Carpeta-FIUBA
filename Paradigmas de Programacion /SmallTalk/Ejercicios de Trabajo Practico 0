@@ -103,9 +103,19 @@ calificacion := pelisRankings obtenerPuntajePromedioDe: 'EL imperio contraataca'
 
 calificacion := pelisRankings obtenerPuntajePromedioDe: 'El planeta de los simios'.
 (calificacion closeTo: 7) ifFalse: [ 
-	Transcript show: 'Error: EL puntaje promedio de EL El planeta de los simios es 7';cr.
+	Transcript show: 'Error: EL puntaje promedio de El planeta de los simios es 7';cr.
 	error := true.
 ].
+
+
+mejorPelicula := pelisRankings mejorPeliculaDelAnio: 1980.
+(calificacion = 'EL imperio contraataca') ifFalse: [ 
+	Transcript show: 'Error: La mejor pelicula del año 1980 es EL imperio contraataca';cr.
+	error := true.
+].
+
+
+
 
 
 
