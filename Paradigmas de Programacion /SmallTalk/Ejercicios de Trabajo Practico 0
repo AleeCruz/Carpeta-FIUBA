@@ -61,16 +61,51 @@ peliculaMasLarga := pelisRankings peliculaMasLarga.
 
 pelisRankings calificarPelicula: 'Tiempos Violentos' conPuntaje: 8.
 pelisRankings calificarPelicula: '2001: Odisea del espacio' conPuntaje: 9.
-pelisRankings calificarPelicula: 'El planeta de los simios' conPuntaje: 6.
-pelisRankings calificarPelicula: 'EL imperio contraataca' conPuntaje: 7.
 pelisRankings calificarPelicula: 'Forrest Gump' conPuntaje: 4.
-pelisRankings calificarPelicula: 'Tiempos Violentos' conPuntaje: 6.
-pelisRankings calificarPelicula: 'Viernes 13' conPuntaje: 4.
+pelisRankings calificarPelicula: 'Viernes 13' conPuntaje: 2.
+pelisRankings calificarPelicula: 'Tiempos Violentos' conPuntaje: 10.
+pelisRankings calificarPelicula: 'Viernes 13' conPuntaje: 6.
+pelisRankings calificarPelicula: 'El planeta de los simios' conPuntaje: 8.
+pelisRankings calificarPelicula: 'EL imperio contraataca' conPuntaje: 10.
+pelisRankings calificarPelicula: 'Forrest Gump' conPuntaje: 6.
 pelisRankings calificarPelicula: 'El planeta de los simios' conPuntaje: 6.
 
+calificacion := pelisRankings obtenerPuntajePromedioDe: 'Tiempos Violentos'.
+(calificacion closeTo: 9) ifFalse: [ 
+	Transcript show: 'Error: EL puntaje promedio de Tiempos Violentos es 9';cr.
+	error := true.
+].
+
+calificacion := pelisRankings obtenerPuntajePromedioDe: '2001: Odisea del espacio'.
+(calificacion closeTo: 9) ifFalse: [ 
+	Transcript show: 'Error: EL puntaje promedio de 2001: Odisea del espacio es 9';cr.
+	error := true.
+].
 
 
+calificacion := pelisRankings obtenerPuntajePromedioDe: 'Viernes 13'.
+(calificacion closeTo: 4) ifFalse: [ 
+	Transcript show: 'Error: EL puntaje promedio de Viernes 13 es 4';cr.
+	error := true.
+].
 
+calificacion := pelisRankings obtenerPuntajePromedioDe: 'Forrest Gump'.
+(calificacion closeTo: 5) ifFalse: [ 
+	Transcript show: 'Error: EL puntaje promedio de Forrest Gump es 5';cr.
+	error := true.
+].
+
+calificacion := pelisRankings obtenerPuntajePromedioDe: 'EL imperio contraataca'.
+(calificacion closeTo: 10) ifFalse: [ 
+	Transcript show: 'Error: EL puntaje promedio de EL imperio contraataca es 10';cr.
+	error := true.
+].
+
+calificacion := pelisRankings obtenerPuntajePromedioDe: 'El planeta de los simios'.
+(calificacion closeTo: 7) ifFalse: [ 
+	Transcript show: 'Error: EL puntaje promedio de EL El planeta de los simios es 7';cr.
+	error := true.
+].
 
 
 
