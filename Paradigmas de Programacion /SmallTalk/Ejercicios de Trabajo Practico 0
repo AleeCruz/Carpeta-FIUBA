@@ -1,0 +1,53 @@
+"Vamos a resolver un Trabajo Practico 0 de la catedra algoritmos y programacionIII"
+
+| error pelisRankings pelicula1 pelicula2 pelicula3 pelicula4 pelicula5 pelicula6 peliculaMasLarga calificacion mejorPelicula |
+
+Transcript clear.
+error := false .
+
+pelisRankings := PelisRankings new.
+
+
+pelicula1 := Pelicula new.
+pelicula1 establecerNombre: '2001: Odisea del espacio'.
+pelicula1 establecerDuracionEnMinutos: 143.
+pelicula1 establecerAnio: 1968.
+pelisRankings agregarPelicula: pelicula1.
+
+
+pelicula2 := Pelicula new.
+pelicula2 establecerNombre: 'El Planeta de los simios'.
+pelicula2 establecerDuracionEnMinutos: 112.
+pelicula2 establecerAnio: 1968.
+pelisRankings agregarPelicula: pelicula2.
+
+pelicula3 := Pelicula new.
+pelicula3 establecerNombre: 'EL imperio contraataca'.
+pelicula3 establecerDuracionEnMinutos: 124.
+pelicula3 establecerAnio: 1988.
+pelisRankings agregarPelicula: pelicula3.
+
+pelicula4 := Pelicula new. 
+pelicula4 establecerNombre: 'Viernes 13'.
+pelicula4 establecerDuracionEnMinutos: 95.
+pelicula4 establecerAnio: 1994.
+pelisRankings agregarPelicula: pelicula4.
+
+
+pelicula5 := Pelicula new.
+pelicula5 establecerNombre: 'Forrest Gump'.
+pelicula5 establecerDuracionEnMinutos: 142.
+pelicula5 establecerAnio: 1994.
+pelisRankings agregarPelicula: pelicula5.
+
+
+peliculaMasLarga := pelisRankings peliculaMasLarga.
+(peliculaMasLarga = '2001: Odisea del espacio') ifFalse: [ 
+	Transcript show: 'Error la pelicula mas larga es 2001 Odisea en el espacio.';cr.
+	 ].
+
+Transcript show: pelicula2 nombre;cr .
+Transcript show: pelicula2 duracion;cr.
+Transcript show: pelicula3 anio;cr.
+
+
