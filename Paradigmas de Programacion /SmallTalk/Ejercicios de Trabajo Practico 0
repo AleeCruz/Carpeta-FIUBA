@@ -16,7 +16,7 @@ pelisRankings agregarPelicula: pelicula1.
 
 
 pelicula2 := Pelicula new.
-pelicula2 establecerNombre: 'El Planeta de los simios'.
+pelicula2 establecerNombre: 'El planeta de los simios'.
 pelicula2 establecerDuracionEnMinutos: 112.
 pelicula2 establecerAnio: 1968.
 pelisRankings agregarPelicula: pelicula2.
@@ -44,10 +44,35 @@ pelisRankings agregarPelicula: pelicula5.
 peliculaMasLarga := pelisRankings peliculaMasLarga.
 (peliculaMasLarga = '2001: Odisea del espacio') ifFalse: [ 
 	Transcript show: 'Error la pelicula mas larga es 2001 Odisea en el espacio.';cr.
+	error := true.
 	 ].
 
-Transcript show: pelicula2 nombre;cr .
-Transcript show: pelicula2 duracion;cr.
-Transcript show: pelicula3 anio;cr.
+pelicula6 := Pelicula new.
+pelicula6 establecerNombre: 'Tiempos Violentos'.
+pelicula6 establecerDuracionEnMinutos: 154.
+pelicula6 establecerAnio: 1994.
+pelisRankings agregarPelicula: pelicula6.
+
+peliculaMasLarga := pelisRankings peliculaMasLarga.
+(peliculaMasLarga = 'Tiempos Violentos') ifFalse: [ 
+	Transcript show: 'Error la pelicula mas larga es Tiempos Violentos.';cr.
+	error := true.
+	 ].
+
+pelisRankings calificarPelicula: 'Tiempos Violentos' conPuntaje: 8.
+pelisRankings calificarPelicula: '2001: Odisea del espacio' conPuntaje: 9.
+pelisRankings calificarPelicula: 'El planeta de los simios' conPuntaje: 6.
+pelisRankings calificarPelicula: 'EL imperio contraataca' conPuntaje: 7.
+pelisRankings calificarPelicula: 'Forrest Gump' conPuntaje: 4.
+pelisRankings calificarPelicula: 'Tiempos Violentos' conPuntaje: 6.
+pelisRankings calificarPelicula: 'Viernes 13' conPuntaje: 4.
+pelisRankings calificarPelicula: 'El planeta de los simios' conPuntaje: 6.
+
+
+
+
+
+
+
 
 

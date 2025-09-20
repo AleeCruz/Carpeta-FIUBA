@@ -1,0 +1,94 @@
+" 7507/9502 | TP0 | 2021 | Enunciado 2 "
+
+| error libro capitulo1 modulo2 modulo3 estado cantidadTotalPaginas cantidadParcial|
+
+Transcript clear.
+error := false.
+cantidadTotalPaginas := 0 .
+
+libro := Libro new.
+
+capitulo1 := Capitulo new.
+capitulo1 establecerNombre: 'Capitulo 1'. " El estado de los capítulos debe ser a Incompleto inicialmente. "
+
+estado := capitulo1 estado.
+(estado = 'Incompleto') ifFalse: [
+    Transcript show: 'Error. El capitulo 1 esta completo.' ; cr.
+    error := true.
+].
+
+libro agregarCapitulo: capitulo1.
+
+capitulo2 := Capitulo new.
+capitulo2 establecerNombre: 'Capitulo 2'. 
+
+estado := capitulo2 estado.
+(estado = 'Incompleto') ifFalse: [
+    Transcript show: 'Error. El capitulo 2 esta completo.' ; cr.
+    error := true.
+].
+
+libro agregarCapitulo: capitulo2.
+
+capitulo3 := Capitulo new.
+capitulo3 establecerNombre: 'Capitulo 3'.
+
+estado := capitulo3 estado.
+(estado = 'Incompleto') ifFalse: [
+    Transcript show: 'Error. El capitulo 3 esta completo.' ; cr.
+    error := true.
+].
+
+libro agregarCapitulo: capitulo3.
+
+" Manejo de libro y capitulo 1."
+libro asignarCantidadPaginas: 20 capitulo:'Capitulo 1' .   " Se asigna al libro el capitulo 1 con 20 paginas dejando el capitulo en estado completo"
+
+
+capitulo1 := libro obtenerCapitulo. " Devuelve el primer capitulo Completo y actualiza el estado del mismo a Obtenido"
+
+estado := capitulo1 estado.
+(estado = 'Incompleto') ifTrue: [
+    Transcript show: 'Error. El capitulo 1 no fue completado.' ; cr.
+    error := true.
+].
+
+cantidadParcial := libro obtenerCantidadPaginas: capitulo1 nombre .
+
+(cantidadParcial = 10) ifTrue: [
+    Transcript show: 'Error. El capitulo 1 tiene una cantidad que difiere a la correcta.' ; cr.
+    error := true.
+].
+
+" Tratamiento del segundo capitulo. "
+libro asignarCantidadPaginas: 120 capitulo:'Capitulo 2' .   " Se asigna al libro el capitulo 2 con 120 paginas dejando el capitulo en estado completo"
+
+capitulo2 := libro obtenerCapitulo. " Devuelve el primer capitulo Completo y actualiza el estado del mismo a Obtenido"
+
+estado := capitulo2 estado.
+(estado = 'Incompleto') ifTrue: [
+    Transcript show: 'Error. El capitulo 2 no fue asignado.' ; cr.
+    error := true.
+].
+
+cantidadParcial := libro obtenerCantidadPaginas: capitulo2 nombre .
+(cantidadParcial = 0) ifTrue: [
+    Transcript show: 'Error. El capitulo 2 tiene una cantidad que difiere a la correcta.' ; cr.
+    error := true.
+].
+
+cantidadTotalPaginas := libro obtenerCantidadTotalPaginas.
+
+" Evaluamos cantidad total de paginas. "
+(cantidadTotalPaginas = 200) ifTrue: [
+    Transcript show: 'Error. La cantidad total  de paginas deberia ser 140.' ; cr.
+    error := true.
+].
+
+" Resultado final. "
+error ifTrue: [  
+	Transcript show: 'Resultado final: ERROR'.
+]
+ifFalse: [
+	Transcript show: 'Resultado final: OK'.
+].

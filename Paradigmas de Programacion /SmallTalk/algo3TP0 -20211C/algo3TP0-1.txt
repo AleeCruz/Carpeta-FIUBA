@@ -1,0 +1,94 @@
+" 7507/9502 | TP0 | 2021 | Enunciado 1 "
+
+| error pedido producto1 producto2 producto3 estado cantidadTotalProductos cantidadParcial |
+
+Transcript clear.
+error := false.
+cantidadTotalProductos := 0 .
+
+pedido := Pedido new.
+
+producto1 := Producto new.
+producto1 establecerNombre: 'Yerba Mate'. " El estado de los productos debe ser a No Asignado inicialmente. "
+
+estado := producto1 estado.
+(estado = 'No Asignado') ifFalse: [
+    Transcript show: 'Error. El producto 1 esta asignado.' ; cr.
+    error := true.
+].
+
+pedido agregarProducto: producto1.
+
+producto2 := Producto new.
+producto2 establecerNombre: 'Galletitas'. 
+
+estado := producto2 estado.
+(estado = 'No Asignado') ifFalse: [
+    Transcript show: 'Error. El producto 2 esta asignado.' ; cr.
+    error := true.
+].
+
+pedido agregarProducto: producto2.
+
+producto3 := Producto new.
+producto3 establecerNombre: 'Mermelada'.
+
+estado := producto3 estado.
+(estado = 'No Asignado') ifFalse: [
+    Transcript show: 'Error. El producto 3 esta asignado.' ; cr.
+    error := true.
+].
+
+pedido agregarProducto: producto3.
+
+" Manejo de pedidos y productos, para el producto 1. "
+pedido asignarCantidad: 2 producto:'Galletitas' .   " Se asigna al pedido 2 galletitas. El estado de producto debe ser Asignado"
+pedido reducirCantidad: 1 producto:'Galletitas' .   " Se le saca al pedido 1 galletita. El estado de producto debe ser Asignado"
+
+producto1 := pedido obtenerProducto. " Devuelve el primer producto Asignado y actualiza el estado del mismo a Obtenido"
+
+estado := producto1 estado.
+(estado = 'No Asignado') ifTrue: [
+    Transcript show: 'Error. El producto 1 no fue asignado.' ; cr.
+    error := true.
+].
+
+cantidadParcial := pedido obtenerCantidad: producto1 nombre .
+
+(cantidadParcial = 2) ifTrue: [
+    Transcript show: 'Error. El producto 1 tiene una cantidad que difiere a la correcta.' ; cr.
+    error := true.
+].
+
+pedido asignarCantidad: 3 producto:'Mermelada' .   " Se asigna al pedido 3 Mermeladas. El estado de producto debe ser Asignado"
+pedido reducirCantidad: 1 producto:'Mermelada' .   " Se le saca al pedido 1 Mermelada. El estado de producto debe ser Asignado"
+
+producto2 := pedido obtenerProducto. " Devuelve el primer producto Asignado y actualiza el estado del mismo a Obtenido"
+
+estado := producto2 estado.
+(estado = 'No Asignado') ifTrue: [
+    Transcript show: 'Error. El producto 2 no fue asignado.' ; cr.
+    error := true.
+].
+
+cantidadParcial := pedido obtenerCantidad: producto2 nombre .
+(cantidadParcial = 0) ifTrue: [
+    Transcript show: 'Error. El producto 2 tiene una cantidad que difiere a la correcta.' ; cr.
+    error := true.
+].
+
+cantidadTotalProductos := pedido obtenerCantidadTotalProductos.
+
+" Evaluamos cantidad total de productos. "
+(cantidadTotalProductos = 2) ifTrue: [
+    Transcript show: 'Error. La cantidad total  de productos en el pedido debería ser 3.' ; cr.
+    error := true.
+].
+
+" Resultado final. "
+error ifTrue: [  
+	Transcript show: 'Resultado final: ERROR'.
+]
+ifFalse: [
+	Transcript show: 'Resultado final: OK'.
+].
