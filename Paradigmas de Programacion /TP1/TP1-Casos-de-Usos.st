@@ -1,0 +1,1 @@
+TestCase subclass: #CasosDeUso	instanceVariableNames: ''	classVariableNames: ''	package: 'TP1-TP1-Casos-de-Usos'!

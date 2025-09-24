@@ -1,0 +1,22 @@
+|classesToMutate testClasses analysis|
+
+"Put here the classes you want to mutate"
+classesToMutate := {
+	AlgoConsejo  .
+
+}.
+"Put here the test classes associated with"
+testClasses :=  {
+	AlgoConsejoTest .
+
+ }.
+
+analysis := MTAnalysis new
+    classesToMutate: classesToMutate;
+    testClasses: testClasses.
+
+analysis run.
+
+"To inspect the results"
+analysis generalResult inspect.
+
