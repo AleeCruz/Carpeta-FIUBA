@@ -2,7 +2,12 @@
 
 "Put here the classes you want to mutate"
 classesToMutate := {
-	AlgoConsejo  .
+	AlgoConsejo .
+	Futbolista_Argentino .
+	Futbolista_Conmebol.
+	Futbolista_Extranjero.
+	Futbolista_Extranjero_Mayor.
+	Valor.
 
 }.
 "Put here the test classes associated with"
