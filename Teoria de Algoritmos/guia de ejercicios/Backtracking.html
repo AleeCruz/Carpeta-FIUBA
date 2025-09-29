@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://algoritmos-rw.github.io/tda_bg/material/guias/bt/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Backtracking</title>
+  <meta name="description" content="Página de la materia Teoría de Algoritmos I, curso Buchwald - Genender. Facultad de Ingeniería, Universidad de Buenos Aires.">
+
+  <link rel="stylesheet" href="./Backtracking_files/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh">
+  <link rel="stylesheet" href="./Backtracking_files/all.css">
+  <link rel="stylesheet" href="./Backtracking_files/main.css" type="text/css">
+  <link rel="shortcut icon" href="https://algoritmos-rw.github.io/tda_bg/assets/img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="canonical" href="https://algoritmos-rw.github.io/tda_bg/material/guias/bt/"> -->
+
+  
+  <link rel="stylesheet" href="./Backtracking_files/katex.min.css" crossorigin="anonymous" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X">
+  <script defer="" src="./Backtracking_files/katex.min.js" crossorigin="anonymous" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"></script>
+  <script defer="" src="./Backtracking_files/auto-render.min.js" crossorigin="anonymous" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+
+  <body>
+    <header role="banner" class="sticky-top container-fluid px-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand d-lg-none" href="https://algoritmos-rw.github.io/tda_bg/material/guias/bt/#">Teoría de Algoritmos I</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sitenav" aria-controls="sitenav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="sitenav">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 small mx-auto">
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/"><span class="fa fa-home"></span> Inicio</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/docentes/"><span class="fa fa-chalkboard-teacher"></span> Docentes</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/regimen/"><span class="fa fa-tasks"></span> Régimen</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/calendario/"><span class="fa fa-calendar-alt"></span> Calendario</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/tps/"><span class="fa fa-briefcase"></span> TPs</a></li>
+        
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/tda_bg/material/guias/bt/#" role="button" id="matDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-paperclip"></span> Material</a>
+          <ul class="dropdown-menu">
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/tda_bg/bibliografia/"><span class="fa fa-book"></span> Bibliografía</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/tda_bg/material/guias/"><span class="fa fa-dumbbell"></span> Guías de ejercicios</a></li>
+            <li>
+              <a class="dropdown-item" href="https://drive.google.com/drive/u/3/folders/1DtGSvPMobzgZwtzuqvWLu8Ed-K-f9Q52" target="_blank"><span class="fab fa-google-drive"></span> Drive</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.youtube.com/@algoritmos-fiuba-buchwald" target="_blank"><span class="fab fa-youtube"></span> Canal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="https://algoritmos-rw.dijkstra.ar/notas-tda/" target="_blank"><span class="fa fa-pencil-alt"> Consultar Notas</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/encuestas/"><span class="fa fa-poll"></span> Encuestas</a></li>
+        <li class="nav-item">
+          <a href="https://github.com/algoritmos-rw/tda_bg/blob/master/material/guias/bt.md" class="nav-link" target="_blank"><span class="fab fa-github"></span> Editar en GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="container" role="main">
+      <div class="row justify-content-center">
+        <div class="col col-xl-8">
+          <h1 class="no_toc" id="backtracking">Backtracking</h1>
+
+<h2 class="no_toc" id="contenidos">Contenidos</h2>
+
+<ol id="markdown-toc">
+  <li><a href="https://algoritmos-rw.github.io/tda_bg/material/guias/bt/#ejercicio-resuelto" id="markdown-toc-ejercicio-resuelto">Ejercicio resuelto</a></li>
+  <li><a href="https://algoritmos-rw.github.io/tda_bg/material/guias/bt/#ejercicios-propuestos" id="markdown-toc-ejercicios-propuestos">Ejercicios propuestos</a></li>
+</ol>
+
+<h2 id="ejercicio-resuelto">Ejercicio resuelto</h2>
+
+<h3 id="solución">Solución</h3>
+
+<h4 id="demostración-del-orden">Demostración del orden</h4>
+
+<h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
+
+<ol>
+  <li>
+    <p>(★★) Implementar por backtracking un algoritmo que, dado un grafo no dirigido y un numero <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> menor a <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>V</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|V|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right: 0.22222em;">V</span><span class="mord">∣</span></span></span></span></span>, devuelva si 
+es posible obtener un subconjunto de n vertices tal que ningun par de vertices sea adyacente entre si.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar un algoritmo que reciba un grafo y un número <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> que, utilizando backtracking, indique si es posible
+pintar cada vértice con n colores de tal forma que no hayan dos vértices adyacentes con el mismo color.</p>
+  </li>
+  <li>
+    <p>(★) Dado un tablero de ajedrez <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n \times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.66666em; vertical-align: -0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>, implementar un algoritmo por backtracking que ubique (si es posible) a <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> reinas 
+de tal manera que ninguna pueda comerse con ninguna.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar un algoritmo que dado un Grafo no dirigido nos devuelva un conjunto de vértices que representen un 
+máximo Independent Set del mismo.</p>
+  </li>
+  <li>
+    <p>(★★) Un camino hamiltoniano, es un camino de un grafo, que visita todos los vértices del grafo una sola vez. Implementar 
+un algoritmo por backtracking que encuentre un camino hamiltoniano de un grafo dado.</p>
+  </li>
+  <li>
+    <p>(★) Dada una matriz de 9x9, implementar un algoritmo por backtracking que llene la matriz con números del 1 al 9, dadas 
+las condiciones del Sudoku (si es posible). Las condiciones son: 
+(i) Las celdas están dispuestas en 9 subgrupos de 3x3. 
+(ii) Cada columna y cada fila no puede repetir número. 
+(iii) Cada subgrupo de 3x3 no puede repetir número.</p>
+  </li>
+  <li>
+    <p>(★) Implementar un algoritmo de backtracking que, dado una pieza de caballo en un tablero de ajedrez, determine los 
+movimientos a realizar para que el caballo logre pasar por todos los casilleros del tablero una única vez. 
+Recordar que el caballo mueve en forma de L (dos casilleros en una dirección, y un casillero en forma perpendicular).</p>
+  </li>
+  <li>
+    <p>(★★★) Implementar un algoritmo de backtracking que, dados dos grafos, determine si existe un Isomorfismo entre ambos.</p>
+  </li>
+  <li>
+    <p>(★) Se tiene una lista de materias que deben ser cursadas en el mismo cuatrimestre, cada materia está representada con 
+una lista de cursos/horarios posibles a cursar (solo debe elegirse un horario por cada curso). Cada materia puede tener 
+varios cursos. Implementar un algoritmo de backtracking que devuelva un listado con todas las combinaciones posibles que 
+permitan asistir a un curso de cada materia sin que se solapen los horarios. Considerar que existe una función 
+son_compatibles(curso_1, curso_2) que dados dos cursos devuelve un valor booleano que indica si se pueden cursar al mismo tiempo.</p>
+  </li>
+  <li>
+    <p>(★) Implementar un algoritmo tipo Backtracking que reciba una cantidad de dados <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> y una suma <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">s</span></span></span></span></span>. La función debe devolver todas 
+las tiradas posibles de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> dados cuya suma es <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">s</span></span></span></span></span>. Por ejemplo, con <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">2</span></span></span></span></span> y <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">s = 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">7</span></span></span></span></span>, debe devolver <code class="language-plaintext highlighter-rouge">[[1, 6], [2, 5], [3, 4], [4, 3], [5, 2], [6, 1]]</code>.
+¿De qué complejidad es el algoritmo en tiempo? ¿Y en espacio?</p>
+  </li>
+  <li>
+    <p>(★) Escribir un algoritmo que, utilizando backtracking, dada una lista de enteros positivos <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal">L</span></span></span></span></span> y un entero <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> devuelva todos 
+los subconjuntos de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal">L</span></span></span></span></span> que suman exactamente <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>.</p>
+  </li>
+  <li>
+    <p>(★) Modificar el algoritmo anterior para que, dada una lista de enteros positivos <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal">L</span></span></span></span></span> y un entero <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>, devuelva un subconjunto 
+de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal">L</span></span></span></span></span> que sume exactamente <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>, o, en caso de no existir, que devuelva el subconjunto de suma máxima sin superar el valor de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>.</p>
+  </li>
+  <li>
+    <p>(★★) Un Vertex Cover de un Grafo G es un conjunto de vértices del grafo en el cual todas las aristas del grafo tienen al menos uno de sus extremos en
+dicho conjunto. Por ejemplo, el conjunto de todos los vértices del grafo siempre será un Vertex Cover.
+Implementar un algoritmo que dado un Grafo no dirigido nos devuelva un conjunto de vértices que representen un 
+mínimo Vertex Cover del mismo (es decir, que sea el conjunto de tamaño mínimo).</p>
+  </li>
+  <li>
+    <p>(★★★) Un set dominante (Dominating Set) de un grafo G es un subconjunto <strong>D</strong> de vértices de G, tal que para todo vértice de G: 
+o bien (i) <em>pertenece a D</em>; o bien (ii) es <em>adyacente a un vértice en D</em>.  Implementar un algoritmo que reciba un Grafo, y devuelva 
+un dominating set de dicho grafo con la mínima cantidad de vértices.</p>
+  </li>
+  <li>
+    <p>(★★★) Un bodegón tiene una única mesa larga con <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi></mrow><annotation encoding="application/x-tex">W</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.13889em;">W</span></span></span></span></span> lugares. Hay una persona en la puerta que anota los grupos que quieren 
+sentarse a comer, y la <em>cantidad de integrantes</em> que conforma a cada uno. Para simplificar su trabajo, se los anota en 
+un vector <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.13889em;">P</span></span></span></span></span> donde <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">P[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.13889em;">P</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span></span> contiene la cantidad de personas que integran el <em>grupo i</em>, siendo en total <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> grupos. Como se 
+trata de un restaurante familiar, las personas sólo se sientan en la mesa si <em>todos los integrantes de su grupo</em> pueden 
+sentarse. Implementar un algoritmo que, <strong>por backtracking</strong>, obtenga el conjunto de grupos que ocupan 
+la mayor cantidad de espacios en la mesa (o en otras palabras, que dejan la menor cantidad de espacios vacíos).</p>
+  </li>
+  <li>
+    <p>(★★★) Para ayudar a personas con problemas visuales (por ejemplo, daltonismo) el gobierno de Agrabah decidió que en una 
+misma parada de colectivo nunca pararán dos colectivos que usen el mismo color. El problema es que ya saben que eso 
+está sucediendo hoy en día, así que van a repintar todas las líneas de colectivos. Por problemas presupuestarios, desean 
+pintar los colectivos con la menor cantidad posible <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> colores diferentes. Como no quieren 
+parecer un grupo de improvisados que malgasta los fondos públicos, quieren hacer un análisis para saber cuál es ese mínimo
+valor para cumplir con lo pedido (pintar cada línea con alguno de los <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> colores, de tal forma que no hayan dos de mismo color 
+coincidiendo en la misma parada). Considerando que se tiene la información de todas las paradas de colectivo y qué 
+líneas paran allí, modelar el problema utilizando grafos e implementar un algoritmo que determine el mínimo valor <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> para<br>
+resolver el problema. Indicar la complejidad del algoritmo implementado.</p>
+  </li>
+  <li>
+    <p>(★★★) Se tiene una matriz donde en cada celda hay submarinos, o no, y se quiere poner faros para iluminarlos a todos. 
+Implementar un algoritmo que dé la cantidad mínima de faros que se necesitan para que todos los submarinos queden 
+iluminados, siendo que cada faro ilumina su celda y además todas las adyacentes (incluyendo las diagonales), y las 
+directamente adyacentes a estas (es decir, un “radio de 2 celdas”).</p>
+  </li>
+  <li>
+    <p>(★★★) Implementar un algoritmo que, por backtracking, obtenga la cantidad total de posibles ordenamientos topológicos 
+de un grafo dirigido y acíclico.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar un algoritmo que, utilizando <strong>backtracking</strong>, resuelva el problema del cambio
+(obtener la forma de dar cambio en la mínima cantidad de monedas) 
+con una nueva restricción: no se tiene una cantidad indefinida de cada moneda, sino una
+cantidad específica (y esto hace que pueda no haber solución). 
+Suponer que la función a invocar es <code class="language-plaintext highlighter-rouge">cambio(n, monedas, cantidad_x_monedas)</code>, donde
+<code class="language-plaintext highlighter-rouge">n</code> sea el valor a devolver en cambio, <code class="language-plaintext highlighter-rouge">monedas</code> sea una lista ordenada de los valores 
+de las monedas, y <code class="language-plaintext highlighter-rouge">cantidad_x_monedas</code> un diccionario.</p>
+  </li>
+</ol>
+
+
+
+        </div>
+      </div>
+    </main>
+
+    <script src="./Backtracking_files/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+<script src="./Backtracking_files/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+  
+
+
+</body></html>

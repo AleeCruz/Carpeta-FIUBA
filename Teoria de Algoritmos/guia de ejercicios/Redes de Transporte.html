@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://algoritmos-rw.github.io/tda_bg/material/guias/flujo/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Redes de Transporte</title>
+  <meta name="description" content="Página de la materia Teoría de Algoritmos I, curso Buchwald - Genender. Facultad de Ingeniería, Universidad de Buenos Aires.">
+
+  <link rel="stylesheet" href="./Redes de Transporte_files/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh">
+  <link rel="stylesheet" href="./Redes de Transporte_files/all.css">
+  <link rel="stylesheet" href="./Redes de Transporte_files/main.css" type="text/css">
+  <link rel="shortcut icon" href="https://algoritmos-rw.github.io/tda_bg/assets/img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="canonical" href="https://algoritmos-rw.github.io/tda_bg/material/guias/flujo/"> -->
+
+  
+  <link rel="stylesheet" href="./Redes de Transporte_files/katex.min.css" crossorigin="anonymous" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X">
+  <script defer="" src="./Redes de Transporte_files/katex.min.js" crossorigin="anonymous" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"></script>
+  <script defer="" src="./Redes de Transporte_files/auto-render.min.js" crossorigin="anonymous" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+
+  <body>
+    <header role="banner" class="sticky-top container-fluid px-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand d-lg-none" href="https://algoritmos-rw.github.io/tda_bg/material/guias/flujo/#">Teoría de Algoritmos I</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sitenav" aria-controls="sitenav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="sitenav">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 small mx-auto">
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/"><span class="fa fa-home"></span> Inicio</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/docentes/"><span class="fa fa-chalkboard-teacher"></span> Docentes</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/regimen/"><span class="fa fa-tasks"></span> Régimen</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/calendario/"><span class="fa fa-calendar-alt"></span> Calendario</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/tps/"><span class="fa fa-briefcase"></span> TPs</a></li>
+        
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/tda_bg/material/guias/flujo/#" role="button" id="matDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-paperclip"></span> Material</a>
+          <ul class="dropdown-menu">
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/tda_bg/bibliografia/"><span class="fa fa-book"></span> Bibliografía</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/tda_bg/material/guias/"><span class="fa fa-dumbbell"></span> Guías de ejercicios</a></li>
+            <li>
+              <a class="dropdown-item" href="https://drive.google.com/drive/u/3/folders/1DtGSvPMobzgZwtzuqvWLu8Ed-K-f9Q52" target="_blank"><span class="fab fa-google-drive"></span> Drive</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.youtube.com/@algoritmos-fiuba-buchwald" target="_blank"><span class="fab fa-youtube"></span> Canal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="https://algoritmos-rw.dijkstra.ar/notas-tda/" target="_blank"><span class="fa fa-pencil-alt"> Consultar Notas</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/encuestas/"><span class="fa fa-poll"></span> Encuestas</a></li>
+        <li class="nav-item">
+          <a href="https://github.com/algoritmos-rw/tda_bg/blob/master/material/guias/flujo.md" class="nav-link" target="_blank"><span class="fab fa-github"></span> Editar en GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="container" role="main">
+      <div class="row justify-content-center">
+        <div class="col col-xl-8">
+          <h1 class="no_toc" id="redes-de-transporte">Redes de Transporte</h1>
+
+<h2 class="no_toc" id="contenidos">Contenidos</h2>
+
+<ol id="markdown-toc">
+  <li><a href="https://algoritmos-rw.github.io/tda_bg/material/guias/flujo/#ejercicio-resuelto" id="markdown-toc-ejercicio-resuelto">Ejercicio resuelto</a></li>
+  <li><a href="https://algoritmos-rw.github.io/tda_bg/material/guias/flujo/#ejercicios-propuestos" id="markdown-toc-ejercicios-propuestos">Ejercicios propuestos</a></li>
+</ol>
+
+<h2 id="ejercicio-resuelto">Ejercicio resuelto</h2>
+
+<h3 id="solución">Solución</h3>
+
+<h4 id="demostración-del-orden">Demostración del orden</h4>
+
+<h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
+
+<ol>
+  <li>
+    <p>(★) Explicar para cada uno de los siguientes casos, qué modificaciones se deben aplicar sobre una red para convertirla en 
+una red de flujo apta para la utilización del algoritmo de Ford-Fulkerson.</p>
+
+    <p>a. En la red existen bucles.</p>
+
+    <p>b. En la red hay ciclos de dos vértices (aristas antiparalelas).</p>
+
+    <p>c. En la red hay más de una fuente.</p>
+
+    <p>d. En la red hay más de un sumidero.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar el algoritmo de Ford-Fulkerson, asumiendo que ya está implementada una función <code class="language-plaintext highlighter-rouge">actualizar_grafo_residual</code>, 
+definida como <code class="language-plaintext highlighter-rouge">actualizar_grafo_residual(grafo_residual, u, v, valor)</code>, que recibe el <em>grafo residual</em>, una arista dirigida dada 
+por los <em>vértices u y v</em>, y el nuevo <em>valor</em> del flujo a través de la arista <code class="language-plaintext highlighter-rouge">(u,v)</code> y actualiza el grafo residual ya teniendo en 
+cuenta el peso anterior de la arista, y su antiparalela. Devolver un diccionario con los valores de los flujos para todas las 
+aristas del grafo original.</p>
+  </li>
+  <li>
+    <p>(★★) Dada una red y un diccionario que representa los valores de los flujos para las aristas, todos valores que respetan la 
+restricción de cada arista, construir la red residual que refleja el estado actual de la red en función a los valores de flujo dados.</p>
+  </li>
+  <li>
+    <p>(★) Dada una red residual, dar un algoritmo que encuentre un camino de aumento que minimice el número de aristas utilizadas.</p>
+  </li>
+  <li>
+    <p>(★★) Dado un flujo máximo de un grafo, implementar un algoritmo que, si se le aumenta en una unidad la capacidad a una 
+artista (por ejemplo, a una arista de capacidad 3 se le aumenta a 4), permita obtener el nuevo flujo máximo en tiempo lineal 
+en vértices y aristas. Indicar y justificar la complejidad del algoritmo implementado.</p>
+  </li>
+  <li>
+    <p>(★★) Hacer un seguimiento de obtener el flujo máximo en la siguiente red de transporte, realizando las modificaciones previas 
+que fueran necesarias. Luego, definir cuáles son los dos conjuntos del corte mínimo en dicha red.</p>
+
+    <p><img src="./Redes de Transporte_files/flujo1.png" alt="grafo bf" width="50%"></p>
+  </li>
+  <li>
+    <p>(★★) Hacer un seguimiento de obtener el flujo máximo en la siguiente red de transporte, realizando las modificaciones previas 
+que fueran necesarias. Luego, definir cuáles son los dos conjuntos del corte mínimo en dicha red.</p>
+
+    <p><img src="./Redes de Transporte_files/flujo2.png" alt="grafo bf" width="60%"></p>
+  </li>
+  <li>
+    <p>(★) ¿Cuál es la relación entre el flujo máximo de una red, y un corte mínimo que separe su fuente y sumidero?</p>
+  </li>
+  <li>
+    <p>(★★) Dado un grafo bipartito no dirigido, un match es un subconjunto de las aristas en el cual para todo vértice <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03588em;">v</span></span></span></span></span> a lo sumo una arista 
+del match incide en <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03588em;">v</span></span></span></span></span> (en el match, tienen grado a lo sumo 1). Decimos que el vértice <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03588em;">v</span></span></span></span></span> está matcheado si hay alguna arista que 
+incida en él (sino, está unmatcheado). El matching máximo es aquel en el que tenemos la mayor cantidad de aristas (matcheamos la 
+mayor cantidad posible). Dar una metodología para encontrar el matching máximo de un grafo, explicando en detalle cómo se modela 
+el problema, cómo se lo resuelve y cómo se consigue el matching máximo. ¿Cuál es el orden temporal de la solución implementada?</p>
+  </li>
+  <li>
+    <p>(★★) Decimos que dos caminos son disjuntos si no comparten aristas (pueden compartir nodos). Dado un grafo dirigido y dos vértices 
+<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">s</span></span></span></span></span> y <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.61508em; vertical-align: 0em;"></span><span class="mord mathnormal">t</span></span></span></span></span>, encontrar el máximo número de caminos disjuntos <code class="language-plaintext highlighter-rouge">s-t</code> en G. Dar una metodología, explicando en detalle cómo se modela el problema, 
+cómo se lo resuelve y cómo se consigue el máximo número de caminos disjuntos. ¿Cuál es el orden temporal de la solución implementada? ¿Cómo resolverías el problema si el grafo fuera no dirigido?</p>
+  </li>
+  <li>
+    <p>(★★★) Supongamos que tenemos un sistema de una facultad en el que cada alumno puede pedir hasta 10 libros de la biblioteca. La biblioteca 
+tiene 3 copias de cada libro. Cada alumno desea pedir libros diferentes. Implementar un algoritmo que nos permita obtener la forma de 
+asignar libros a alumnos de tal forma que la cantidad de préstamos sea máxima. Dar la metodología, explicando en detalle cómo se modela 
+el problema, cómo se lo resuelve y cómo se consigue la máxima cantidad de préstamos. ¿Cuál es el orden temporal de la solución implementada?</p>
+  </li>
+  <li>
+    <p>(★★★) Suponer que queremos schedulear cómo los aviones van de un aeropuerto a otro para cumplir sus horarios. Podemos decir que podemos 
+usar un avión para un segmento/vuelo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.65952em; vertical-align: 0em;"></span><span class="mord mathnormal">i</span></span></span></span></span> y luego para otro <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.85396em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span></span></span></span></span> si se cumple alguna de las siguientes condiciones: 
+a. El destino de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.65952em; vertical-align: 0em;"></span><span class="mord mathnormal">i</span></span></span></span></span> y el origen de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.85396em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span></span></span></span></span> son el mismo. o
+b. Podemos agregar un vuelo desde el destino de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.65952em; vertical-align: 0em;"></span><span class="mord mathnormal">i</span></span></span></span></span> al origen de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.85396em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span></span></span></span></span> con tiempo suficiente.</p>
+
+    <p>Decimos que el vuelo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.85396em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span></span></span></span></span> es alcanzable desde el vuelo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.65952em; vertical-align: 0em;"></span><span class="mord mathnormal">i</span></span></span></span></span> si es posible usar el avión del vuelo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.65952em; vertical-align: 0em;"></span><span class="mord mathnormal">i</span></span></span></span></span> y después para el vuelo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.85396em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span></span></span></span></span>.<br>
+Dados todos los vuelos con origen y destino, y el tiempo que tarda un avión entre cada par de ciudades queremos decidir: ¿Podemos 
+cumplir con los m vuelos usando a lo sumo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> aviones? Dar la metodología, explicando en detalle cómo se modela el problema, 
+cómo se lo resuelve y cómo se decide si es posible cumplir con la premisa. ¿Cuál es el orden temporal de la solución implementada?</p>
+  </li>
+  <li>
+    <p>(★★★) Carlos tiene un problema: sus 5 hijos no se soportan. Esto es a tal punto, que ni siquiera están dispuestos a caminar 
+juntos para ir a la escuela. Incluso más: ¡tampoco quieren pasar por una cuadra por la que haya pasado alguno de sus 
+hermanos! Sólo aceptan pasar por las esquinas, si es que algún otro pasó por allí. Por suerte, tanto la casa como la 
+escuela quedan en esquinas, pero no está seguro si es posible enviar a sus 5 hijos a la misma escuela. No se puede asumir que
+la ciudad tenga alguna forma en específico, por ejemplo, no hay que asumir que todas las calles sean cuadradas. Utilizando lo 
+visto en la materia, formular este problema y resolverlo. Indicar y justificar la complejidad del algoritmo.</p>
+  </li>
+  <li>
+    <p>(★★★) Se está formando una nueva comisión de actividades culturales de un pueblo. Cada habitante es miembro de 0 o más 
+clubes, y de exactamente 1 partido político. Cada grupo de interés debe nombrar a un representante ante la nueva 
+comisión de actividades culturales, con las siguientes restricciones: cada partido político no puede tener más de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">n/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal">n</span><span class="mord">/</span><span class="mord">2</span></span></span></span></span> 
+simpatizantes en la comisión, cada persona puede representar a solo un club, cada club debe estar representado por 
+un miembro. Implementar un algoritmo que dada la información de los habitantes (a qué clubes son miembros, a 
+qué partido pertenecen), nos dé una lista de representantes válidos. Indicar y justificar la complejidad del algoritmo 
+implementado.</p>
+  </li>
+  <li>
+    <p>(★★★) En un hospital, se tiene un conjunto de médicos y un conjunto de pacientes. Cada médico tiene un horario con franjas 
+horarias disponibles para citas médicas y su área de especialidad, y cada paciente tiene sus franjas horaria disponibles para 
+ir al médico, junto con la información de qué tipo de especialidad requiere. Nuestro objetivo es emparejar médicos con pacientes 
+de manera que se maximice el número total de citas médicas programadas. Se puede asumir que cada visita médica dura una cuota de 
+tiempo fija, y que los pacientes pueden ser a priori atendidos por cualquier médico que coincida con el área de especialidad que 
+requieren. Implementar un algoritmo que resuelva dicho problema de manera eficiente. Indicar y justificar la complejidad del 
+algoritmo implementado.</p>
+  </li>
+  <li>
+    <p>(★★★) Una red de satélites se construyó para permitir la comunicación entre una nave espacial y la tierra. Ciertos
+Satélites pueden intercambiar mensajes entre otros (ida y vuelta). Algunos con la tierra, otros con la nave espacial. 
+Contamos con la red y se pide medir su robustez: ¿cuántos satélites (en el peor de los casos) se pueden romper que
+dejen incomunicada la nave con la tierra? ¿Cuáles? Utilizando redes de flujo, resolver el problema. Indicar y
+justificar la complejidad del algoritmo implementado. Recordar que esto último debe estar en las variables del
+problema.</p>
+  </li>
+</ol>
+
+
+
+        </div>
+      </div>
+    </main>
+
+    <script src="./Redes de Transporte_files/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+<script src="./Redes de Transporte_files/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+  
+
+
+</body></html>

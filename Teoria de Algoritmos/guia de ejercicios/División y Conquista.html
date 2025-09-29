@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://algoritmos-rw.github.io/tda_bg/material/guias/dyc/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>División y Conquista</title>
+  <meta name="description" content="Página de la materia Teoría de Algoritmos I, curso Buchwald - Genender. Facultad de Ingeniería, Universidad de Buenos Aires.">
+
+  <link rel="stylesheet" href="./División y Conquista_files/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh">
+  <link rel="stylesheet" href="./División y Conquista_files/all.css">
+  <link rel="stylesheet" href="./División y Conquista_files/main.css" type="text/css">
+  <link rel="shortcut icon" href="https://algoritmos-rw.github.io/tda_bg/assets/img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="canonical" href="https://algoritmos-rw.github.io/tda_bg/material/guias/dyc/"> -->
+
+  
+  <link rel="stylesheet" href="./División y Conquista_files/katex.min.css" crossorigin="anonymous" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X">
+  <script defer="" src="./División y Conquista_files/katex.min.js" crossorigin="anonymous" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"></script>
+  <script defer="" src="./División y Conquista_files/auto-render.min.js" crossorigin="anonymous" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+
+  <body>
+    <header role="banner" class="sticky-top container-fluid px-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand d-lg-none" href="https://algoritmos-rw.github.io/tda_bg/material/guias/dyc/#">Teoría de Algoritmos I</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sitenav" aria-controls="sitenav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="sitenav">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 small mx-auto">
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/"><span class="fa fa-home"></span> Inicio</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/docentes/"><span class="fa fa-chalkboard-teacher"></span> Docentes</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/regimen/"><span class="fa fa-tasks"></span> Régimen</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/calendario/"><span class="fa fa-calendar-alt"></span> Calendario</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/tps/"><span class="fa fa-briefcase"></span> TPs</a></li>
+        
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/tda_bg/material/guias/dyc/#" role="button" id="matDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-paperclip"></span> Material</a>
+          <ul class="dropdown-menu">
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/tda_bg/bibliografia/"><span class="fa fa-book"></span> Bibliografía</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/tda_bg/material/guias/"><span class="fa fa-dumbbell"></span> Guías de ejercicios</a></li>
+            <li>
+              <a class="dropdown-item" href="https://drive.google.com/drive/u/3/folders/1DtGSvPMobzgZwtzuqvWLu8Ed-K-f9Q52" target="_blank"><span class="fab fa-google-drive"></span> Drive</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.youtube.com/@algoritmos-fiuba-buchwald" target="_blank"><span class="fab fa-youtube"></span> Canal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="https://algoritmos-rw.dijkstra.ar/notas-tda/" target="_blank"><span class="fa fa-pencil-alt"> Consultar Notas</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/encuestas/"><span class="fa fa-poll"></span> Encuestas</a></li>
+        <li class="nav-item">
+          <a href="https://github.com/algoritmos-rw/tda_bg/blob/master/material/guias/dyc.md" class="nav-link" target="_blank"><span class="fab fa-github"></span> Editar en GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="container" role="main">
+      <div class="row justify-content-center">
+        <div class="col col-xl-8">
+          <h1 class="no_toc" id="división-y-conquista">División y Conquista</h1>
+
+<h2 class="no_toc" id="contenidos">Contenidos</h2>
+
+<ol id="markdown-toc">
+  <li><a href="https://algoritmos-rw.github.io/tda_bg/material/guias/dyc/#ejercicio-resuelto" id="markdown-toc-ejercicio-resuelto">Ejercicio resuelto</a></li>
+  <li><a href="https://algoritmos-rw.github.io/tda_bg/material/guias/dyc/#ejercicios-propuestos" id="markdown-toc-ejercicios-propuestos">Ejercicios propuestos</a></li>
+</ol>
+
+<h2 id="ejercicio-resuelto">Ejercicio resuelto</h2>
+
+<h3 id="enunciado">Enunciado</h3>
+<p>Dado un arreglo de n enteros (no olvidar que pueden haber números negativos), encontrar el subarreglo 
+    contiguo de máxima suma, utilizando División y Conquista. Indicar y justificar la complejidad del algoritmo.
+    Ejemplos:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    [5, 3, 2, 4, -1] →  [5, 3, 2, 4]
+    [5, 3, -5, 4, -1] →  [5, 3]
+    [5, -4, 2, 4, -1] → [5, -4, 2, 4]
+    [5, -4, 2, 4] → [5, -4, 2, 4]
+</code></pre></div></div>
+
+<h4 id="consideraciones-iniciales">Consideraciones Iniciales</h4>
+
+<p>En primer lugar, conviene analizar cuál es la forma que tienen las posibles respuestas al enunciado. Se tratan en este caso de partes del arreglo completo de mayor o menor longitud. Solo se pueden seleccionar elementos contiguos, por lo que los subarreglos posibles serían:</p>
+
+<ul>
+  <li>El primer elemento solo</li>
+  <li>El primero y el segundo
+    <ul>
+      <li>Y así hasta el último siendo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> subarreglos que empiezan con el primero</li>
+    </ul>
+  </li>
+  <li>El segundo solo</li>
+  <li>El segundo y el tercero
+    <ul>
+      <li>Y así hasta el último siendo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.66666em; vertical-align: -0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span> subarreglos que empiezan con el segundo</li>
+    </ul>
+  </li>
+  <li>Y así siguiendo con los n elementos</li>
+</ul>
+
+<p>La cantidad total de soluciones posibles sería entonces <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>+</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mo>⋯</mo><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n+(n-1)+\cdots+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.66666em; vertical-align: -0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.66666em; vertical-align: -0.08333em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span> , lo cual se puede escribir como:</p>
+
+<span><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>i</mi><mo>=</mo><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\sum_{i=1}^{n}i = \frac{n(n+1)}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 2.92907em; vertical-align: -1.27767em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.6514em;"><span class="" style="top: -1.87233em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span class="" style="top: -3.05001em;"><span class="pstrut" style="height: 3.05em;"></span><span class=""><span class="mop op-symbol large-op">∑</span></span></span><span class="" style="top: -4.30001em; margin-left: 0em;"><span class="pstrut" style="height: 3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 1.27767em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 2.113em; vertical-align: -0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.427em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">2</span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span>
+
+<p>La demostración formal no va al caso, pero se puede recordar <a href="https://www.youtube.com/watch?v=tpkzn2e5mtI&amp;ab_channel=MathEasySolutions">aquí</a>. Si quisiéramos obtener la mejor solución simplemente comparando cada solución posible, la complejidad temporal del algoritmo sería <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mtext>²</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n²)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord">²</span><span class="mclose">)</span></span></span></span></span>.</p>
+
+<p>Cabe destacar también que el algoritmo debe permitir el uso de números negativos. De lo contrario, el subarreglo de máxima suma siempre sería el arreglo completo. Si todos son positivos, nada va a sumar más que todos los elementos del arreglo.</p>
+
+<h4 id="caso-base">Caso Base</h4>
+
+<p>Ahora bien, si el arreglo tiene un solo elemento, la solución es simplemente usar ese elemento sea cual sea su valor. Cuando son dos, puede convenir más usar solo el primero (<code class="language-plaintext highlighter-rouge">[1,-1]</code>), solo el segundo (<code class="language-plaintext highlighter-rouge">[-1,1]</code>) o ambos (<code class="language-plaintext highlighter-rouge">[1,1]</code>) dependiendo del caso. Si son más de dos elementos, se va complicando todo.</p>
+
+<h4 id="división-y-conquista-1">División y Conquista</h4>
+
+<p>Utilizando el caso base de un elemento, podemos dividir el arreglo por la mitad hasta obtener el caso en que tenemos que comparar dos subarreglos de largo 1.</p>
+
+<p>Pero además de eso, debemos revisar cómo se comparan los arreglos generados por la recursión en cada llamada. Tenemos los elementos del lado izquierdo y del lado derecho de la llamada. Podríamos comparar el subarreglo candidato de cada lado y devolver el que sume más.</p>
+
+<p>Sin embargo esto no es suficiente. En cada llamada, existen subarreglos candidatos que se pueden formar con los elementos del lado izquierdo y derecho, siempre y cuando sean contiguos.</p>
+
+<p>Para aclarar esto, supongamos que en una llamada recursiva tenemos <code class="language-plaintext highlighter-rouge">[1,2]</code> en el arreglo derecho y <code class="language-plaintext highlighter-rouge">[3,-5]</code> en el lado izquierdo. El mejor subarreglo del lado izquierdo es <code class="language-plaintext highlighter-rouge">[1,2]</code> y el mejor del lado derecho es <code class="language-plaintext highlighter-rouge">[3]</code>. Pero para el arreglo combinado (<code class="language-plaintext highlighter-rouge">[1,2,3,-5]</code>) el mejor subarreglo es <code class="language-plaintext highlighter-rouge">[1,2,3]</code>.</p>
+
+<p>Eso significa que en cada caso recursivo la mejor solución puede usar solo elementos del lado izquierdo, solo elementos del lado derecho o una combinación de elementos de ambos.</p>
+
+<p>Es una situación similar al ejercicio de puntos más cercanos donde tenemos dos alternativas por la recursión pero hay que tener en cuenta que pasa al medio para asegurar la mejor decisión</p>
+
+<h4 id="máximo-subarreglo-cruzado">Máximo Subarreglo Cruzado</h4>
+
+<p>Entonces, dada una llamada recursiva con el mejor candidato del lado izquierdo y derecho, necesitamos obtener el mejor candidato que use elementos de los arreglos a ambos lados de la recursión y que además sea contiguo. A este subarreglo candidato se lo suele llamar subarreglo cruzado. Solo basta con obtener el subarreglo cruzado que sume más.</p>
+
+<p>Para obtener el máximo subarreglo cruzado, podemos aprovecharnos de que tiene que ser contiguo y hacer lo siguiente.</p>
+
+<p>Primero iteraremos el arreglo del lado izquierdo desde su índice mayor hasta el menor. La idea es ir sumando los elementos en una variable e ir guardando el índice que hace que la suma sea máxima. Es necesario que se iteren todos los elementos del arreglo izquierdo pues no se puede asegurar cuál índice será el que maximice la suma.</p>
+
+<p>Se hace lo mismo, pero con el arreglo derecho desde el índice menor hasta el mayor.</p>
+
+<p>Luego, el arreglo cruzado de suma máxima será el arreglo izquierdo y derecho combinados desde el índice que maximiza la suma a izquierda hasta el índice que maximiza la suma a derecha. El subarreglo candidato es contiguo y está formado por las partes de cada lado que suman más.</p>
+
+<p>Teniendo el candidato a izquierda, a derecha y el máximo subarreglo cruzado, se debe comparar cual suma más y devolver esa solución para esa llamada recursiva.</p>
+
+<h4 id="implementación">Implementación</h4>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">subarreglo_cruzado</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">med</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="n">suma_parcial</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cruzado_izq</span> <span class="o">=</span> <span class="n">med</span>
+    <span class="n">suma_izq</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">med</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">suma_parcial</span> <span class="o">+=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">suma_parcial</span> <span class="o">&gt;</span> <span class="n">suma_izq</span><span class="p">:</span>
+            <span class="n">suma_izq</span> <span class="o">=</span> <span class="n">suma_parcial</span>
+            <span class="n">cruzado_izq</span> <span class="o">=</span> <span class="n">i</span>
+
+    <span class="n">suma_parcial</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cruzado_der</span> <span class="o">=</span> <span class="n">med</span>
+    <span class="n">suma_der</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">med</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)):</span>
+        <span class="n">suma_parcial</span> <span class="o">+=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">suma_parcial</span> <span class="o">&gt;</span> <span class="n">suma_der</span><span class="p">:</span>
+            <span class="n">suma_der</span> <span class="o">=</span> <span class="n">suma_parcial</span>
+            <span class="n">cruzado_der</span> <span class="o">=</span> <span class="n">j</span>
+
+    <span class="k">return</span> <span class="n">arr</span><span class="p">[</span><span class="n">cruzado_izq</span> <span class="p">:</span> <span class="n">cruzado_der</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">subarreglo_maxima_suma</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">arr</span>
+
+    <span class="n">med</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="n">izq</span> <span class="o">=</span> <span class="n">subarreglo_maxima_suma</span><span class="p">(</span><span class="n">arr</span><span class="p">[:</span><span class="n">med</span><span class="p">])</span>
+    <span class="n">der</span> <span class="o">=</span> <span class="n">subarreglo_maxima_suma</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">med</span><span class="p">:])</span>
+    <span class="n">cruzado</span> <span class="o">=</span> <span class="n">subarreglo_cruzado</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+
+    <span class="n">sumas</span> <span class="o">=</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">izq</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">der</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">cruzado</span><span class="p">))</span>
+    <span class="n">suma_maxima</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">sumas</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">suma_maxima</span> <span class="o">==</span> <span class="n">sumas</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">izq</span>
+    <span class="k">elif</span> <span class="n">suma_maxima</span> <span class="o">==</span> <span class="n">sumas</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">der</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">cruzado</span>
+</code></pre></div></div>
+
+<h4 id="complejidad">Complejidad</h4>
+<p>Para justificar la complejidad, utilizamos el teorema maestro. Se realizan dos llamadas recursivas para obtener el candidato a izquierda y derecha por lo que <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">A=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">2</span></span></span></span></span>. En cada llamada recursiva se divide el arreglo por la mitad, por lo tanto <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">B=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.05017em;">B</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">2</span></span></span></span></span>. Para calcular el arreglo cruzado se deben recorrer ambas mitades hasta el final del ciclo haciendo que sea lineal en función de la cantidad de elementos. Calcular la suma de los subarreglos para comparar también es lineal, siendo el peor caso la suma de un subarreglo que contenga a todos los elementos. Eso significa que los cálculos auxiliares tienen complejidad lineal, resultando en que <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">C=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.07153em;">C</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span>.</p>
+
+<p>La ecuación de recurrencia queda entonces como:</p>
+
+<span><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>T</mi><mo stretchy="false">(</mo><mfrac><mi>n</mi><mn>2</mn></mfrac><mo stretchy="false">)</mo><mo>+</mo><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T(n) = 2T(\frac{n}{2}) + O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1.79356em; vertical-align: -0.686em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right: 0.13889em;">T</span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.10756em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">2</span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathnormal">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span></span>
+
+<p>Haciendo los cálculos correspondientes llegamos a que</p>
+
+<span><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mo><mi>log</mi><mo>⁡</mo></mo><mn>2</mn></msub><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>=</mo><mi>C</mi>  <mo>⟹</mo>  <mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>⋅</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\log_{2}(2) = 1 = C \implies O(n \cdot \log(n))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.206968em;"><span class="" style="top: -2.45586em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.24414em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.70733em; vertical-align: -0.024em;"></span><span class="mord mathnormal" style="margin-right: 0.07153em;">C</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span></span>
+
+<p>Es interesante notar que con el enfoque de división y conquista, se aprovechan los cálculos intermedios para poder obtener la solución sin necesidad de probar todas las combinaciones.</p>
+
+<h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
+
+<ol>
+  <li>
+    <p>(★) Implementar, por división y conquista, una función que dado un arreglo sin elementos repetidos y <em>casi ordenado</em> (todos los elementos se 
+encuentran ordenados, salvo uno), obtenga el elemento fuera de lugar. Indicar y justificar su complejidad temporal.</p>
+  </li>
+  <li>
+    <p>(★) Se tiene un arreglo en el que se registran los resultados de tests automáticos de una porción de código. Este código se encontraba funcionando 
+pero, debido a unos cambios que se están realizando, en algún momento dejó de funcionar. Se registra un 1 si pasa los tests, 0 en caso contrario.
+De esta manera, el arreglo tendrá la forma <code class="language-plaintext highlighter-rouge">[1, 1, 1, ..., 0, 0, ...]</code> (es decir, <em>unos seguidos de ceros</em>). Se pide:
+a. una función de orden <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> que, por división y conquista, encuentre el índice del primer 0, de forma que se pueda reconocer 
+rápidamente en qué modificación del código se dejó de pasar los tests. Si no hay ningún 0 (solo hay unos), debe devolver -1.
+b. demostrar con el Teorema Maestro que la función es, en efecto, <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>.</p>
+
+    <p>Ejemplos:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 1, 0, 0, 0] →  2
+[0, 0, 0, 0, 0] →  0
+[1, 1, 1, 1, 1] → -1
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>(★) Implementar un algoritmo que, por división y conquista, permita obtener la parte entera de la raíz cuadrada de
+un número <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>, en tiempo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>. Por ejemplo, para <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">n = 10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span></span> debe devolver 3, y para <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">n = 25</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">2</span><span class="mord">5</span></span></span></span></span>
+debe devolver 5. Justificar la complejidad del algoritmo.</p>
+  </li>
+  <li>
+    <p class="lower_alpha">(★) Se tiene un arreglo de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>&gt;</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">N &gt;= 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.72243em; vertical-align: -0.0391em;"></span><span class="mord mathnormal" style="margin-right: 0.10903em;">N</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">3</span></span></span></span></span> elementos en forma de pico, esto es: estrictamente creciente hasta una
+determinada posición <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span></span>, y estrictamente decreciente a partir de ella (con <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>p</mi><mo>&lt;</mo><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \lt p \lt N - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68354em; vertical-align: -0.0391em;"></span><span class="mord">0</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.73354em; vertical-align: -0.19444em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.76666em; vertical-align: -0.08333em;"></span><span class="mord mathnormal" style="margin-right: 0.10903em;">N</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span>). Por ejemplo,
+en el arreglo <code class="language-plaintext highlighter-rouge">[1, 2, 3, 1, 0, -2]</code> la posición del pico es <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">p = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">2</span></span></span></span></span>. Se pide:
+a. Implementar un algoritmo de división y conquista de complejidad <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> que encuentre la posición
+<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span></span> del pico.
+b. Justificar la complejidad del algoritmo mediante el teorema maestro.</p>
+  </li>
+  <li>
+    <p>(★) Implementar Merge Sort. Justificar la complejidad del algoritmo mediante el teorema maestro.</p>
+  </li>
+  <li>
+    <p>(★) Implementar un algoritmo de multiplicación de dos números grandes de longitud n, por división y conquista, con 
+un orden de complejidad mejor que <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1.06411em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>. Justificar la complejidad del algoritmo mediante el teorema maestro.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar un algoritmo que dados n puntos en un plano, busque la pareja que se encuentre más cercana, por división 
+y conquista, con un orden de complejidad mejor que <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1.06411em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>. Justificar la complejidad del algoritmo mediante el 
+teorema maestro. Se puede asumir que ningún par de puntos tienen la misma coordenada x o y.</p>
+  </li>
+  <li>
+    <p>(★) Dados un conjunto de n elementos, y 2 arreglos de longitud n, con dichos elementos. El arreglo A está completamente 
+ordenado de menor a mayor. El arreglo B se encuentra desordenado. Indicar, por división y conquista, la cantidad de 
+inversiones necesarias al arreglo B para que quede ordenado de menor a mayor, con un orden de complejidad 
+mejor que <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1.06411em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>. Justificar la complejidad del algoritmo mediante el teorema maestro.</p>
+  </li>
+  <li>
+    <p>(★★★) Implementar una función, que utilice división y conquista, de complejidad <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> 
+que dado un arreglo de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> números enteros devuelva <code class="language-plaintext highlighter-rouge">true</code> o <code class="language-plaintext highlighter-rouge">false</code> según si existe algún elemento que aparezca
+más de la mitad de las veces. Justificar la complejidad de la solución. Ejemplos:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 1, 2, 3] -&gt; false
+[1, 1, 2, 3] -&gt; false
+[1, 2, 3, 1, 1, 1] -&gt; true
+[1] -&gt; true
+</code></pre></div>    </div>
+
+    <p><em>Aclaración</em>: Este ejercicio puede resolverse, casi trivialmente, ordenando el arreglo con un algoritmo eficiente,
+o incluso se puede realizar más rápido utilizando una tabla de hash. Para cumplir con la consigna,
+resolver <strong>sin ordenar el arreglo ni con tabla de hash</strong>, sino puramente por división y conquista.</p>
+  </li>
+  <li>
+    <p>(★★★★) Resolver el ejercicio anterior, por división y conquista, en complejidad <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>, 
+dada la misma aclaración. Justificar la complejidad de la solución.</p>
+  </li>
+  <li>
+    <p>(★★★★) Implementar una función, que utilice división y conquista, de complejidad <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>
+que dado un arreglo de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> números enteros devuelva <code class="language-plaintext highlighter-rouge">true</code> o <code class="language-plaintext highlighter-rouge">false</code> según si existe algún elemento que aparezca
+más de dos tercios de las veces. Justificar la complejidad de la solución.</p>
+  </li>
+  <li>
+    <p>(★★★) Tenemos un arreglo de tamaño <code class="language-plaintext highlighter-rouge">2n</code> de la forma <code class="language-plaintext highlighter-rouge">{C1, C2, C3, … Cn, D1, D2, D3, … Dn}</code>, 
+tal que la cantidad total de elementos del arreglo es potencia de 2 (por ende, <code class="language-plaintext highlighter-rouge">n</code> 
+también lo es). Implementar un algoritmo de División y Conquista que modifique el arreglo 
+de tal forma que quede con la forma <code class="language-plaintext highlighter-rouge">{C1, D1, C2, D2, C3, D3, …, Cn, Dn}</code>, <strong>sin utilizar 
+espacio adicional</strong> (obviando el utilizado por la recursividad). Indicar y justificar su complejidad temporal.</p>
+
+    <p><em>Pista</em>: Pensar primero cómo habría que hacer si el arreglo tuviera 4 elementos 
+(<code class="language-plaintext highlighter-rouge">{C1, C2, D1, D2}</code>). Luego, pensar a partir de allí el caso de 8 elementos, etc…
+para encontrar el patrón.</p>
+  </li>
+  <li>
+    <p>(★★) Debido a la trágica situación actual, es necesario realizar tests para detectar
+si alguna persona está contagiada de COVID-19. El problema es que los insumos
+tienden a ser bastante caros, y no vivimos en un país al que los recursos le sobren.</p>
+
+    <p>Supongamos que por persona se toma más de una muestra (lo cual es cierto, pero a fines
+del ejercicio supongamos que son muchas muestras), y que podemos realizar un testeo a más 
+de una persona al mismo tiempo mezclando las muestras (lo cual también es cierto): 
+determinamos un conjunto de personas a testear, obtenemos una muestra de cada una de ellas,
+las “juntamos”, y al conjunto le realizamos el test. Si el test resulta negativo, 
+implica que todas las personas testeadas en conjunto resultaron negativas. Si resulta 
+positivo, implica que al menos una de las personas testedas resulta positiva.</p>
+
+    <p>Suponer que existe una función <code class="language-plaintext highlighter-rouge">pcr(grupo)</code>, que devuelve <code class="language-plaintext highlighter-rouge">true</code> si al menos una persona
+del <code class="language-plaintext highlighter-rouge">grupo</code> es COVID-positivo, y <code class="language-plaintext highlighter-rouge">false</code> en caso contrario (los <code class="language-plaintext highlighter-rouge">grupos</code> pueden estar
+formados por 1 o más personas). Suponer que la positividad es extremadamente baja, e inclusive
+pueden suponer que va a haber una única persona contagiada (por simplicidad).</p>
+
+    <p>Implementar un algoritmo que dado un conjunto de <code class="language-plaintext highlighter-rouge">n</code> personas, devuelva la o las personas
+contagiadas, utilizando la menor cantidad de tests posibles (considerando la notación Big Oh).
+En dicha notación, ¿cuántos tests se estarán utilizando?</p>
+
+    <p>Pueden considerar que habrá una única persona contagiada, pero esto no cambiará el análisis
+a realizar.</p>
+  </li>
+  <li>
+    <p>(★★) Se sabe, por el teorema de Bolzano, que si una función es continua en un intervalo <code class="language-plaintext highlighter-rouge">[a, b]</code>, 
+y que en el punto <code class="language-plaintext highlighter-rouge">a</code> es positiva y en el punto <code class="language-plaintext highlighter-rouge">b</code> es negativa (o viceversa), necesariamente
+debe haber (al menos) una raíz en dicho intervalo. Implementar una función 
+raiz que reciba una función (univariable) y los extremos mencionados a y b,
+y devuelva una raíz dentro de dicho intervalo (si hay más de una, 
+simplemente quedarse con una). La complejidad de dicha función debe ser logarítmica del
+largo del intervalo <code class="language-plaintext highlighter-rouge">[a, b]</code>. Asumir que por más que se esté trabajando con números enteros, 
+hay raíz en dichos valores: Se puede trabajar con <code class="language-plaintext highlighter-rouge">floats</code>, y el algoritmo será equivalente, 
+simplemente se plantea con <code class="language-plaintext highlighter-rouge">ints</code> para no generar confusiones con la complejidad.
+Justificar la complejidad de la función implementada.</p>
+  </li>
+  <li>
+    <p>(★) Es el año 1700, y la pirata Barba-ra Verde atacó un barco de la <em>Royal British Shipping &amp; Something</em>, 
+que transportaba una importante piedra preciosa de la corona británica. Al parecer, la escondieron
+en un cofre con muchas piedras preciosas falsas, en caso de un ataque. Barba-ra Verde sabe que
+los refuerzos británicos no tardarán en llegar, y deben huir lo más rápido posible. El problema es
+que no pueden llevarse el cofre completo por pesar demasiado. Necesita encontrar rápidamente
+la joya verdadera. La única forma de descubrir la joya verdadera es pesando. Se sabe que la joya
+verdadera va a pesar más que las imitaciones, y que las imitaciones pesan todas lo mismo. 
+Cuenta con una balanza de platillos para poder pesarlas (es el 1700, no esperen una balanza digital).</p>
+
+    <p>a. Escribir un algoritmo de división y conquista, para determinar cuál es la verdadera joya de la corona. Suponer que hay una función 
+<code class="language-plaintext highlighter-rouge">balanza(grupo_de_joyas1, grupo_de_joyas2)</code> que devuelve 0 si ambos grupos pesan lo mismo, mayor a 0 si
+el <code class="language-plaintext highlighter-rouge">grupo1</code> pesa más que el <code class="language-plaintext highlighter-rouge">grupo2</code>, y menor que 0 si pasa lo contrario, y realiza esto en tiempo 
+constante.
+b. Indicar y justificar (adecuadamente) la complejidad de la función implementada.</p>
+  </li>
+  <li>
+    <p>(★★★★) Sea una matriz <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal">A</span></span></span></span></span> de tamaño <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n \times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.66666em; vertical-align: -0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>, con todos valores distintos. Un índice <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(i, j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span><span class="mclose">)</span></span></span></span></span> es
+un máximo local si <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mrow><mo fence="true">[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">A\left[i, j\right]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="minner"><span class="mopen delimcenter" style="top: 0em;">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span><span class="mclose delimcenter" style="top: 0em;">]</span></span></span></span></span></span> es estrictamente mayor que todos su vecinos que existan 
+(arriba, abajo, izquierda, derecha). Implementar un algoritmo de División y Conquista que permita
+encontrar algún máximo local en tiempo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>. Justificar adecuadamente la complejidad
+del algoritmo. Prestar mucha atención a la ecuación de recurrencia escrita, ya que esto puede develar
+un error en el algoritmo planteado.</p>
+  </li>
+</ol>
+
+
+
+        </div>
+      </div>
+    </main>
+
+    <script src="./División y Conquista_files/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+<script src="./División y Conquista_files/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+  
+
+
+</body></html>

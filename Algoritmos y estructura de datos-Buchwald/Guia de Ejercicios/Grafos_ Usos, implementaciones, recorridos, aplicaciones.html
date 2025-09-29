@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://algoritmos-rw.github.io/algoritmos/material/guias/grafos/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Grafos: Usos, implementaciones, recorridos, aplicaciones</title>
+  <meta name="description" content="Página de la materia Algoritmos y Estructuras de Datos, curso Buchwald. Facultad de Ingeniería, Universidad de Buenos Aires.">
+
+  <link rel="stylesheet" href="./Grafos_ Usos, implementaciones, recorridos, aplicaciones_files/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh">
+  <link rel="stylesheet" href="./Grafos_ Usos, implementaciones, recorridos, aplicaciones_files/all.css">
+  <link rel="stylesheet" href="./Grafos_ Usos, implementaciones, recorridos, aplicaciones_files/main.css" type="text/css">
+  <link rel="shortcut icon" href="https://algoritmos-rw.github.io/algoritmos/assets/img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="canonical" href="https://algoritmos-rw.github.io/algoritmos/material/guias/grafos/"> -->
+
+  
+  <link rel="stylesheet" href="./Grafos_ Usos, implementaciones, recorridos, aplicaciones_files/katex.min.css" crossorigin="anonymous" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X">
+  <script defer="" src="./Grafos_ Usos, implementaciones, recorridos, aplicaciones_files/katex.min.js" crossorigin="anonymous" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"></script>
+  <script defer="" src="./Grafos_ Usos, implementaciones, recorridos, aplicaciones_files/auto-render.min.js" crossorigin="anonymous" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+
+  <body>
+    <header role="banner" class="sticky-top container-fluid px-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand d-lg-none" href="https://algoritmos-rw.github.io/algoritmos/material/guias/grafos/#">Algoritmos y Estructuras de Datos</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sitenav" aria-controls="sitenav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="sitenav">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 small mx-auto">
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/"><span class="fa fa-home"></span> Inicio</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/docentes/"><span class="fa fa-chalkboard-teacher"></span> Docentes</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/regimen/"><span class="fa fa-tasks"></span> Régimen</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/calendario/"><span class="fa fa-calendar-alt"></span> Calendario</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/tps/"><span class="fa fa-briefcase"></span> TPs</a></li>
+        
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/algoritmos/material/guias/grafos/#" role="button" id="matDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-paperclip"></span> Material</a>
+          <ul class="dropdown-menu">
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/bibliografia/"><span class="fa fa-book"></span> Bibliografía</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/material/"><span class="fa fa-book-reader"></span> Apuntes del curso</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/material/guias/"><span class="fa fa-dumbbell"></span> Guías de ejercicios</a></li>
+            <li>
+              <a class="dropdown-item" href="https://drive.google.com/drive/folders/0B0x0VPz_v-f_ekhhQUpkay13RnM?resourcekey=0-BqMLnLNd6T8lRDzv-VL4xA&amp;usp=sharing" target="_blank"><span class="fab fa-google-drive"></span> Drive</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.youtube.com/@algoritmos-fiuba-buchwald" target="_blank"><span class="fab fa-youtube"></span> Canal</a>
+            </li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/faq/"><span class="fas fa-question-circle"></span> FAQ</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/algoritmos/material/guias/grafos/#" role="button" id="aluDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-user-friends"></span> Alumno</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://algoritmos-rw.github.io/descargas"><span class="fa fa-file-download"></span> Descargas</a></li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.dijkstra.ar/entregas/"><span class="fa fa-file-upload"></span> Entregas</a></li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.dijkstra.ar/notas/"><span class="fa fa-pencil-alt"></span> Notas</a></li>
+          </ul>
+        </li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/encuestas/"><span class="fa fa-poll"></span> Encuestas</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/infraestructura/"><span class="fa fa-network-wired"></span> Infraestructura</a></li>
+        <li class="nav-item">
+          <a href="https://github.com/algoritmos-rw/algoritmos/blob/master/material/guias/grafos.md" class="nav-link" target="_blank"><span class="fab fa-github"></span> Editar en GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="container" role="main">
+      <div class="row justify-content-center">
+        <div class="col col-xl-8">
+          <h1 class="no_toc" id="grafos-usos-implementaciones-recorridos-aplicaciones">Grafos: Usos, implementaciones, recorridos, aplicaciones</h1>
+
+<h2 class="no_toc" id="contenidos">Contenidos</h2>
+
+<ol id="markdown-toc">
+  <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/grafos/#ejercicio-resuelto" id="markdown-toc-ejercicio-resuelto">Ejercicio resuelto</a>    <ol>
+      <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/grafos/#soluci%C3%B3n" id="markdown-toc-solución">Solución</a></li>
+    </ol>
+  </li>
+  <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/grafos/#ejercicios-propuestos" id="markdown-toc-ejercicios-propuestos">Ejercicios propuestos</a></li>
+</ol>
+
+<h2 id="ejercicio-resuelto">Ejercicio resuelto</h2>
+
+<p>Implementar un algoritmo que, dado un grafo no dirigido, nos devuelva un ciclo dentro del mismo, si es que los tiene. Indicar el orden del algoritmo.</p>
+
+<h3 id="solución">Solución</h3>
+
+<p>Antes que nada, debemos entender que el ejercicio en sí es el mismo, se trate de un grafo dirigido o uno no dirigido. La única diferencia se encuentra en que un ciclo por definción necesita contar con al menos dos aristas. Esta definición en sí no nos importaría mucho en el caso de un grafo dirigido, pero si en el de uno no dirigido. Si no lo tuviéramos en cuenta, todo grafo no dirigido, con al menos una arista, va a tener un ciclo, lo cual no es cierto.</p>
+
+<p>Para resolver este problema, podemos pensar en simplemente recorrer el grafo no dirigido, sea con un recorrido <em>BFS</em> o <em>DFS</em>. Una vez que nos topemos con un vértice ya visitado, ahí tenemos un posible ciclo. Esto es, si estoy viendo los adyacentes a un vértice dado, y dicho vértice está visitado, uno se apresuraría a decir que ahí se cierra un ciclo. Esto es cierto, salvo un caso: que dicho vértice visitado sea el antecesor a nuestro vértice en el recorrido (BFS o DFS). Recordar que se trata de un grafo no dirigido, por ende si <em>v</em> tiene de adyacente a <em>w</em>, entonces también vale la recíproca, y no por ello se crea un ciclo. El problema se da con la arista de la que vengo. Básicamente, deberíamos obviar al vértice del que vengo en el recorrido, que justamente es el padre. Si nosotros ya tenemos que <code class="language-plaintext highlighter-rouge">padre[W] = V</code>, entonces simplemente tenemos que saltearnos a V cuando veamos a los adyacentes ya visitados.</p>
+
+<p>Lo resolvemos con ambos recorridos. Por <em>DFS</em>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">obtener_ciclo_dfs</span><span class="p">(</span><span class="n">grafo</span><span class="p">):</span>
+  <span class="n">visitados</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">padre</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">grafo</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visitados</span><span class="p">:</span>
+      <span class="n">ciclo</span> <span class="o">=</span> <span class="n">dfs_ciclo</span><span class="p">(</span><span class="n">grafo</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">visitados</span><span class="p">,</span> <span class="n">padre</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">ciclo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ciclo</span>
+  <span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">dfs_ciclo</span><span class="p">(</span><span class="n">grafo</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">visitados</span><span class="p">,</span> <span class="n">padre</span><span class="p">):</span>
+  <span class="n">visitados</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+  <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">grafo</span><span class="p">.</span><span class="n">adyacentes</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">visitados</span><span class="p">:</span>
+      <span class="c1"># Si w fue visitado y es padre de v, entonces es la arista de donde
+</span>      <span class="c1"># vengo (no es ciclo).
+</span>      <span class="c1"># Si no es su padre, esta arista (v, w) cierra un ciclo que empieza
+</span>      <span class="c1"># en w.
+</span>      <span class="k">if</span> <span class="n">w</span> <span class="o">!=</span> <span class="n">padre</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">reconstruir_ciclo</span><span class="p">(</span><span class="n">padre</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">padre</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+      <span class="n">ciclo</span> <span class="o">=</span> <span class="n">dfs_ciclo</span><span class="p">(</span><span class="n">grafo</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">visitados</span><span class="p">,</span> <span class="n">padre</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">ciclo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ciclo</span>
+
+  <span class="c1"># Si llegamos hasta acá es porque no encontramos ningún ciclo.
+</span>  <span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">reconstruir_ciclo</span><span class="p">(</span><span class="n">padre</span><span class="p">,</span> <span class="n">inicio</span><span class="p">,</span> <span class="n">fin</span><span class="p">):</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="n">fin</span>
+  <span class="n">camino</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">while</span> <span class="n">v</span> <span class="o">!=</span> <span class="n">inicio</span><span class="p">:</span>
+    <span class="n">camino</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">padre</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+  <span class="n">camino</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">inicio</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">camino</span><span class="p">.</span><span class="n">invertir</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Por <em>BFS</em>, la solución sería similar, pero tenemos que tener noción de la distancia/orden. Esto es porque podríamos terminar sin encontrar un ciclo correctamente. Por ejemplo, si tenemos un grafo con 4 vértices en forma de cuadrado (aristas <code class="language-plaintext highlighter-rouge">A-B</code>, <code class="language-plaintext highlighter-rouge">B-C</code>, <code class="language-plaintext highlighter-rouge">C-D</code>, <code class="language-plaintext highlighter-rouge">D-A</code>), y empezamos a hacer el recorrido desde <code class="language-plaintext highlighter-rouge">A</code>, eventualmente en el <em>BFS</em> vamos a encontrar el ciclo (ej, al ver desde <code class="language-plaintext highlighter-rouge">C</code> para ir a <code class="language-plaintext highlighter-rouge">D</code>), pero al reconstruir el camino probablemente falle. Es necesario modificar el algoritmo para reconstruir el camino:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">obtener_ciclo_bfs</span><span class="p">(</span><span class="n">grafo</span><span class="p">):</span>
+  <span class="n">visitados</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">grafo</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visitados</span><span class="p">:</span>
+      <span class="n">ciclo</span> <span class="o">=</span> <span class="n">bfs_ciclo</span><span class="p">(</span><span class="n">grafo</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">visitados</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">ciclo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ciclo</span>
+  <span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">bfs_ciclo</span><span class="p">(</span><span class="n">grafo</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">visitados</span><span class="p">):</span>
+  <span class="n">q</span> <span class="o">=</span> <span class="n">Cola</span><span class="p">()</span>
+  <span class="n">q</span><span class="p">.</span><span class="n">encolar</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+  <span class="n">visitados</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+  <span class="n">padre</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Para poder reconstruir el ciclo
+</span>  <span class="n">orden</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">padre</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="n">orden</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="p">.</span><span class="n">esta_vacia</span><span class="p">():</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">desencolar</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">grafo</span><span class="p">.</span><span class="n">adyacentes</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">visitados</span><span class="p">:</span>
+        <span class="c1"># Si w fue visitado y es padre de v, entonces es la arista
+</span>        <span class="c1"># de donde vengo (no es ciclo).
+</span>        <span class="c1"># Si no es su padre, esta arista (v, w) cierra un ciclo que
+</span>        <span class="c1"># empieza en w.
+</span>        <span class="k">if</span> <span class="n">w</span> <span class="o">!=</span> <span class="n">padre</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+          <span class="k">return</span> <span class="n">reconstruir_ciclo</span><span class="p">(</span><span class="n">padre</span><span class="p">,</span> <span class="n">orden</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">encolar</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">visitados</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">padre</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="n">orden</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">orden</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+  <span class="c1"># Si llegamos hasta acá es porque no encontramos ningún ciclo.
+</span>  <span class="k">return</span> <span class="bp">None</span>
+  
+<span class="k">def</span> <span class="nf">reconstruir_camino</span><span class="p">(</span><span class="n">padre</span><span class="p">,</span> <span class="n">orden</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
+    <span class="n">ciclo</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">orden</span><span class="p">[</span><span class="n">v1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">orden</span><span class="p">[</span><span class="n">v2</span><span class="p">]:</span> <span class="c1"># no puede haber más que 1 de diferencia
+</span>        <span class="k">if</span> <span class="n">orden</span><span class="p">[</span><span class="n">v1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">orden</span><span class="p">[</span><span class="n">v2</span><span class="p">]:</span>
+             <span class="n">ciclo</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+             <span class="n">v1</span> <span class="o">=</span> <span class="n">padre</span><span class="p">[</span><span class="n">v1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+             <span class="n">ciclo</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
+             <span class="n">v2</span> <span class="o">=</span> <span class="n">padre</span><span class="p">[</span><span class="n">v2</span><span class="p">]</span>
+    <span class="k">while</span> <span class="n">v1</span> <span class="o">!=</span> <span class="n">v2</span><span class="p">:</span>
+        <span class="n">ciclo</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+        <span class="n">ciclo</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
+        <span class="n">v1</span> <span class="o">=</span> <span class="n">padre</span><span class="p">[</span><span class="n">v1</span><span class="p">]</span>
+        <span class="n">v2</span> <span class="o">=</span> <span class="n">padre</span><span class="p">[</span><span class="n">v2</span><span class="p">]</span>
+    <span class="n">ciclo</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ciclo</span>
+</code></pre></div></div>
+
+<p>Ahora bien, para ver el orden, podemos ver que en el caso feliz, vamos a encontrar un ciclo muy rapido. Pero claramente eso no nos cambia mucho. Pensemos el caso de, a lo sumo, encontrar el ciclo muy tarde en el recorrido (también veremos el caso de no haber ciclo). En ese caso, en cualquiera de los dos recorridos vamos a pasar por cada vértice una vez, y solo una vez (a fin de cuentas, no volvemos a estar sobre un vértice ya visitado). Por cada vértice vemos <em>sus</em> aristas. Recordar que es muy importante no caer en la tentación de decir que entonces el algoritmo es <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>V</mi><mo>×</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(V \times E)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.22222em;">V</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.05764em;">E</span><span class="mclose">)</span></span></span></span></span>, porque si bien es cierto, es una muy mala cota. Por cada vértice pasamos por <em>sus</em> aristas, que distan de ser las totales del grafo. Si por cada vértice vemos sus aristas (y no las de todo el grafo), en total estamos viendo todas las aristas del grafo, dos veces (una por cada extremo). Entonces, el orden será <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>V</mi><mo>+</mo><mn>2</mn><mi>E</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>V</mi><mo>+</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(V + 2 E) = \mathcal{O}(V + E)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.22222em;">V</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right: 0.05764em;">E</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.22222em;">V</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.05764em;">E</span><span class="mclose">)</span></span></span></span></span>. Todo esto, considerando que la implementación es con listas de adyacencias (implementadas con diccionarios, o bien
+siendo los vértices valores numéricos para indexar en un arreglo). Si fuera otra la implementación, obtener los adyacentes a un vértice dado nos costará más (<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(V)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.22222em;">V</span><span class="mclose">)</span></span></span></span></span>, en el caso de una matriz de adyacencia, u
+<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(E)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.05764em;">E</span><span class="mclose">)</span></span></span></span></span> en el caso de una matriz de incidencia).</p>
+
+<p>Haciendo un poco más de análisis: ¿es acaso el caso de no tener ciclos nuestro peor caso? Supongamos que el grafo es
+conexo, por simplifcación. Si el grafo no tiene ciclos, y es conexo, necesariamente se trata de un árbol. Para este caso,
+<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>E</mi><mi mathvariant="normal">∣</mi><mo>=</mo><mi mathvariant="normal">∣</mi><mi>V</mi><mi mathvariant="normal">∣</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|E| = |V| - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right: 0.05764em;">E</span><span class="mord">∣</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right: 0.22222em;">V</span><span class="mord">∣</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span>, por ende nuestro orden a fin de cuentas terminaría siendo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(V)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.22222em;">V</span><span class="mclose">)</span></span></span></span></span>. ¿Esto implica que entonces nuestro algoritmo es en realidad <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(V)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.22222em;">V</span><span class="mclose">)</span></span></span></span></span>? No, significa que ese, que a priori podíamos pensar que era nuestro peor caso, en realidad no lo es. Nuestro peor caso implica que haya un ciclo, pero tener la mala suerte de tardar en encontrarlo. Ya sea porque el vértice en el que se empieza el recorrido está lejos del ciclo, o por el orden aleatorio de las cosas.</p>
+
+<p>¿Cuáles serían las diferencias si en vez de trabajar con un grafo no dirigido, lo hiciéramos sobre un grafo dirigido? Notar que la solución no debería ser demasiado distinta a estas propuestas, pero tienen sus pequeñas diferencias que dejamos para resolver en los ejercicios propuestos.</p>
+
+<h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
+
+<ol>
+  <li>(★) a. Dibujar un grafo no dirigido que:
+    <ul>
+      <li>Tenga 6 vértices</li>
+      <li>Tenga un ciclo que incluya 4 de dichos vértices</li>
+      <li>Sea conexo</li>
+      <li>Haya un vértice de grado 1</li>
+      <li>Haya un vértice de grado 4</li>
+    </ul>
+
+    <p>b. Escribir la representación de matriz de incidencia y matriz de adyacencia del grafo resultante
+del punto anterior.</p>
+  </li>
+  <li>(★) a. Dibujar un grafo dirigido que:
+    <ul>
+      <li>Tenga 7 vértices</li>
+      <li>Tenga un ciclo que incluya 3 de dichos vértices</li>
+      <li>Tenga un ciclo que incluya 2 de dichos vértices</li>
+      <li>Haya un vértice de grado de entrada 0</li>
+      <li>Haya un vértice de grado de salida 4</li>
+    </ul>
+
+    <p>b. Escribir la representación de matriz de incidencia y matriz de adyacencia del grafo resultante
+del punto anterior.</p>
+  </li>
+  <li>
+    <p>(★) Implementar una función que determine el:</p>
+
+    <p>a. El grado de todos los vértices de un grafo no dirigido.</p>
+
+    <p>b. El grado de salida de todos los vértices de un grafo dirigido.</p>
+
+    <p>c. El grado de entrada de todos los vértices de un grafo dirigido.</p>
+  </li>
+  <li>
+    <p>(★) Implementar un algoritmo que determine si un grafo no dirigido es conexo o no. Indicar la complejidad
+del algoritmo si el grafo está implementado con una matriz de adyacencia.</p>
+  </li>
+  <li>
+    <p>(★★★) Implementar un algoritmo que, dado un grafo dirigido, nos devuelva un ciclo dentro del mismo, si es que lo
+tiene. Indicar el orden del algoritmo.</p>
+  </li>
+  <li>
+    <p>(★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Un árbol es un grafo no dirigido que cumple con las siguientes propiedades:</p>
+
+    <p>a. <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∥</mi><mi>E</mi><mi mathvariant="normal">∥</mi><mo>=</mo><mi mathvariant="normal">∥</mi><mi>V</mi><mi mathvariant="normal">∥</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\|E\| = \|V\| - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">∥</span><span class="mord mathnormal" style="margin-right: 0.05764em;">E</span><span class="mord">∥</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">∥</span><span class="mord mathnormal" style="margin-right: 0.22222em;">V</span><span class="mord">∥</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span></p>
+
+    <p>b. Es acíclico</p>
+
+    <p>c. Es conexo</p>
+
+    <p>Por teorema, si un grafo cumple dos de estas tres condiciones, será árbol (y por consiguiente, cumplirá la tercera).
+Haciendo uso de ésto (y únicamente de ésto), se pide implementar una función que reciba un grafo no dirigido y determine
+si se trata de un árbol, o no. Indicar el orden de la función implementada.</p>
+  </li>
+  <li>
+    <p>(★★) Proponer una función para calcular el grafo traspuesto <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">G^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.841331em; vertical-align: 0em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.841331em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span></span> de un grafo dirigido <em>G</em>. El grafo traspuesto
+<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">G^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.841331em; vertical-align: 0em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.841331em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span></span> posee los mismos vértices que G, pero con todas sus aristas invertidas (por cada arista <em>(v, w)</em> en <em>G</em>,
+existe una arista <em>(w, v)</em> en <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">G^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.841331em; vertical-align: 0em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.841331em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span></span>). Indicar la complejidad para un grafo implementado con:</p>
+
+    <p>a. lista de adyancencias</p>
+
+    <p>b. matriz de adyacencias</p>
+  </li>
+  <li>
+    <p>(★★★) La teoría de los 6 grados de separación dice que cualquiera en la Tierra puede estar conectado a cualquier
+otra persona del planeta a través de una cadena de conocidos que no tiene más de cinco intermediarios (conectando a
+ambas personas con solo seis enlaces). Suponiendo que se tiene un grafo G en el que cada vértice es una persona y
+cada arista conecta gente que se conoce (el grafo es no dirigido):</p>
+
+    <p>a. Implementar un algoritmo para comprobar si se cumple tal teoría para todo el conjunto de personas representadas en el grafo G. Indicar el orden del algoritmo.</p>
+
+    <p>b. Suponiendo que en el grafo G no habrán altas ni bajas de vértices, pero podrían haberla de aristas (la gente se va conociendo), explicar las ventajas y desventajas que tendría implementar al grafo G con una matriz de adyacencia.</p>
+  </li>
+  <li>
+    <p>(★★★) Matías está en Barcelona y quiere recorrer un museo. Su idea es hacer un
+recorrido bastante lógico: empezar en una sala (al azar), luego ir a una adyacente
+a ésta, luego a una adyancente a la segunda (si no fue visitada aún), y así hasta
+recorrer todas las salas. Cuando no tiene más salas adyacentes para visitar
+(porque ya fueron todas visitadas), simplemente vuelve por donde vino buscando
+otras salas adyacentes.
+Teniendo un grafo no dirigido, que representa el mapa del museo (donde los
+vértices son salas, y las aristas (v, w) indican que las salas v y w se encuentran
+conectadas), implementar un algoritmo que nos devuelva una lista con un
+recorrido posible de la idea de Matías para visitar las salas del museo.
+Indicar el recorrido utilizado y el orden del algoritmo. Justificar.</p>
+  </li>
+  <li>
+    <p>(★★) Escribir una función <code class="language-plaintext highlighter-rouge">es_bipartito(grafo)</code> que dado un grafo no
+dirigido devuelva true o false de acuerdo a si es bipartito o no. Indicar y
+justificar el orden del algoritmo. ¿Qué tipo de recorrido utiliza?</p>
+  </li>
+  <li>
+    <p>(★★★) Implementar un algoritmo que reciba un grafo dirigido, un vértice V y un número N, y devuelva una lista
+con todos los vértices que se encuentren a exactamente N aristas de distancia del vértice V. Indicar el tipo
+de recorrido utilizado y el orden del algoritmo. Justificar.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar una función que permita determinar si un grafo <em>puede ser</em> no dirigido. Determinar el orden
+del algoritmo implementado.</p>
+  </li>
+  <li>
+    <p>(★★) a. Dada la siguiente matriz de adyacencias, escribir la representación del grafo
+como una lista de adyacencias:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|   | A | B | C | D | E | F |
+|---|---|---|---|---|---|---|
+| A | 0 | 7 | 5 | 0 | 3 | 8 |
+| B | 7 | 0 | 0 | 0 | 1 | 3 |
+| C | 5 | 0 | 0 | 5 | 3 | 2 |
+| D | 0 | 0 | 5 | 0 | 2 | 0 |
+| E | 3 | 1 | 3 | 2 | 0 | 0 |
+| F | 8 | 3 | 2 | 0 | 0 | 0 |
+</code></pre></div>    </div>
+
+    <p>b. ¿Qué complejidad tiene hacer esta traducción?</p>
+
+    <p>c. ¿Qué ventajas y desventajas encuentra en cada representación? Explicar
+teniendo en cuenta cuestiones de espacio y tiempo según las operaciones que
+admite un grafo y considerar que las listas de adyacencias es un diccionario de
+listas.</p>
+  </li>
+  <li>
+    <p>(★★) Explicar las ventajas y desventajas de un grafo implementado con listas de adyacencia (lista de listas)
+por sobre una implementación de matriz de adyacencia, sabiendo que su densidad es <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∣</mi><mi>E</mi><mi mathvariant="normal">∣</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mtext>&nbsp;</mtext><mi mathvariant="normal">∣</mi><mi>E</mi><mi mathvariant="normal">∣</mi></mrow></mfrac><mo>&gt;</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">\frac{|E|}{max\ |E|} &gt; 0.75</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1.53em; vertical-align: -0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.01em;"><span class="" style="top: -2.655em;"><span class="pstrut" style="height: 3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">x</span><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mtight">∣</span><span class="mord mathnormal mtight" style="margin-right: 0.05764em;">E</span><span class="mord mtight">∣</span></span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.485em;"><span class="pstrut" style="height: 3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mathnormal mtight" style="margin-right: 0.05764em;">E</span><span class="mord mtight">∣</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.52em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">7</span><span class="mord">5</span></span></span></span></span>
+o superior.</p>
+  </li>
+  <li>
+    <p>(★★★) Un autor decidió escribir un libro con varias tramas que se puede
+leer de forma no lineal. Es decir, por ejemplo, después del capítulo 1
+puede leer el 2 o el 73; pero la historia no tiene sentido si
+se abordan estos últimos antes que el 1.</p>
+
+    <p>Siendo un aficionado de la computación, el autor ahora necesita un
+orden para publicar su obra, y decidió modelar este problema como un
+grafo dirigido, en dónde los capítulos son los vértices y sus
+dependencias las aristas. Así existen, por ejemplo, las aristas
+<code class="language-plaintext highlighter-rouge">(v1, v2)</code> y <code class="language-plaintext highlighter-rouge">(v1, v73)</code>.</p>
+
+    <p>Escribir un algoritmo que devuelva un orden en el que se puede leer
+la historia sin obviar ningún capítulo. Indicar la complejidad del
+algoritmo.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar una función que reciba un grafo no dirigido y no pesado implementado con
+listas de adyacencia (diccionario de diccionarios) y devuelva una matriz que sea equivalente a la
+representación de matriz de adyacencia del mismo grafo. Indicar y justificar el orden del algoritmo
+implementado.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar una función que reciba un grafo no dirigido, y que compruebe la siguiente afirmación:
+<em>“La cantidad de vértices de grado IMPAR es PAR”</em>. Indicar y justificar el orden del algoritmo si
+el grafo está implementado como matriz de adyacencia.</p>
+  </li>
+  <li>
+    <p>(★★★★) Dado un número inicial <code class="language-plaintext highlighter-rouge">X</code> se pueden realizar dos tipos de operaciones sobre el número:</p>
+
+    <ul>
+      <li>Multiplicar por 2</li>
+      <li>Restarle 1.</li>
+    </ul>
+
+    <p>Implementar un algoritmo que encuentra la menor cantidad de operaciones a realizar para convertir el número <code class="language-plaintext highlighter-rouge">X</code>
+en el número <code class="language-plaintext highlighter-rouge">Y</code>, con tan solo las operaciones mencionadas arriba (podemos aplicarlas la cantidad de veces
+que querramos).</p>
+  </li>
+  <li>(★★★★★) Se tiene un arreglo de palabras de un lenguaje alienigena. Dicho arreglo se encuentra ordenado
+para dicho idioma (no conocemos el orden de su abecedario). Implementar un algoritmo que reciba dicho
+arreglo y determine un orden posible para las letras del abecedario en dicho idioma. Por ejemplo:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"caa", "acbd", "acba", "bac", "bad"} --&gt; ['c', 'd', 'a', 'b']
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>(★★) Implementar un algoritmo que reciba un grafo dirigido y nos devuelva la cantidad de componentes débilmente 
+conexas de este. Indicar y justificar la complejidad del algoritmo implementado.</p>
+  </li>
+  <li>
+    <p>(★★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Contamos con un grafo <strong>dirigido</strong> que modela un ecosistema. En dicho grafo, cada vértice es una
+especie, y cada arista <code class="language-plaintext highlighter-rouge">(v, w)</code> indica que <code class="language-plaintext highlighter-rouge">v</code> es <em>depredador natural</em> de <code class="language-plaintext highlighter-rouge">w</code>. Considerando la
+horrible tendencia del ser humano por llevar a la extinción especies, algo que nos puede interesar 
+es saber si existe alguna especie que, si llegara a desaparecer, rompería todo el ecosistema: quienes la
+depredan no tienen un sustituto (y, por ende, pueden desaparecer también) y/o quienes eran depredados
+por esta ya no tienen amenazas, por lo que crecerán descontroladamente.
+Implementar un algoritmo que reciba un grafo de dichas características y devuelva una lista de 
+todas las especies que cumplan lo antes mencionado. Indicar y justificar la complejidad del 
+algoritmo implementado.</p>
+  </li>
+  <li>
+    <p>(★★★) Implementar una función que reciba un grafo no dirigido y determine si el mismo
+<em>no tiene</em> ciclos de una cantidad impar de vértices. Indicar y justificar la
+complejidad de la función.</p>
+  </li>
+  <li>
+    <p>(★★★) El diámetro de una red es el máximo de las distancias mínimas entre todos los vértices
+de la misma. Implementar un algoritmo que permita obtener el diámetro de una red, para
+el caso de un grafo no dirigido y no pesado. Indicar el orden del algoritmo propuesto.</p>
+  </li>
+  <li>
+    <p>(★★) a. Obtener una representación del camino mínimo desde el vértice A en el siguiente grafo
+    (representado con una matriz de adyacencias), hacia todos los demás vértices,
+    utilizando el algoritmo de Dijkstra:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|   | A | B | C | D | E | F |
+|---|---|---|---|---|---|---|
+| A | 0 | 7 | 5 | 0 | 3 | 8 |
+| B | 7 | 0 | 0 | 0 | 1 | 3 |
+| C | 5 | 0 | 0 | 5 | 3 | 2 |
+| D | 0 | 0 | 5 | 0 | 2 | 0 |
+| E | 3 | 1 | 3 | 2 | 0 | 0 |
+| F | 8 | 3 | 2 | 0 | 0 | 0 |
+</code></pre></div>    </div>
+
+    <p>b. ¿Qué condiciones debe cumplir el grafo para poder aplicar el algoritmo de Dijkstra?
+   ¿Qué característica tiene el grafo si al finalizar la ejecución del algoritmo, uno o
+   más vértices quedan a <em>distancia infinita</em>?</p>
+  </li>
+  <li>
+    <p>(★★★) a. Obtener una representación del camino mínimo desde el vértice A en el siguiente grafo
+(representado con una matriz de adyacencias), hacia todos los demás vértices,
+utilizando el algoritmo de Bellman-Ford.</p>
+
+    <p><img src="./Grafos_ Usos, implementaciones, recorridos, aplicaciones_files/bf.png" alt="grafo bf" width="60%"></p>
+
+    <p>b. Volver a realizar, suponiendo que la arista de <code class="language-plaintext highlighter-rouge">B</code> a <code class="language-plaintext highlighter-rouge">A</code> ahora tiene un peso de 1.</p>
+  </li>
+  <li>
+    <p>(★★) Obtener el Árbol de Tendido Mínimo del siguiente grafo:</p>
+
+    <p>a. Utilizando el Algoritmo de Kruskal.</p>
+
+    <p>b. Utilizando el Algoritmo de Prim.</p>
+
+    <p><img src="./Grafos_ Usos, implementaciones, recorridos, aplicaciones_files/mst.png" alt="grafo mst" width="75%"></p>
+  </li>
+  <li>
+    <p>(★★★) Dadas las matrices de adyacencia <code class="language-plaintext highlighter-rouge">M1</code>, <code class="language-plaintext highlighter-rouge">M2</code> y <code class="language-plaintext highlighter-rouge">M3</code>, responder las siguientes preguntas
+(recomendamos pasar los grafos a una representación visual para mayor facilidad):</p>
+
+    <p>a. ¿Puede ser el grafo definido por <code class="language-plaintext highlighter-rouge">M2</code> un árbol de tendido mínimo de <code class="language-plaintext highlighter-rouge">M1</code>? Justificar.</p>
+
+    <p>b. Realizar un seguimiento de aplicar el algoritmo de Kruskal para obtener un árbol de tendido
+mínimo del grafo definido por <code class="language-plaintext highlighter-rouge">M3</code>.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| M1 | A | B | C | D | E | F | G |
+|----|---|---|---|---|---|---|---|
+| A  | 0 | 3 | 4 | 0 | 0 | 0 | 0 |
+| B  | 3 | 0 | 5 | 3 | 3 | 0 | 0 |
+| C  | 4 | 5 | 0 | 2 | 0 | 0 | 6 |
+| D  | 0 | 3 | 2 | 0 | 4 | 2 | 1 |
+| E  | 0 | 3 | 0 | 4 | 0 | 6 | 0 |
+| F  | 0 | 0 | 0 | 2 | 6 | 0 | 0 |
+| G  | 0 | 0 | 6 | 1 | 0 | 0 | 0 |
+
+| M2 | A | B | C | D | E | F | G |
+|----|---|---|---|---|---|---|---|
+| A  | 0 | 3 | 4 | 0 | 0 | 0 | 0 |
+| B  | 3 | 0 | 0 | 0 | 3 | 0 | 0 |
+| C  | 4 | 0 | 0 | 2 | 0 | 0 | 6 |
+| D  | 0 | 0 | 2 | 0 | 0 | 2 | 0 |
+| E  | 0 | 3 | 0 | 0 | 0 | 0 | 0 |
+| F  | 0 | 0 | 0 | 2 | 0 | 0 | 0 |
+| G  | 0 | 0 | 6 | 0 | 0 | 0 | 0 |
+
+| M3 | A | B | C | D  | E  | F  | G  |
+|----|---|---|---|----|----|----|----|
+| A  | 0 | 6 | 0 | 4  | 0  | 0  | 0  |
+| B  | 6 | 0 | 7 | 8  | 6  | 0  | 0  |
+| C  | 0 | 7 | 0 | 0  | 4  | 0  | 0  |
+| D  | 4 | 8 | 0 | 0  | 14 | 5  | 0  |
+| E  | 0 | 6 | 4 | 14 | 0  | 7  | 8  |
+| F  | 0 | 0 | 0 | 5  | 7  | 0  | 10 |
+| G  | 0 | 0 | 0 | 0  | 8  | 10 | 0  |
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>(★★) Analizar la complejidad del algoritmo de Prim según si el grafo está implementado con
+listas de adyacencia o matriz de adyacencia.</p>
+  </li>
+  <li>
+    <p>(★★) Responder las siguientes preguntas, <strong>justificando</strong> la respuesta:</p>
+
+    <p>a. Al aplicar sobre un grafo el algoritmo de Dijkstra para encontrar caminos mínimos desde un vértice <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03588em;">v</span></span></span></span></span>
+cualquiera, se obtiene un árbol definido por el diccionario de padres (que permite reconstruir dichos
+caminos mínimos). Dicho árbol, ¿es siempre de tendido mínimo?</p>
+
+    <p>b. Al obtener un árbol de tendido mínimo de un grafo, se asegura que la suma de los pesos de las aristas
+sean mínimos.
+¿Es posible utilizar el árbol de tendido mínimo para encontrar el camíno mínimo entre dos pares de
+vértices cualesquiera?</p>
+
+    <p>c. Si un grafo es no pesado, ¿Se puede utilizar el Algoritmo de Dijkstra para obtener los caminos mínimos
+en dicho grafo?</p>
+  </li>
+  <li>
+    <p>(★★★★) Se cuenta con un grafo en el que sus aristas tiene peso 1 o 2, únicamente. 
+Implementar un algoritmo que permita obtener el camino mínimo de un vértice hacia 
+todos los demás, en tiempo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>V</mi><mo>+</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(V + E)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.22222em;">V</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.05764em;">E</span><span class="mclose">)</span></span></span></span></span>.</p>
+  </li>
+  <li>
+    <p>(★★★★★) Implementar un algoritmo que, dado un grafo dirigido, un vértice <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">s</span></span></span></span></span> y otro <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.61508em; vertical-align: 0em;"></span><span class="mord mathnormal">t</span></span></span></span></span> determine la cantidad
+mínima de aristas que deberían cambiar de sentido en el grafo para que exista un camino de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">s</span></span></span></span></span> a <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.61508em; vertical-align: 0em;"></span><span class="mord mathnormal">t</span></span></span></span></span>.</p>
+  </li>
+  <li>
+    <p>(★★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Se tiene un <strong>Grafo no dirigido</strong> <code class="language-plaintext highlighter-rouge">G</code>, y un <strong>árbol de tendido mínimo</strong> <code class="language-plaintext highlighter-rouge">T</code>, de <code class="language-plaintext highlighter-rouge">G</code>.  Se obtiene una de 
+las aristas de <code class="language-plaintext highlighter-rouge">G</code>, que <strong>no</strong> se encuentra en <code class="language-plaintext highlighter-rouge">T</code>, y se le reduce el peso. Dar un algoritmo lineal que permita 
+determinar el nuevo <strong>árbol de tendido mínimo</strong> <code class="language-plaintext highlighter-rouge">T'</code>(notar que <code class="language-plaintext highlighter-rouge">T'</code> podría ser igual a <code class="language-plaintext highlighter-rouge">T</code>). Justificar la 
+complejidad del algoritmo.</p>
+  </li>
+  <li>
+    <p>(★★★) Como todos sabemos, Taller de Programación I implica programar mucho. El equipo de 
+Federico esta desarrollando un Age of Empires y le asignaron el modulo de movimientos.
+Dispone de un mapa, podríamos decir una grilla, donde se puede ver para cada celda su 
+contenido (por ejemplo si está libre, si es agua, un árbol, etc).
+Fede tiene que implementar un algoritmo que, a partir de una unidad (por ejemplo un 
+soldado), en una celda en especifico encuentre el camino a una celda objetivo. Considerar 
+que entre celdas puede haber diferencia de alturas por lo que puede costarle mas (o menos)
+a una unidad ir de una celda a otra.
+Por supuesto que no puede ser cualquier camino, si no el que haga que la unidad llegue 
+más rápido a su objetivo.</p>
+
+    <p>a. Modelar el problema usando Grafos especificando de forma completa todos sus componentes.</p>
+
+    <p>b. Implementar un algoritmo que a partir de una celda de origen y una de destino, 
+retorne el camino que tiene que hacer la unidad, indicando y justificando la complejidad final.</p>
+  </li>
+  <li>
+    <p>(★★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Daniel está a punto de casarse y tiene un problema: gastó casi todo su dinero
+en la luna de miel. Contrató un salón para la fiesta donde sólo hay 2 mesas
+(muy, muy grandes, pero 2 en fin). Debe repartir a los <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> invitados
+entre las dos mesas, y su esposo le indicó una condición: en cada mesa debe
+sentarse gente que se lleve bien entre todos ellos.
+Daniel cuenta con la información de quién se lleva bien con quién, y necesita 
+poder determinar si hay alguna forma de separar en dos grupos de gente
+donde en cada grupo todos se lleven bien entre sí.</p>
+
+    <p>a. Modelar este problema utilizando grafos, indicando claramente qué son
+los vértices y qué las aristas.</p>
+
+    <p>b. Implementar un algoritmo que reciba un grafo como el modelado en el punto (a) y devuelva 
+ambos grupos de personas. Indicar y justificar la complejidad del algoritmo implementado.</p>
+
+    <p><strong>IMPORTANTE</strong>: tener en cuenta que resolver el problema de forma directa puede
+ser difícil. Recomendamos plantearse el problema inverso: poder separar
+en dos grupos tal que en ningúno de los grupos haya un par que no se lleven bien.</p>
+  </li>
+  <li>(★★) Implementar un algoritmo que reciba un grafo no dirigido y determine la
+cantidad mínima de aristas que debería agregársele para que el grafo sea conexo. 
+Obviamente, si el grafo ya es conexo el algoritmo debe devolver 0. 
+Indicar y justificar la complejidad del algoritmo implementado.</li>
+</ol>
+
+
+
+        </div>
+      </div>
+    </main>
+
+    <script src="./Grafos_ Usos, implementaciones, recorridos, aplicaciones_files/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+<script src="./Grafos_ Usos, implementaciones, recorridos, aplicaciones_files/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+  
+
+
+</body></html>

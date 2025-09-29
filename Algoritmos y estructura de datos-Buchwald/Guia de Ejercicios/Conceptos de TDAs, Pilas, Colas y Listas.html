@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)https://algoritmos-rw.github.io/algoritmos/material/guias/tdas_conceptos/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Conceptos de TDAs, Pilas, Colas y Listas</title>
+  <meta name="description" content="Página de la materia Algoritmos y Estructuras de Datos, curso Buchwald. Facultad de Ingeniería, Universidad de Buenos Aires.">
+
+  <link rel="stylesheet" href="./Conceptos de TDAs, Pilas, Colas y Listas_files/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh">
+  <link rel="stylesheet" href="./Conceptos de TDAs, Pilas, Colas y Listas_files/all.css">
+  <link rel="stylesheet" href="./Conceptos de TDAs, Pilas, Colas y Listas_files/main.css" type="text/css">
+  <link rel="shortcut icon" href="https://algoritmos-rw.github.io/algoritmos/assets/img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="canonical" href="https://algoritmos-rw.github.io/algoritmos/material/guias/tdas_conceptos/"> -->
+
+  
+  <link rel="stylesheet" href="./Conceptos de TDAs, Pilas, Colas y Listas_files/katex.min.css" crossorigin="anonymous" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X">
+  <script defer="" src="./Conceptos de TDAs, Pilas, Colas y Listas_files/katex.min.js" crossorigin="anonymous" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"></script>
+  <script defer="" src="./Conceptos de TDAs, Pilas, Colas y Listas_files/auto-render.min.js" crossorigin="anonymous" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+
+  <body>
+    <header role="banner" class="sticky-top container-fluid px-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand d-lg-none" href="https://algoritmos-rw.github.io/algoritmos/material/guias/tdas_conceptos/#">Algoritmos y Estructuras de Datos</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sitenav" aria-controls="sitenav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="sitenav">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 small mx-auto">
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/"><span class="fa fa-home"></span> Inicio</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/docentes/"><span class="fa fa-chalkboard-teacher"></span> Docentes</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/regimen/"><span class="fa fa-tasks"></span> Régimen</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/calendario/"><span class="fa fa-calendar-alt"></span> Calendario</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/tps/"><span class="fa fa-briefcase"></span> TPs</a></li>
+        
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/algoritmos/material/guias/tdas_conceptos/#" role="button" id="matDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-paperclip"></span> Material</a>
+          <ul class="dropdown-menu">
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/bibliografia/"><span class="fa fa-book"></span> Bibliografía</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/material/"><span class="fa fa-book-reader"></span> Apuntes del curso</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/material/guias/"><span class="fa fa-dumbbell"></span> Guías de ejercicios</a></li>
+            <li>
+              <a class="dropdown-item" href="https://drive.google.com/drive/folders/0B0x0VPz_v-f_ekhhQUpkay13RnM?resourcekey=0-BqMLnLNd6T8lRDzv-VL4xA&amp;usp=sharing" target="_blank"><span class="fab fa-google-drive"></span> Drive</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.youtube.com/@algoritmos-fiuba-buchwald" target="_blank"><span class="fab fa-youtube"></span> Canal</a>
+            </li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/faq/"><span class="fas fa-question-circle"></span> FAQ</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/algoritmos/material/guias/tdas_conceptos/#" role="button" id="aluDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-user-friends"></span> Alumno</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://algoritmos-rw.github.io/descargas"><span class="fa fa-file-download"></span> Descargas</a></li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.dijkstra.ar/entregas/"><span class="fa fa-file-upload"></span> Entregas</a></li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.dijkstra.ar/notas/"><span class="fa fa-pencil-alt"></span> Notas</a></li>
+          </ul>
+        </li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/encuestas/"><span class="fa fa-poll"></span> Encuestas</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/infraestructura/"><span class="fa fa-network-wired"></span> Infraestructura</a></li>
+        <li class="nav-item">
+          <a href="https://github.com/algoritmos-rw/algoritmos/blob/master/material/guias/tdas_conceptos.md" class="nav-link" target="_blank"><span class="fab fa-github"></span> Editar en GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="container" role="main">
+      <div class="row justify-content-center">
+        <div class="col col-xl-8">
+          <h1 class="no_toc" id="conceptos-de-tdas-pilas-colas-y-listas">Conceptos de TDAs, Pilas, Colas y Listas</h1>
+
+<h2 class="no_toc" id="contenidos">Contenidos</h2>
+
+<ol id="markdown-toc">
+  <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/tdas_conceptos/#ejercicio-resuelto" id="markdown-toc-ejercicio-resuelto">Ejercicio resuelto</a></li>
+  <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/tdas_conceptos/#ejercicios-propuestos" id="markdown-toc-ejercicios-propuestos">Ejercicios propuestos</a></li>
+</ol>
+
+<h2 id="ejercicio-resuelto">Ejercicio resuelto</h2>
+
+<p>Implementar la <em>primitiva</em> de la pila <code class="language-plaintext highlighter-rouge">func (pila PilaDinamica[T]) Miltitop(n int) []T</code>, que devuelve un arreglo de 
+tamaño <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> con los <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> topes de la pila (los primeros <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> elementos si estos fueran desapilados), sin utilizar estructuras auxiliares. Si la pila tiene menos de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> elementos, el arreglo/slice debe ser del tamaño de la pila.</p>
+
+<p>Indicar el orden de complejidad de la primitiva.</p>
+
+<h3 class="no_toc" id="solución">Solución</h3>
+
+<p>Dos cosas que es necesario entender desde el inicio del ejercicio:</p>
+
+<ol>
+  <li>En este ejercicio <em>no se puede</em> modificar la pila, pues el puntero recibido es de tipo constante (no tiene el asterisco de puntero); ello quiere decir que la pila a la que apunta es de sólo lectura, y por tanto sería erróneo modificar cualquiera de sus campos.</li>
+  <li><em>Además, no se debe</em> modificarla pues, al ser una primitiva y tener acceso a los miembros internos de la estructura, no es necesario desapilar para acceder a los datos.</li>
+</ol>
+
+<p>Una vez esto quede claro, la solución es bastante directa: si queremos que los elementos sean aquellos que desapilaríamos, simplemente tendríamos que iterar el arreglo en ese orden. Dada la implementación de la pila, deberíamos
+hacerlo de atrás hacia delante. Si fuera una pila enlazada, simplemente sería iterar por los nodos.</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="p">(</span><span class="n">pila</span> <span class="n">pilaDinamica</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="n">Miltitop</span><span class="p">(</span><span class="n">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="n">T</span> <span class="p">{</span>
+    <span class="n">cant</span> <span class="o">:=</span> <span class="n">min</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">pila</span><span class="o">.</span><span class="n">cantidad</span><span class="p">)</span>
+    <span class="n">topes</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="n">T</span><span class="p">,</span> <span class="n">cant</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="o">:=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cant</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="n">topes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pila</span><span class="o">.</span><span class="n">datos</span><span class="p">[</span><span class="n">pila</span><span class="o">.</span><span class="n">cantidad</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="m">1</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">topes</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Sobre la complejidad: Acceder a cada elemento de la pila, siendo que accedemos directamente, es <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>, y nunca
+vamos a ver más elementos de la pila si son más de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>, por ende la primitiva es <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>. Podríamos considerar que va a ser el mínimo con la cantidad de elementos de la pila, pero si la cantidad de elementos de la pila fuera mucho más grande que <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>, de todas formas no superaría <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>. Es importante denotar
+que <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> en este caso no es la cantidad de elementos de la pila, sino la cantidad de elementos pedidos. Si quisiéramos
+hacer más clara la distinción, podríamos haber llamado a dicho parámetro con otro nombre. Tener cuidado con esto, porque
+si el parámetro tuviera otro nombre no sería correcto decir que es <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>, salvo que se aclare qué signifique
+<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>.</p>
+
+<h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
+
+<ol>
+  <li>(★) Implementar el TDA Fracción. Dicho TDA debe tener las siguientes primitivas, cuya documentación
+puede encontrarse <a href="https://algoritmos-rw.github.io/algoritmos/material/guias/extra/fraccion.go">aquí</a>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CrearFraccion(numerador, denominador int) Fraccion
+Sumar(otra Fraccion) Fraccion
+Multiplicar(otra Fraccion) Fraccion
+ParteEntera() int
+Representacion() string
+</code></pre></div>    </div>
+
+    <p>Puede encontrarse la resolución de este ejercicio <a href="https://algoritmos-rw.github.io/algoritmos/material/guias/soluciones/fraccion.go">aquí</a>.</p>
+  </li>
+  <li>(★) Implementar el TDA NumeroComplejo. Dicho TDA debe tener las siguientes primitivas, cuya documentación
+puede encontrarse <a href="https://algoritmos-rw.github.io/algoritmos/material/guias/extra/complejo.go">aquí</a>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CrearComplejo(real float, img float) Complejo
+Multiplicar(otro Complejo)
+Sumar(otro Complejo)
+ParteReal() float
+ParteImaginaria() float
+Modulo() float
+Angulo() float
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>(★)  Implementar una función que reciba un arreglo genérico e invierta su orden, utilizando los TDAs vistos.
+Indicar y justificar el orden de ejecución.</p>
+  </li>
+  <li>(★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Implementar en Go el TDA <code class="language-plaintext highlighter-rouge">ComposiciónFunciones</code> que emula la composición de funciones (i.e. <code class="language-plaintext highlighter-rouge">f(g(h(x))</code>).
+Se debe definir la estructura del TDA, y las siguientes primitivas:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CrearComposicion() ComposicionFunciones
+AgregarFuncion(func (float64) float64)
+Aplicar(float64) float64
+</code></pre></div>    </div>
+    <p>Considerar que primero se irán agregando las funciones como se leen, pero tener en cuenta el correcto orden
+de aplicación. Por ejemplo: para emular <code class="language-plaintext highlighter-rouge">f(g(x))</code>, se debe hacer:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composicion.AgregarFuncion(f)
+composicion.AgregarFuncion(g)
+composicion.Aplicar(x)
+</code></pre></div>    </div>
+
+    <p>Indicar el orden de las primitivas.</p>
+  </li>
+  <li>
+    <p>(★★★) Dada una lista enlazada implementada con las siguientes estructuras:</p>
+
+    <div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="k">type</span> <span class="n">nodoLista</span><span class="p">[</span><span class="n">T</span> <span class="n">any</span><span class="p">]</span> <span class="k">struct</span> <span class="p">{</span>
+         <span class="n">prox</span> <span class="o">*</span><span class="n">nodoLista</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+         <span class="n">dato</span> <span class="n">T</span>
+     <span class="p">}</span>
+     <span class="k">type</span> <span class="n">ListaEnlazada</span><span class="p">[</span><span class="n">T</span> <span class="n">any</span><span class="p">]</span> <span class="k">struct</span> <span class="p">{</span>
+         <span class="n">prim</span> <span class="o">*</span><span class="n">nodoLista</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+     <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>Escribir una primitiva de lista que devuelva el elemento que esté a <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> posiciones del final (el
+ ante-k-último), recorriendo la lista una sola vez y sin usar estructuras auxiliares. Considerar que
+ <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> es siempre menor al largo de la lista.
+ Por ejemplo, si se recibe la lista <code class="language-plaintext highlighter-rouge">[ 1, 5, 10, 3, 6, 8 ]</code>, y <code class="language-plaintext highlighter-rouge">k = 4</code>, debe devolver 10.
+ Indicar el orden de complejidad de la primitiva.</p>
+  </li>
+  <li>
+    <p>(★★★) Dada una pila de enteros, escribir una función que determine si sus elementos están ordenados de manera ascendente. Una pila de enteros está ordenada de manera ascendente si, en el sentido que va desde el tope de la pila hacia el resto de elementos, cada elemento es menor al elemento que le sigue.
+La pila debe quedar en el mismo estado que al invocarse la función.
+Indicar y justificar el orden del algoritmo propuesto.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar la primitiva <code class="language-plaintext highlighter-rouge">func (cola *colaEnlazada[T]) Multiprimeros(k int) []T</code> que dada una cola y un
+número <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span>, devuelva los primeros <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> elementos de la cola, en el mismo orden en el que habrían
+salido de la cola. En caso que la cola tenga menos de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> elementos. Si hay menos elementos que <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> en
+la cola, devolver un slice del tamaño de la cola. Indicar y justificar el orden de ejecución del algoritmo.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar la <strong>función</strong> <code class="language-plaintext highlighter-rouge">func Multiprimeros[T any](cola Cola[T], k int) []T</code> con el mismo comportamiento de la
+primitiva anterior.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar en Go una primitiva <code class="language-plaintext highlighter-rouge">func (lista *ListaEnlazada) Invertir()</code> que invierta la lista, 
+sin utilizar estructuras auxiliares. Indicar y justificar el orden de la primitiva.</p>
+  </li>
+  <li>
+    <p>(★★) Se quiere implementar un TDA ColaAcotada sobre un arreglo. Dicho TDA tiene un espacio para <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> elementos
+(que se recibe por parámetro al crear la estructura). Explicar cómo deberían implementarse las primitivas
+encolar y desencolar de tal manera que siempre sean operaciones de tiempo constante.</p>
+  </li>
+  <li>
+    <p>(★★★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Implementar una función que ordene de manera ascendente una pila de enteros sin conocer su estructura interna y
+utilizando como estructura auxiliar sólo otra pila auxiliar.
+Por ejemplo, la pila <code class="language-plaintext highlighter-rouge">[ 4, 1, 5, 2, 3 ]</code> debe quedar como <code class="language-plaintext highlighter-rouge">[ 1, 2, 3, 4, 5 ]</code> (siendo el último elemento el tope de la pila, en ambos casos). Indicar y justificar el orden de la función.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar una función <code class="language-plaintext highlighter-rouge">func FiltrarCola[K any](cola Cola[K], filtro func(K) bool)</code> , que elimine los
+elementos encolados para los cuales la función <em>filtro</em> devuelve <code class="language-plaintext highlighter-rouge">false</code>. Aquellos elementos que no son eliminados
+deben permanecer en el mismo orden en el que estaban antes de invocar a la función. No es necesario destruir los
+elementos que sí fueron eliminados. Se pueden utilizar las estructuras auxiliares que se consideren necesarias y
+no está permitido acceder a la estructura interna de la cola (es una función). ¿Cuál es el orden del algoritmo
+implementado?</p>
+  </li>
+  <li>
+    <p>(★★★) Sabiendo que la firma del iterador interno de la lista enlazada es:</p>
+
+    <div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">Iterar</span><span class="p">(</span><span class="n">visitar</span> <span class="k">func</span><span class="p">(</span><span class="n">K</span><span class="p">)</span> <span class="kt">bool</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>Se tiene una lista en donde todos los elementos son punteros a números enteros. Implementar una función <code class="language-plaintext highlighter-rouge">SumaPares</code> que reciba una lista y, utilizando el iterador interno (<strong>no el externo</strong>), calcule la suma de todos los números pares.</p>
+  </li>
+  <li>
+    <p>(★★★★★) Diseñar un TDA <code class="language-plaintext highlighter-rouge">PilaConMáximo</code>, que tenga las mismas primitivas de la pila convencional, 
+y además permita obtener el máximo de la pila. <strong>Todas</strong>
+las primitivas deben funcionar en <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>. Explicar cómo implementarías el TDA para
+que cumpla con todas las restricciones.</p>
+  </li>
+  <li>
+    <p>(★★★) Implementar el TDA Mamushka (matrioshka, o muñeca rusa), teniendo en cuenta que una Mamushka puede
+tener otra Mamushka dentro de si misma. Las primitivas deben ser:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">CrearMamushka(tam int, color Color) Mamushka</code>: Crea una mamushka con un tamaño y color definido.</li>
+      <li><code class="language-plaintext highlighter-rouge">ObtenerColor() Color</code>: Obtiene el color de la Mamushka.</li>
+      <li><code class="language-plaintext highlighter-rouge">Guardar(Mamushka) bool</code>: <em>Intenta</em> guardar la segunda 
+ mamushka en la primera. Si la primera ya tiene una mamushka guardada, entonces debe
+ intentar guardar la mamushka <code class="language-plaintext highlighter-rouge">a_guardar</code> dentro de la mamushka que ya estaba guardada.
+ La operación falla (y devuelve <code class="language-plaintext highlighter-rouge">false</code>) si en algún momento se intenta guardar una mamushka
+ en otra de menor o igual tamaño. 
+ Por ejemplo: si tenemos una mamushka de tamaño 10 que dentro tiene una de tamaño 8, y se
+ intenta guardar una de tamaño 5, ésta debe guardarse dentro de la de tamaño 8.
+ Si, luego, se intentara guardar una de tamaño 6, la operación debe fallar dado
+ que no se puede guardar una mamushka de tamaño 6 dentro de una de tamaño 5.</li>
+      <li><code class="language-plaintext highlighter-rouge">ObtenerGuardada() Mamushka</code>: Devuelve un puntero a la mamushka guardada. 
+ <code class="language-plaintext highlighter-rouge">NULL</code> en caso de no tener ninguna guardada. En el ejemplo anterior, si utilizaremos esta primitiva
+ con la Mamushka de tamaño 10, nos devolvería la Mamushka de tamaño 8 que guardamos (y que dentro
+ tiene la de tamaño 5).</li>
+    </ul>
+
+    <p>Definir la estructura (<code class="language-plaintext highlighter-rouge">struct</code>) del TDA, y escribir estas 5 primitivas. Indicar el orden de cada una de ellas.</p>
+
+    <p><em>Nota</em>: <code class="language-plaintext highlighter-rouge">Color</code> corresponde a un enumerado, que está definido en algún lugar.</p>
+  </li>
+  <li>
+    <p>(★★★) Dadas dos pilas de enteros positivos (con posibles valores repetidos) cuyos elementos fueron ingresados de menor
+a mayor, se pide implementar una <strong>función</strong> <code class="language-plaintext highlighter-rouge">func MergePilas(pila1, pila2 Pila[int]) []int</code> que devuelva un array
+ordenado de menor a mayor con todos los valores de ambas pilas sin repeticiones.
+Detallar y justificar la complejidad del algoritmo considerando que el tamaño de las pilas es N y M respectivamente.</p>
+  </li>
+  <li>
+    <p>(★★) Escribir una primitiva para la pila (dinámica) cuya firma es <code class="language-plaintext highlighter-rouge">func (pila pilaDinamica[T]) Transformar(aplicar func(T) T) Pila[T]</code> que devuelva una nueva pila cuyos elementos sean los resultantes de aplicarle la función <code class="language-plaintext highlighter-rouge">aplicar</code> a cada elemento de la pila original. Los elementos en la nueva pila deben tener el orden que tenían en la pila original, y la pila original debe quedar en el mismo estado al inicial. Indicar y justificar la complejidad de la primitiva.</p>
+
+    <p>Por ejemplo, para la pila de enteros <code class="language-plaintext highlighter-rouge">[ 1, 2, 3, 6, 2 ]</code> (tope es el número 2), y la función <code class="language-plaintext highlighter-rouge">sumarUno</code> 
+(que devuelve la suma entre el número 1 y el número recibido), la pila resultante 
+debe ser <code class="language-plaintext highlighter-rouge">[ 2, 3, 4, 7, 3 ]</code> (el tope es el número 3).</p>
+  </li>
+  <li>
+    <p>(★★) Implementar una función recursiva que reciba una pila y devuelva, sin utilizar estructuras auxiliares, la cantidad de elementos de la misma. Al terminar la ejecución de la función la pila debe quedar en el mismo estado al original.</p>
+  </li>
+  <li>(★★★) Implementar una función <code class="language-plaintext highlighter-rouge">func balanceado(texto string) boolean</code>,
+que retorne si <code class="language-plaintext highlighter-rouge">texto</code> esta balanceado o no. <code class="language-plaintext highlighter-rouge">texto</code> sólo puede contener los siguientes caracteres: <code class="language-plaintext highlighter-rouge">[,],{,}(,)</code>. Indicar y justificar la complejidad de la función implementada.
+Un texto esta balanceado si cada agrupador abre y cierra en un orden correcto. Por ejemplo:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">balanceado("[{([])}]") =&gt; true</code></li>
+      <li><code class="language-plaintext highlighter-rouge">balanceado("[{}") =&gt; false</code></li>
+      <li><code class="language-plaintext highlighter-rouge">balanceado("[(])") =&gt; false</code></li>
+      <li><code class="language-plaintext highlighter-rouge">balanceado("()[{}]") =&gt; true</code></li>
+      <li><code class="language-plaintext highlighter-rouge">balanceado("()()(())") =&gt; true</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>(★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Carlos es nuevo en la empresa en la que trabajan Alan y Bárbara. Alan va a ser el mentor 
+de Carlos, quien debe implementar un nuevo <code class="language-plaintext highlighter-rouge">TDA Gatito</code>. Alan, revisando el trabajo que 
+hizo Carlos, nota que este agregó una primitiva <code class="language-plaintext highlighter-rouge">Redimensionar</code>, pública en la interfaz 
+<code class="language-plaintext highlighter-rouge">Gatito</code>, para que la use Bárbara. Alan lo increpa a Carlos, preguntando para qué es dicha
+primitiva, y este le contesta “Tal como dice la documentación, es para que Bárbara me diga 
+cómo redimensionar el arreglo de pelos que tiene el gatito”. Alan, que conoce bien el 
+temperamento de Bárbara, decide evitar que echen a Carlos en su segunda semana de trabajo. 
+En este ejercicio, te toca hacer de Alan.</p>
+
+    <p>Escribir una explicación de por qué esto que está haciendo Carlos está mal. Considerá que 
+Carlos es muy testarudo (incluso, a pesar de su propio bien), así que tu argumentación
+deberá ser muy clara y contundente.</p>
+  </li>
+</ol>
+
+
+
+        </div>
+      </div>
+    </main>
+
+    <script src="./Conceptos de TDAs, Pilas, Colas y Listas_files/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+<script src="./Conceptos de TDAs, Pilas, Colas y Listas_files/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+  
+
+
+</body></html>

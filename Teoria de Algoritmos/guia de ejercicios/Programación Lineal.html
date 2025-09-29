@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://algoritmos-rw.github.io/tda_bg/material/guias/pl/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Programación Lineal</title>
+  <meta name="description" content="Página de la materia Teoría de Algoritmos I, curso Buchwald - Genender. Facultad de Ingeniería, Universidad de Buenos Aires.">
+
+  <link rel="stylesheet" href="./Programación Lineal_files/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh">
+  <link rel="stylesheet" href="./Programación Lineal_files/all.css">
+  <link rel="stylesheet" href="./Programación Lineal_files/main.css" type="text/css">
+  <link rel="shortcut icon" href="https://algoritmos-rw.github.io/tda_bg/assets/img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="canonical" href="https://algoritmos-rw.github.io/tda_bg/material/guias/pl/"> -->
+
+  
+  <link rel="stylesheet" href="./Programación Lineal_files/katex.min.css" crossorigin="anonymous" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X">
+  <script defer="" src="./Programación Lineal_files/katex.min.js" crossorigin="anonymous" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"></script>
+  <script defer="" src="./Programación Lineal_files/auto-render.min.js" crossorigin="anonymous" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+
+  <body>
+    <header role="banner" class="sticky-top container-fluid px-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand d-lg-none" href="https://algoritmos-rw.github.io/tda_bg/material/guias/pl/#">Teoría de Algoritmos I</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sitenav" aria-controls="sitenav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="sitenav">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 small mx-auto">
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/"><span class="fa fa-home"></span> Inicio</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/docentes/"><span class="fa fa-chalkboard-teacher"></span> Docentes</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/regimen/"><span class="fa fa-tasks"></span> Régimen</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/calendario/"><span class="fa fa-calendar-alt"></span> Calendario</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/tps/"><span class="fa fa-briefcase"></span> TPs</a></li>
+        
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/tda_bg/material/guias/pl/#" role="button" id="matDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-paperclip"></span> Material</a>
+          <ul class="dropdown-menu">
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/tda_bg/bibliografia/"><span class="fa fa-book"></span> Bibliografía</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/tda_bg/material/guias/"><span class="fa fa-dumbbell"></span> Guías de ejercicios</a></li>
+            <li>
+              <a class="dropdown-item" href="https://drive.google.com/drive/u/3/folders/1DtGSvPMobzgZwtzuqvWLu8Ed-K-f9Q52" target="_blank"><span class="fab fa-google-drive"></span> Drive</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.youtube.com/@algoritmos-fiuba-buchwald" target="_blank"><span class="fab fa-youtube"></span> Canal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="https://algoritmos-rw.dijkstra.ar/notas-tda/" target="_blank"><span class="fa fa-pencil-alt"> Consultar Notas</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/encuestas/"><span class="fa fa-poll"></span> Encuestas</a></li>
+        <li class="nav-item">
+          <a href="https://github.com/algoritmos-rw/tda_bg/blob/master/material/guias/pl.md" class="nav-link" target="_blank"><span class="fab fa-github"></span> Editar en GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="container" role="main">
+      <div class="row justify-content-center">
+        <div class="col col-xl-8">
+          <h1 class="no_toc" id="programación-lineal">Programación Lineal</h1>
+
+<h2 class="no_toc" id="contenidos">Contenidos</h2>
+
+<ol id="markdown-toc">
+  <li><a href="https://algoritmos-rw.github.io/tda_bg/material/guias/pl/#ejercicio-resuelto" id="markdown-toc-ejercicio-resuelto">Ejercicio resuelto</a></li>
+  <li><a href="https://algoritmos-rw.github.io/tda_bg/material/guias/pl/#ejercicios-propuestos" id="markdown-toc-ejercicios-propuestos">Ejercicios propuestos</a></li>
+</ol>
+
+<h2 id="ejercicio-resuelto">Ejercicio resuelto</h2>
+
+<h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
+
+<ol>
+  <li>
+    <p>(★) Implementar un modelo de programación lineal que resuelva el Problema de la Mochila de valor 
+máximo (ejercicio 7 de PD).</p>
+  </li>
+  <li>
+    <p>(★) Implementar un modelo de programación lineal que resuelva el problema de Juan El Vago 
+(ejercicio 4 de PD).</p>
+  </li>
+  <li>
+    <p>(★) Implementar un modelo de programación lineal que resuelva el problema de Vertex Cover mínimo 
+(ejercicio 13 de BT).</p>
+  </li>
+  <li>
+    <p>(★) Implementar un modelo de programación lineal que resuelva el problema de Dominating Set mínimo 
+(ejercicio 14 de BT).</p>
+  </li>
+  <li>
+    <p>(★) Implementar un modelo de programación lineal que resuelva el problema de 3-SAT mínimo: que 
+encuentre una solución que satisfaga, utlizando la menor cantidad de variables en <code class="language-plaintext highlighter-rouge">true</code> posible.</p>
+  </li>
+  <li>
+    <p>(★★★) Implementar un modelo de programación lineal que resuelva el problema de Independent Set Máximo.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar un modelo de programación lineal que determine la cantidad mínima de colores a utilizar para poder pintar
+a un grafo de colores, de tal forma que ningún adyacente comparta color entre sí.</p>
+  </li>
+  <li>
+    <p>(★★) Implementar un modelo de <strong>programación lineal</strong> que permita determinar el clique de 
+tamaño máximo dentro de un grafo. Indicar la cantidad de restricciones generadas en función
+de la cantidad de vértices y aristas (podés usar notación O para esto, no es importante el número exacto).</p>
+  </li>
+  <li>
+    <p>(★★★) Osvaldo es un empleado de una inescrupulosa empresa inmobiliaria, y está buscando un ascenso. 
+Está viendo cómo se predice que evolucionará el precio de un inmueble (el cual no poseen, 
+pero pueden comprar). Tiene la información de estas predicciones en el arreglo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span></span>, para todo
+día <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">i = 1, 2, ..., n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.65952em; vertical-align: 0em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.83888em; vertical-align: -0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">n</span></span></span></span></span>. Osvaldo quiere determinar un día <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.85396em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span></span></span></span></span> en el cuál comprar la casa, 
+y un día <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> en el cual venderla (<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">k &gt; j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.73354em; vertical-align: -0.0391em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.85396em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span></span></span></span></span>), suponiendo que eso sucederá sin lugar a dudas. 
+El objetivo, por supuesto, es el de maximizar la ganancia dada por <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo>−</mo><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">p[k] - p[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span><span class="mclose">]</span></span></span></span></span>.</p>
+
+    <p>Implementar un modelo de <strong>programación lineal</strong> que determine el día de compra y el día de
+venta del inmueble. Indicar la cantidad de restricciones implementadas para esto.</p>
+  </li>
+  <li>
+    <p>(★★★★) Dado un arreglo de enteros ordenado, un elemento y un valor entero <code class="language-plaintext highlighter-rouge">k</code>, se quiere encuentrar
+los <code class="language-plaintext highlighter-rouge">k</code> valores del arreglo más cercanos al elemento en cuestión (que bien podría
+estar en el arreglo, o no). 
+Realizar un modelo de programación lineal que resuelva este problema. OJO nos interesa que sean cercanos
+al elemento, y eso se ve con el valor absoluto de la diferencia, y el <strong>operador módulo</strong> no es
+un operador lineal. Si se incluye el <strong>operador módulo</strong> como parte del Modelo, el ejercicio estará Mal.
+   	Resolver de tal manera que el modelo sea el que resuelva estas diferencias.
+Indicar la cantidad de restricciones definidas.</p>
+  </li>
+  <li>
+    <p>(★★) Se está formando una nueva comisión de actividades culturales de un pueblo. Cada 
+habitante es miembro de 0 o más clubes, y de exactamente 1 partido político. 
+Cada uno de los $n$ clubes debe nombrar a un representante ante la nueva comisión de 
+actividades culturales, con las siguientes restricciones: cada partido político 
+no puede tener más de $\frac{n}{2}$ simpatizantes en la comisión, y además queremos
+minimizar la cantidad simpatizantes a un mismo partido político; cada persona puede 
+representar a solo un club, cada club debe estar representado por un miembro.</p>
+
+    <p>Implementar un modelo de <strong>programación lineal</strong> que dada la información de los
+habitantes (a qué clubes son miembros, a qué partido pertenecen), nos permita obtener
+los representantes válidos, que además minimicen la cantidad de simpatizantes a un mismo partido
+político. Indicar la cantidad de inecuaciones definidas en el modelo.</p>
+  </li>
+</ol>
+
+
+
+        </div>
+      </div>
+    </main>
+
+    <script src="./Programación Lineal_files/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+<script src="./Programación Lineal_files/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+  
+
+
+</body></html>

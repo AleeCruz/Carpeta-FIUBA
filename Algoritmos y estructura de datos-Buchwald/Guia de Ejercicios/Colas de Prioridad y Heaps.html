@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://algoritmos-rw.github.io/algoritmos/material/guias/heap/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Colas de Prioridad y Heaps</title>
+  <meta name="description" content="Página de la materia Algoritmos y Estructuras de Datos, curso Buchwald. Facultad de Ingeniería, Universidad de Buenos Aires.">
+
+  <link rel="stylesheet" href="./Colas de Prioridad y Heaps_files/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh">
+  <link rel="stylesheet" href="./Colas de Prioridad y Heaps_files/all.css">
+  <link rel="stylesheet" href="./Colas de Prioridad y Heaps_files/main.css" type="text/css">
+  <link rel="shortcut icon" href="https://algoritmos-rw.github.io/algoritmos/assets/img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="canonical" href="https://algoritmos-rw.github.io/algoritmos/material/guias/heap/"> -->
+
+  
+  <link rel="stylesheet" href="./Colas de Prioridad y Heaps_files/katex.min.css" crossorigin="anonymous" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X">
+  <script defer="" src="./Colas de Prioridad y Heaps_files/katex.min.js" crossorigin="anonymous" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"></script>
+  <script defer="" src="./Colas de Prioridad y Heaps_files/auto-render.min.js" crossorigin="anonymous" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+
+  <body>
+    <header role="banner" class="sticky-top container-fluid px-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand d-lg-none" href="https://algoritmos-rw.github.io/algoritmos/material/guias/heap/#">Algoritmos y Estructuras de Datos</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sitenav" aria-controls="sitenav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="sitenav">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 small mx-auto">
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/"><span class="fa fa-home"></span> Inicio</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/docentes/"><span class="fa fa-chalkboard-teacher"></span> Docentes</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/regimen/"><span class="fa fa-tasks"></span> Régimen</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/calendario/"><span class="fa fa-calendar-alt"></span> Calendario</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/tps/"><span class="fa fa-briefcase"></span> TPs</a></li>
+        
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/algoritmos/material/guias/heap/#" role="button" id="matDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-paperclip"></span> Material</a>
+          <ul class="dropdown-menu">
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/bibliografia/"><span class="fa fa-book"></span> Bibliografía</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/material/"><span class="fa fa-book-reader"></span> Apuntes del curso</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/material/guias/"><span class="fa fa-dumbbell"></span> Guías de ejercicios</a></li>
+            <li>
+              <a class="dropdown-item" href="https://drive.google.com/drive/folders/0B0x0VPz_v-f_ekhhQUpkay13RnM?resourcekey=0-BqMLnLNd6T8lRDzv-VL4xA&amp;usp=sharing" target="_blank"><span class="fab fa-google-drive"></span> Drive</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.youtube.com/@algoritmos-fiuba-buchwald" target="_blank"><span class="fab fa-youtube"></span> Canal</a>
+            </li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/faq/"><span class="fas fa-question-circle"></span> FAQ</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/algoritmos/material/guias/heap/#" role="button" id="aluDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-user-friends"></span> Alumno</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://algoritmos-rw.github.io/descargas"><span class="fa fa-file-download"></span> Descargas</a></li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.dijkstra.ar/entregas/"><span class="fa fa-file-upload"></span> Entregas</a></li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.dijkstra.ar/notas/"><span class="fa fa-pencil-alt"></span> Notas</a></li>
+          </ul>
+        </li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/encuestas/"><span class="fa fa-poll"></span> Encuestas</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/infraestructura/"><span class="fa fa-network-wired"></span> Infraestructura</a></li>
+        <li class="nav-item">
+          <a href="https://github.com/algoritmos-rw/algoritmos/blob/master/material/guias/heap.md" class="nav-link" target="_blank"><span class="fab fa-github"></span> Editar en GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="container" role="main">
+      <div class="row justify-content-center">
+        <div class="col col-xl-8">
+          <h1 class="no_toc" id="colas-de-prioridad-y-heaps">Colas de Prioridad y Heaps</h1>
+
+<h2 class="no_toc" id="contenidos">Contenidos</h2>
+
+<ol id="markdown-toc">
+  <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/heap/#ejercicio-resuelto" id="markdown-toc-ejercicio-resuelto">Ejercicio resuelto</a>    <ol>
+      <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/heap/#soluci%C3%B3n" id="markdown-toc-solución">Solución</a></li>
+    </ol>
+  </li>
+  <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/heap/#ejercicios-propuestos" id="markdown-toc-ejercicios-propuestos">Ejercicios propuestos</a></li>
+</ol>
+
+<h2 id="ejercicio-resuelto">Ejercicio resuelto</h2>
+
+<p>Implementar en Go una primitiva para el heap (siendo este un max-heap) que reciba una función de
+comparación y lo reordene de manera tal que se se comporte como max-heap para la nueva función de comparación
+(se cambia la función de prioridad). El orden de dicha primitiva debe ser <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>.</p>
+
+<h3 id="solución">Solución</h3>
+
+<p>La única dificultad de este ejercicio radica en entender verdaderamente qué es lo que se nos pide: darle a un arreglo
+ya existente (el interno del heap) forma de heap, dada por una función de comparación (la nueva función de comparación
+del heap). Entonces, esto no es más que invocar a <code class="language-plaintext highlighter-rouge">heapify</code>, y ya. Eso es todo. También, es la única forma de darle ese
+orden a la primitiva.</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="p">(</span><span class="n">heap</span> <span class="o">*</span><span class="n">Heap</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="n">CambiarPrioridad</span><span class="p">(</span><span class="k">func</span> <span class="n">cmp</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">heap</span><span class="o">.</span><span class="n">cmp</span> <span class="o">=</span> <span class="n">cmp</span>
+    <span class="n">heapify</span><span class="p">(</span><span class="n">heap</span><span class="o">.</span><span class="n">datos</span><span class="p">,</span> <span class="n">heap</span><span class="o">.</span><span class="n">cantidad</span><span class="p">,</span> <span class="n">cmp</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Obviamente, la primitiva es <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> dado que <code class="language-plaintext highlighter-rouge">heapify</code> (bien implementado) tiene dicha complejidad.
+Por supuesto, este ejercicio involucra más pensar bien cuáles son las operaciones que se pueden hacer con el heap
+(y, especialmente, cuál es la única con el orden pedido).</p>
+
+<h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
+
+<ol>
+  <li>
+    <p>(★) Implementar en lenguaje Go una función <em>recursiva</em> con la firma
+<code class="language-plaintext highlighter-rouge">func esHeap(arr []int)</code>. Esta función debe devolver <code class="language-plaintext highlighter-rouge">true</code> o <code class="language-plaintext highlighter-rouge">false</code> de acuerdo
+a si el arreglo que recibe como parámetro cumple la propiedad de heap (de mínimos).</p>
+
+    <p>Hacer el seguimiento de la función para el arreglo <code class="language-plaintext highlighter-rouge">[ 1, 7, 2, 8, 7, 6, 3, 3, 9, 10 ]</code>.</p>
+  </li>
+  <li>
+    <p>(★) Implementar una primitiva para el heap (de máximos) que obtenga los 3 elementos más grandes del heap en
+<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>.</p>
+  </li>
+  <li>
+    <p>(★★) Si en el ejercicio anterior en vez de quererse los 3 elementos más grandes, se quisieran los <em>K</em> elementos
+más grandes ¿cómo se debería proceder? ¿Cuál terminaría siendo la complejidad del algoritmo?</p>
+  </li>
+  <li>
+    <p>(★★) En un heap de máximos ¿cuáles son las posibles posiciones del arreglo
+donde podría encontrarse el mínimo?</p>
+  </li>
+  <li>
+    <p>(★★) Realizar el seguimiento del algoritmo <em>heapsort</em> para ordenar el siguiente
+arreglo: <code class="language-plaintext highlighter-rouge">[ 4, 7, 8, 14, 10, 9, 16, 2, 3, 1 ]</code>.</p>
+  </li>
+  <li>
+    <p>(★★★) ¿Puede utilizarse un Heap para implementar el TDA cola (en el que se extraen los elementos en el orden
+en que fueron insertados)? ¿Y para implementar el TDA pila?</p>
+  </li>
+  <li>
+    <p>(★★) Hacer el seguimiento de las siguientes operaciones sobre un heap (de mínimos),
+mostrando el estado de la estructura después de cada modificación:</p>
+
+    <ol class="lower_alpha">
+      <li>
+        <p>Crear un heap de mínimos desde el arreglo <code class="language-plaintext highlighter-rouge">[8, 2, 1, 5, 10, 6, 14, 4]</code>.</p>
+      </li>
+      <li>
+        <p>Sobre el heap resultante del punto anterior, realizar las siguientes
+  operaciones: <code class="language-plaintext highlighter-rouge">encolar(6)</code>, <code class="language-plaintext highlighter-rouge">encolar(3)</code>, <code class="language-plaintext highlighter-rouge">encolar(17)</code>, <code class="language-plaintext highlighter-rouge">desencolar()</code>, <code class="language-plaintext highlighter-rouge">encolar(7)</code>,
+  <code class="language-plaintext highlighter-rouge">desencolar()</code>.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>(★★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Escribir una función en Go que, dado un arreglo de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> cadenas y un entero
+positivo <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span>, devuelva una lista con las <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> cadenas más largas. Se espera que el
+orden del algoritmo sea <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n + k \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>. Justificar el orden.</p>
+  </li>
+  <li>
+    <p>(★★★) Para implementar un TDA Cola de prioridad, nos proponen la siguiente solución: 
+usar un arreglo desordenado (<code class="language-plaintext highlighter-rouge">arr</code>) para insertar los datos, y una variable (<code class="language-plaintext highlighter-rouge">maximo</code>) 
+para poder obtener el máximo en <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>. Se mantiene actualizada la variable 
+<code class="language-plaintext highlighter-rouge">maximo</code> cada vez que se encola o desencola. ¿Es una buena solución en el caso general?
+Justificar (recomendación: comparar contra la implementación de colas de prioridad 
+vista en clase).</p>
+  </li>
+  <li>
+    <p>(★★★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Se tienen <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> arreglos de enteros previamente ordenados y se quiere obtener
+un arreglo ordenado que contenga a todos los elementos de los <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> arreglos. Sabiendo que cada arreglo
+tiene tamaño <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal">h</span></span></span></span></span>, definimos como <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> a la sumatoria de la cantidad de elementos de todos los arreglos,
+es decir, <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>k</mi><mo>×</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">n = k \times h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.77777em; vertical-align: -0.08333em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal">h</span></span></span></span></span>.</p>
+
+    <p>Escribir en Go una función <code class="language-plaintext highlighter-rouge">func KMerge(arr [][]int)</code> que reciba los <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> arreglos y
+devuelva uno nuevo con los <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> elementos ordenados entre sí. La función debe ser de orden
+<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n \log k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span><span class="mclose">)</span></span></span></span></span>. Justificar el orden del algoritmo propuesto.</p>
+  </li>
+  <li>
+    <p>(★★★★★) Diseñar el TDA Mediana. Dicho TDA debe poder recibir un flujo de números y, en 
+cualquier momento, debe poder consultársele cuál es la mediana de <strong>todos</strong> los 
+elementos vistos hasta ese momento. La primitiva para agregar un nuevo número debe 
+poder hacerse en <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> mientras que la operación de consultar la 
+mediana debe ser <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>. Recordar que la mediana de una secuencia de números 
+es el elemento que se encontraría a la mitad si la secuencia se encontrara ordenada (en 
+caso de ser una cantidad par, se puede definir como el promedio entre ambos valores 
+adyacentes del medio, o como uno de los dos de ellos de forma arbitraria).</p>
+  </li>
+  <li>
+    <p>(★★★) Implementar un algoritmo que reciba un arreglo de <code class="language-plaintext highlighter-rouge">n</code> números, y un número <code class="language-plaintext highlighter-rouge">k</code>, y
+devuelva los <code class="language-plaintext highlighter-rouge">k</code> números dentro del arreglo cuya suma sería la máxima (entre todos
+los posibles subconjuntos de <code class="language-plaintext highlighter-rouge">k</code> elementos de dicho arreglo). La solución <strong>debe
+ser mejor</strong> que <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> si <code class="language-plaintext highlighter-rouge">k &lt;&lt; n</code>. Indicar y justificar la complejidad
+de la función implementada.</p>
+  </li>
+  <li>
+    <p>(★★★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Dado un arreglo de enteros y un número <code class="language-plaintext highlighter-rouge">K</code>, se desea que todos los elementos 
+del arreglo sean mayores a <code class="language-plaintext highlighter-rouge">K</code>. Aquellos números que sean menores o iguales a <code class="language-plaintext highlighter-rouge">K</code> 
+deberían combinarse de la siguiente forma: buscar los dos números más chicos del 
+vector, sacarlos y generar uno nuevo de la forma 
+<code class="language-plaintext highlighter-rouge">Nuevo número = número-más-chico + 2 x segundo-más-chico</code>. Por ejemplo, si <code class="language-plaintext highlighter-rouge">K = 10</code> y 
+los números más chicos del arreglo son 3 y 4: 3 + 2 * 4 = 11. Los números combinados 
+pueden volver a ser combinados con otros en caso de ser necesario (en el ejemplo 
+no lo es), aplicando la misma lógica hasta que el número resultante sea mayor a <code class="language-plaintext highlighter-rouge">K</code>.</p>
+
+    <p>Implementar una función que reciba un arreglo de enteros, su largo y un número <code class="language-plaintext highlighter-rouge">K</code>, 
+y devuelva una lista con los elementos que quedarían luego de aplicar las 
+modificaciones. El arreglo original debe quedar en el estado original. El orden de 
+la lista no es importante. En caso de no poderse combinar todos los elementos para 
+que todos los elementos sea mayores a <code class="language-plaintext highlighter-rouge">K</code>, devolver <code class="language-plaintext highlighter-rouge">nil</code>. Determinar y justificar 
+la complejidad del algoritmo implementado.</p>
+
+    <p>Ejemplo: Entrada: <code class="language-plaintext highlighter-rouge">[11, 14, 8, 19, 42, 3, 1, 9]; K = 13</code>:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[11, 14, 8, 19, 42, 3, 1, 9] - (1,3)  -&gt; 1 + 2*3 = 7
+[11, 14, 8, 19, 42, 9, 7]    - (7,8)  -&gt; 7 + 8*2 = 23
+[11, 14, 19, 42, 9, 23]      - (9,11) -&gt; 9 + 11*2 = 31
+[14, 19, 42, 23, 31]
+</code></pre></div>    </div>
+    <p>Notar que si el 9 no estuviera en el arreglo, no se podría resolver
+el problema (debemos devolver <code class="language-plaintext highlighter-rouge">nil</code>), ya que el 11 no podría combinarse con ningún 
+otro número.</p>
+  </li>
+  <li>
+    <p>(★★) En clase vimos que se puede implementar un heap con un árbol izquierdista,
+o su representación equivalente en arreglo. Esta última, siendo mucho más sencilla de
+implementar. ¿Por qué no implementamos también el Árbol Binario de Búsqueda con una
+representación en arreglo, en vez de implementarlo con, valga la redundancia, árboles?</p>
+  </li>
+</ol>
+
+
+        </div>
+      </div>
+    </main>
+
+    <script src="./Colas de Prioridad y Heaps_files/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+<script src="./Colas de Prioridad y Heaps_files/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+  
+
+
+</body></html>

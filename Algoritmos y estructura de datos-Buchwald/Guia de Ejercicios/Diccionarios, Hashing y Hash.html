@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://algoritmos-rw.github.io/algoritmos/material/guias/hash/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Diccionarios, Hashing y Hash</title>
+  <meta name="description" content="Página de la materia Algoritmos y Estructuras de Datos, curso Buchwald. Facultad de Ingeniería, Universidad de Buenos Aires.">
+
+  <link rel="stylesheet" href="./Diccionarios, Hashing y Hash_files/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh">
+  <link rel="stylesheet" href="./Diccionarios, Hashing y Hash_files/all.css">
+  <link rel="stylesheet" href="./Diccionarios, Hashing y Hash_files/main.css" type="text/css">
+  <link rel="shortcut icon" href="https://algoritmos-rw.github.io/algoritmos/assets/img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="canonical" href="https://algoritmos-rw.github.io/algoritmos/material/guias/hash/"> -->
+
+  
+  <link rel="stylesheet" href="./Diccionarios, Hashing y Hash_files/katex.min.css" crossorigin="anonymous" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X">
+  <script defer="" src="./Diccionarios, Hashing y Hash_files/katex.min.js" crossorigin="anonymous" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"></script>
+  <script defer="" src="./Diccionarios, Hashing y Hash_files/auto-render.min.js" crossorigin="anonymous" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+
+  <body>
+    <header role="banner" class="sticky-top container-fluid px-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand d-lg-none" href="https://algoritmos-rw.github.io/algoritmos/material/guias/hash/#">Algoritmos y Estructuras de Datos</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sitenav" aria-controls="sitenav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="sitenav">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 small mx-auto">
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/"><span class="fa fa-home"></span> Inicio</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/docentes/"><span class="fa fa-chalkboard-teacher"></span> Docentes</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/regimen/"><span class="fa fa-tasks"></span> Régimen</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/calendario/"><span class="fa fa-calendar-alt"></span> Calendario</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/tps/"><span class="fa fa-briefcase"></span> TPs</a></li>
+        
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/algoritmos/material/guias/hash/#" role="button" id="matDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-paperclip"></span> Material</a>
+          <ul class="dropdown-menu">
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/bibliografia/"><span class="fa fa-book"></span> Bibliografía</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/material/"><span class="fa fa-book-reader"></span> Apuntes del curso</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/material/guias/"><span class="fa fa-dumbbell"></span> Guías de ejercicios</a></li>
+            <li>
+              <a class="dropdown-item" href="https://drive.google.com/drive/folders/0B0x0VPz_v-f_ekhhQUpkay13RnM?resourcekey=0-BqMLnLNd6T8lRDzv-VL4xA&amp;usp=sharing" target="_blank"><span class="fab fa-google-drive"></span> Drive</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.youtube.com/@algoritmos-fiuba-buchwald" target="_blank"><span class="fab fa-youtube"></span> Canal</a>
+            </li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/faq/"><span class="fas fa-question-circle"></span> FAQ</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/algoritmos/material/guias/hash/#" role="button" id="aluDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-user-friends"></span> Alumno</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://algoritmos-rw.github.io/descargas"><span class="fa fa-file-download"></span> Descargas</a></li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.dijkstra.ar/entregas/"><span class="fa fa-file-upload"></span> Entregas</a></li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.dijkstra.ar/notas/"><span class="fa fa-pencil-alt"></span> Notas</a></li>
+          </ul>
+        </li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/encuestas/"><span class="fa fa-poll"></span> Encuestas</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/infraestructura/"><span class="fa fa-network-wired"></span> Infraestructura</a></li>
+        <li class="nav-item">
+          <a href="https://github.com/algoritmos-rw/algoritmos/blob/master/material/guias/hash.md" class="nav-link" target="_blank"><span class="fab fa-github"></span> Editar en GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="container" role="main">
+      <div class="row justify-content-center">
+        <div class="col col-xl-8">
+          <h1 class="no_toc" id="diccionarios-hashing-y-hash">Diccionarios, Hashing y Hash</h1>
+
+<h2 class="no_toc" id="contenidos">Contenidos</h2>
+
+<ol id="markdown-toc">
+  <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/hash/#ejercicio-resuelto" id="markdown-toc-ejercicio-resuelto">Ejercicio resuelto</a>    <ol>
+      <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/hash/#soluci%C3%B3n" id="markdown-toc-solución">Solución</a>        <ol>
+          <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/hash/#hash-cerrado" id="markdown-toc-hash-cerrado">Hash Cerrado</a></li>
+          <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/hash/#hash-abierto" id="markdown-toc-hash-abierto">Hash Abierto</a></li>
+          <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/hash/#funci%C3%B3n" id="markdown-toc-función">Función</a></li>
+          <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/hash/#utilizando-el-iterador-interno" id="markdown-toc-utilizando-el-iterador-interno">Utilizando el iterador interno</a></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/hash/#ejercicios-propuestos" id="markdown-toc-ejercicios-propuestos">Ejercicios propuestos</a></li>
+</ol>
+
+<h2 id="ejercicio-resuelto">Ejercicio resuelto</h2>
+
+<ol class="lower_alpha">
+  <li>
+    <p>Para un hash cerrado, implementar una primitiva <code class="language-plaintext highlighter-rouge">func (hash hashCerrado[K, V]) Claves() Lista[K]</code> que reciba
+un hash y devuelva una lista con sus claves, sin utilizar el iterador interno.</p>
+  </li>
+  <li>
+    <p>Repetir lo mismo para un hash abierto.</p>
+  </li>
+  <li>
+    <p>Implementar de nuevo la operación, en este caso como una función.</p>
+  </li>
+</ol>
+
+<h3 id="solución">Solución</h3>
+
+<p>Partiendo del punto <em>a)</em>, es importante notar que no podemos utilizar el iterador externo, ya que se trata de una primitiva para
+el hash (y es una mala práctica que, dado que el iterador dependa del hash, ahora hagamos que el hash dependa del iterador).</p>
+
+<h4 id="hash-cerrado">Hash Cerrado</h4>
+
+<p>Para este punto, sólo es necesario iterar campo por campo, considerando únicamente aquellos que están ocupados.</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="p">(</span><span class="n">hash</span> <span class="n">hashCerrado</span><span class="p">[</span><span class="n">K</span><span class="p">,</span> <span class="n">V</span><span class="p">])</span> <span class="n">Claves</span><span class="p">()</span> <span class="n">Lista</span><span class="p">[</span><span class="n">K</span><span class="p">]</span> <span class="p">{</span>
+    <span class="n">claves</span> <span class="o">:=</span> <span class="n">CrearListaEnlazada</span><span class="p">[</span><span class="n">K</span><span class="p">]()</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">celda</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">hash</span><span class="o">.</span><span class="n">tabla</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">celda</span><span class="o">.</span><span class="n">estado</span> <span class="o">==</span> <span class="n">OCUPADO</span> <span class="p">{</span>
+            <span class="n">claves</span><span class="o">.</span><span class="n">InsertarUltimo</span><span class="p">(</span><span class="n">celda</span><span class="o">.</span><span class="n">clave</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">claves</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Es importante notar que en este ejercicio se está evaluando que sabemos trabajar internamente con el hash cerrado. Los puntos importantes:</p>
+
+<ul>
+  <li>
+    <p>Sabemos cuáles son los campos de la estructura.</p>
+  </li>
+  <li>
+    <p>Sabemos que la tabla es de tipo <code class="language-plaintext highlighter-rouge">[]campo[K, V]</code> o bien <code class="language-plaintext highlighter-rouge">[]celda[K, V]</code>, y no <code class="language-plaintext highlighter-rouge">[]*celda[K, V]</code>, puesto que es completamente innecesario otro grado de indirección (como se analiza en la respectiva clase práctica).</p>
+  </li>
+  <li>
+    <p>Entendemos que el estado correcto a considerar es el de <code class="language-plaintext highlighter-rouge">OCUPADO</code>, que es un enumerativo. Cuanto mucho, una constante. Definitivamente no un <code class="language-plaintext highlighter-rouge">"ocupado"</code>.</p>
+  </li>
+</ul>
+
+<h4 id="hash-abierto">Hash Abierto</h4>
+
+<p>Para este caso, consideramos todas las listas, las cuales podemos ir iterando utilizando el iterador externo o interno. Aquí mostramos una implementación utilizando el iterador interno, no porque sea mejor implementación, sino para que tengan un ejemplo de uso (ya que probablemente la primera idea que tengan ustedes será con el externo).</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="p">(</span><span class="n">hash</span> <span class="n">hashAbierto</span><span class="p">[</span><span class="n">K</span><span class="p">,</span> <span class="n">V</span><span class="p">])</span> <span class="n">Claves</span><span class="p">()</span> <span class="n">Lista</span><span class="p">[</span><span class="n">K</span><span class="p">]</span> <span class="p">{</span>
+    <span class="n">claves</span> <span class="o">:=</span> <span class="n">CrearListaEnlazada</span><span class="p">[</span><span class="n">K</span><span class="p">]()</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">lista</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">hash</span><span class="o">.</span><span class="n">tabla</span> <span class="p">{</span>
+        <span class="n">lista</span><span class="o">.</span><span class="n">Iterar</span><span class="p">(</span><span class="k">func</span> <span class="p">(</span><span class="n">par</span> <span class="n">parClaveValor</span><span class="p">[</span><span class="n">K</span><span class="p">,</span> <span class="n">V</span><span class="p">])</span> <span class="kt">bool</span> <span class="p">{</span>
+            <span class="n">claves</span><span class="o">.</span><span class="n">InsertarUltimo</span><span class="p">(</span><span class="n">par</span><span class="o">.</span><span class="n">clave</span><span class="p">)</span>
+            <span class="k">return</span> <span class="no">true</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">claves</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Aclaración</em>: Hay quienes deciden implementar el Hash Abierto de tal forma que
+no tenga listas vacías (esto es, si una posición aún
+no ha sido utilizada, entonces se guarda <code class="language-plaintext highlighter-rouge">nil</code> y se crea la lista cuando sea necesaria). Esto es totalmente válido, y en todo
+caso con aclararlo en algún lado es suficiente (pero debe hacerse la validación contra <code class="language-plaintext highlighter-rouge">nil</code> en ese caso).</p>
+
+<h4 id="función">Función</h4>
+
+<p>En este caso, no sólo sí está permitido utilizar el iterador externo del hash,
+sino que <strong>no nos queda otra opción</strong>, dado que no es posible acceder a los
+campos internos de la estructura. Además, en particular no se nos dice cuál es la implementación, cosa que no es necesario conocer.</p>
+
+<p>Entonces, simplemente iteramos utilizando el iterador externo y guardamos en una lista.</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">ClavesDiccionario</span><span class="p">(</span><span class="n">dic</span> <span class="n">Diccionario</span><span class="p">)</span> <span class="n">Lista</span><span class="p">[</span><span class="n">K</span><span class="p">]</span> <span class="p">{</span>
+    <span class="n">claves</span> <span class="o">:=</span> <span class="n">CrearListaEnlazada</span><span class="p">[</span><span class="n">K</span><span class="p">]()</span>
+    <span class="k">for</span> <span class="n">iter</span> <span class="o">:=</span> <span class="n">dic</span><span class="o">.</span><span class="n">Iterador</span><span class="p">();</span> <span class="n">iter</span><span class="o">.</span><span class="n">HaySiguiente</span><span class="p">();</span> <span class="n">iter</span><span class="o">.</span><span class="n">Siguiente</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">clave</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">iter</span><span class="o">.</span><span class="n">VerActual</span><span class="p">()</span>
+        <span class="n">claves</span><span class="o">.</span><span class="n">InsertarUltimo</span><span class="p">(</span><span class="n">clave</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">claves</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="utilizando-el-iterador-interno">Utilizando el iterador interno</h4>
+
+<p>Ahora implementamos también (ya sea como función o primitiva) utilizando el iterador interno exclusivamente:</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="p">(</span><span class="n">hash</span> <span class="n">hashAbierto</span><span class="p">[</span><span class="n">K</span><span class="p">,</span> <span class="n">V</span><span class="p">])</span> <span class="n">Claves</span><span class="p">()</span> <span class="n">Lista</span><span class="p">[</span><span class="n">K</span><span class="p">]</span> <span class="p">{</span> <span class="c">// Vale también para el cerrado y como función</span>
+    <span class="n">claves</span> <span class="o">:=</span> <span class="n">CrearListaEnlazada</span><span class="p">[</span><span class="n">K</span><span class="p">]()</span>
+    <span class="n">hash</span><span class="o">.</span><span class="n">Iterar</span><span class="p">(</span><span class="k">func</span> <span class="p">(</span><span class="n">clave</span> <span class="n">K</span><span class="p">,</span> <span class="n">valor</span> <span class="n">V</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+        <span class="n">claves</span><span class="o">.</span><span class="n">InsertarUltimo</span><span class="p">(</span><span class="n">clave</span><span class="p">)</span>
+        <span class="k">return</span> <span class="no">true</span>
+    <span class="p">})</span>
+    <span class="k">return</span> <span class="n">claves</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
+
+<ol>
+  <li>
+    <p>(★) Suponer que se tiene un hash cerrado que se redimensiona cuando el factor de carga llega a 0.75, y que
+no se tienen en cuenta los elementos borrados a la hora de calcular el factor de carga.</p>
+
+    <ol class="lower_alpha">
+      <li>
+        <p>Describir, en términos generales, el peor escenario posible para esta implementación.</p>
+      </li>
+      <li>
+        <p>Dado un hash de estas características, con capacidad inicial 100, calcular el número máximo de casillas que podría llegar a visitar <code class="language-plaintext highlighter-rouge">hash_obtener()</code> si la cantidad actual de elementos en el hash es 1, y no se realizó ningúna redimensión, pero sí se insertaron y borraron elementos. (En otras palabras, poner una cota superior al caso peor de este hash.)</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>(★) ¿Para qué casos la función <code class="language-plaintext highlighter-rouge">hash_obtener()</code> tiene una complejidad peor que <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>? Explicar tanto para el hash abierto, como el cerrado.</p>
+  </li>
+  <li>(★) Justificar si la siguiente función de hashing es correcta o no:
+    <div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">calcularHash</span><span class="p">(</span><span class="kt">string</span> <span class="n">clave</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="c">// rand.Intn(x) devuelve un numero entero entre 0 y x</span>
+    <span class="k">return</span> <span class="n">rand</span><span class="o">.</span><span class="n">Intn</span><span class="p">(</span><span class="m">10000</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>(★★) a. Mostrar el resultado de las siguientes operaciones tanto para un hash cerrado como para un hash abierto,
+ambos de capacidad 9 e inicialmente vacíos (los números son también el resultado de la función de hashing): insertar 17, insertar 22,
+insertar 35, borrar 17, insertar 52, insertar 54.</p>
+
+    <p>b. Tras estas inserciones ¿qué pasos hay que seguir para verificar si el 70 pertenece al hash?</p>
+
+    <p>c. Posteriormente se realizan más inserciones. ¿Cuándo redimensionaría cada hash?
+¿Qué pasos hay que seguir para hacerlo?</p>
+  </li>
+  <li>
+    <p>(★★) Implementar una función de orden <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> que dado un arreglo de <em>n</em> números enteros devuelva <code class="language-plaintext highlighter-rouge">true</code>
+o <code class="language-plaintext highlighter-rouge">false</code> según si existe algún elemento que aparezca más de la mitad de las veces. Justificar el orden de
+la solución. Ejemplos:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 1, 2, 3] -&gt; false
+[1, 1, 2, 3] -&gt; false
+[1, 2, 3, 1, 1, 1] -&gt; true
+[1] -&gt; true
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>(★★) Asumiendo que se tiene disponible una implementación completa del TDA Hash, se desea implementar una función
+que decida si dos Hash dados representan o no el mismo Diccionario. Considere para la solución que
+es de interés la mejor eficiencia temporal posible. Indique, para su solución, eficiencia en tiempo y espacio.
+Nota: Dos tablas de hash representan el mismo diccionario si tienen la misma cantidad de elementos; todas las claves
+del primero están en el segundo; todas las del segundo, en el primero; y los datos asociados a cada una de esas claves son iguales (se pueden comparar los
+valores con “==”).</p>
+  </li>
+  <li>(★★) Implementar el TDA MultiConjunto. Este es un Conjunto que permite más de una aparición de un elemento,
+por lo que eliminando una aparición, el elemento puede seguir perteneciendo. Dicho TDA debe tener como
+primitivas:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">CrearMulticonj[K]()</code>: crea un multiconjunto.</li>
+      <li><code class="language-plaintext highlighter-rouge">Guardar(elem K)</code>: guarda un elemento en el multiconjunto.</li>
+      <li><code class="language-plaintext highlighter-rouge">Pertence(elem K) bool</code>: devuelve <code class="language-plaintext highlighter-rouge">true</code> si el elemento aparece al menos una vez en el conjunto.</li>
+      <li><code class="language-plaintext highlighter-rouge">Borrar(elem K) bool</code>: elimina <em>una aparición</em> del elemento dentro del conjunto. Devuelve <code class="language-plaintext highlighter-rouge">true</code> 
+si se eliminó una aparición del elemento.</li>
+    </ul>
+
+    <p>Dar la estructura del TDA y la implementación de las 4 primitivas marcadas, de forma tal que todas sean
+<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>.</p>
+  </li>
+  <li>
+    <p>(★★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Se tiene un hash que cuenta con una función de hashing que, recibida una clave,
+devuelve la posición de su inicial en el abecedario. La capacidad inicial del hash
+es 26. Para los puntos B, C y D indicar y justificar si las afirmaciones son
+verdaderas o falsas. Se puede considerar que todas las claves serán palabras
+(sólo se usan letras para las claves).</p>
+
+    <p>a. Mostrar cómo quedan un hash abierto y un hash cerrado (sólo el resultado final)
+tras guardar las siguientes claves: Ambulancia (0), Gato (6), Manzana (12), Ananá (0),
+Girasol (6), Zapato (25), Zapallo (25), Manzana (12), Bolso (1).
+<em>Aclaración</em>: No es necesario hacer una tabla de 26 posiciones, lo importante es que
+quede claro en cuál posición está cada elemento.</p>
+
+    <p>b. En un hash <strong>abierto</strong> con dicha función de hashing, se decide redimensionar cuando la
+cantidad alcanza la capacidad (factor de carga = 1). El rendimiento de
+<code class="language-plaintext highlighter-rouge">hash_obtener()</code> es mejor en este caso respecto a si se redimensionara al alcanzar
+un factor de carga 2.</p>
+
+    <p>c. En un hash <strong>cerrado</strong> con dicha función de hashing, si se insertan <code class="language-plaintext highlighter-rouge">n + 1</code> claves diferentes
+(considerar que se haya redimensionado acordemente), <code class="language-plaintext highlighter-rouge">n</code> con la misma letra
+inicial, y 1 con otra distinta, en el primer caso <code class="language-plaintext highlighter-rouge">Obtener()</code> es <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> y en el
+segundo siempre <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>.</p>
+
+    <p>d. En un hash <strong>abierto</strong> con dicha función de hashing, si se insertan <code class="language-plaintext highlighter-rouge">n + 1</code> claves diferentes
+(considerar que se haya redimensionado acordemente), <code class="language-plaintext highlighter-rouge">n</code> con la misma letra
+inicial, y 1 con otra distinta, en el primer caso <code class="language-plaintext highlighter-rouge">Obtener()</code> es <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> y en el
+segundo siempre <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>.</p>
+  </li>
+  <li>
+    <p>(★★★) El Ing. Musumeci quiere implementar un hash abierto, pero en el que las listas de cada posición
+se encuentren ordenadas por clave (se le pasa por parmámetro la función de comparación, por ejemplo 
+<code class="language-plaintext highlighter-rouge">strcmp</code>). Explicar cómo mejora o empeora respecto a la versión que vemos en clase para el caso de 
+inserciones, borrados, búsquedas con éxito (el elemento se encuentra en el hash) y sin éxito (no se encuentra).</p>
+  </li>
+  <li>
+    <p>(★★) En un diccionario todas las claves tienen que ser diferentes, no así sus valores.
+Escribir en Go una primitiva para el hash cerrado <code class="language-plaintext highlighter-rouge">func (dicc *hashCerrado[K, V]) CantidadValoresDistintos() int</code> que, 
+sin usar el iterador interno, dado un hash devuelva la cantidad de <strong>valores</strong> diferentes que almacena. Se puede suponer que el tipo <code class="language-plaintext highlighter-rouge">V</code> (el genérico de los valores) en este caso también es <code class="language-plaintext highlighter-rouge">comparable</code>, como
+lo son las claves. Indicar y justificar el orden del algoritmo.</p>
+  </li>
+  <li>
+    <p>(★★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> La diferencia simétrica entre dos conjuntos A y B es un conjunto que
+contiene todos los elementos que se encuentran en A y no en B, y
+viceversa.</p>
+
+    <p>Implementar una <em>función</em> 
+<code class="language-plaintext highlighter-rouge">DiferenciaSimetricaDict[K comparable, V any](d1, d2 Diccionario[K, V]) Diccionario[K, V]</code>
+que devuelva un nuevo Diccionario (puede ser el hash que hayas implementado) 
+con la diferencia simétrica entre los dos
+recibidos por parámetro. La diferencia tiene que ser calculada
+teniendo en cuenta las claves, y los datos asociados a las claves
+deben ser los mismos que estaban en cada uno de los hashes
+originales. 
+Ejemplo:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>d1 = { "perro": "guau", "gato": "miau", "vaca": "mu" }
+d2 = { "perro": "woof", "zorro": "ding-ding" }
+DiferenciaSimetricaDict(d1, d2) =&gt; { "gato": "miau", "vaca": "mu", "zorro": "ding-ding" }
+</code></pre></div>    </div>
+
+    <p>Indicar y justificar el orden de la función implementada.</p>
+  </li>
+  <li>
+    <p>(★★) Una fábrica de pastas de Lanús le pide a alumnos de Algoritmos y Estructuras de Datos que 
+le solucionen un problema: sus dos distribuidoras de materias primas le enviaron un 
+hash cada una, dónde sus claves son los nombres de los productos, y sus valores 
+asociados, sus precios. La fábrica de pastas le pide a los alumnos que le implementen 
+una <strong>función</strong> que le devuelva un nuevo hash con la unión de todos esos productos, 
+y en caso de que una misma materia prima se encuentre en ambos hashes, elegir la que tenga 
+el precio más barato. 
+Indicar y justificar el orden del algoritmo.</p>
+  </li>
+  <li>
+    <p>(★★★★★) Se quiere implementar un TDA Diccionario con las siguientes primitivas:
+<code class="language-plaintext highlighter-rouge">Obtener(x)</code> devuelve el valor de <code class="language-plaintext highlighter-rouge">x</code> en el diccionario; <code class="language-plaintext highlighter-rouge">Insertar(x, y)</code> inserta en el diccionario
+la clave <code class="language-plaintext highlighter-rouge">x</code> con el valor <code class="language-plaintext highlighter-rouge">y</code> (entero); <code class="language-plaintext highlighter-rouge">Borrar(x)</code> borra la entrada de <code class="language-plaintext highlighter-rouge">x</code>; <code class="language-plaintext highlighter-rouge">Add(x, n)</code> le
+suma <code class="language-plaintext highlighter-rouge">n</code> al contenido de <code class="language-plaintext highlighter-rouge">x</code>; <code class="language-plaintext highlighter-rouge">AddAll(m)</code> le suma <code class="language-plaintext highlighter-rouge">m</code> a <strong>todos</strong> los valores.</p>
+
+    <p>Proponer una implementación donde <strong>todas</strong> las operaciones sean <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>. Justificar el
+orden de las operaciones.</p>
+  </li>
+  <li>(★★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Implementar un algoritmo que reciba un arreglo desordenado de enteros, su largo (<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>) y un 
+número <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.07153em;">K</span></span></span></span></span> y determinar en <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> si existe un par de elementos en el arreglo que 
+sumen exactamente <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.07153em;">K</span></span></span></span></span>.</li>
+</ol>
+
+
+        </div>
+      </div>
+    </main>
+
+    <script src="./Diccionarios, Hashing y Hash_files/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+<script src="./Diccionarios, Hashing y Hash_files/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+  
+
+
+</body></html>

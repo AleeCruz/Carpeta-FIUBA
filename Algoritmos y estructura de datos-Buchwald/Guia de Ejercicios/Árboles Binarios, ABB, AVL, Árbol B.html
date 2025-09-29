@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)https://algoritmos-rw.github.io/algoritmos/material/guias/arboles/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Árboles Binarios, ABB, AVL, Árbol B</title>
+  <meta name="description" content="Página de la materia Algoritmos y Estructuras de Datos, curso Buchwald. Facultad de Ingeniería, Universidad de Buenos Aires.">
+
+  <link rel="stylesheet" href="./Árboles Binarios, ABB, AVL, Árbol B_files/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh">
+  <link rel="stylesheet" href="./Árboles Binarios, ABB, AVL, Árbol B_files/all.css">
+  <link rel="stylesheet" href="./Árboles Binarios, ABB, AVL, Árbol B_files/main.css" type="text/css">
+  <link rel="shortcut icon" href="https://algoritmos-rw.github.io/algoritmos/assets/img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="canonical" href="https://algoritmos-rw.github.io/algoritmos/material/guias/arboles/"> -->
+
+  
+  <link rel="stylesheet" href="./Árboles Binarios, ABB, AVL, Árbol B_files/katex.min.css" crossorigin="anonymous" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X">
+  <script defer="" src="./Árboles Binarios, ABB, AVL, Árbol B_files/katex.min.js" crossorigin="anonymous" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"></script>
+  <script defer="" src="./Árboles Binarios, ABB, AVL, Árbol B_files/auto-render.min.js" crossorigin="anonymous" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+
+  <body>
+    <header role="banner" class="sticky-top container-fluid px-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand d-lg-none" href="https://algoritmos-rw.github.io/algoritmos/material/guias/arboles/#">Algoritmos y Estructuras de Datos</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sitenav" aria-controls="sitenav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="sitenav">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 small mx-auto">
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/"><span class="fa fa-home"></span> Inicio</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/docentes/"><span class="fa fa-chalkboard-teacher"></span> Docentes</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/regimen/"><span class="fa fa-tasks"></span> Régimen</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/calendario/"><span class="fa fa-calendar-alt"></span> Calendario</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/tps/"><span class="fa fa-briefcase"></span> TPs</a></li>
+        
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/algoritmos/material/guias/arboles/#" role="button" id="matDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-paperclip"></span> Material</a>
+          <ul class="dropdown-menu">
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/bibliografia/"><span class="fa fa-book"></span> Bibliografía</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/material/"><span class="fa fa-book-reader"></span> Apuntes del curso</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/material/guias/"><span class="fa fa-dumbbell"></span> Guías de ejercicios</a></li>
+            <li>
+              <a class="dropdown-item" href="https://drive.google.com/drive/folders/0B0x0VPz_v-f_ekhhQUpkay13RnM?resourcekey=0-BqMLnLNd6T8lRDzv-VL4xA&amp;usp=sharing" target="_blank"><span class="fab fa-google-drive"></span> Drive</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.youtube.com/@algoritmos-fiuba-buchwald" target="_blank"><span class="fab fa-youtube"></span> Canal</a>
+            </li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.github.io/algoritmos/faq/"><span class="fas fa-question-circle"></span> FAQ</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/algoritmos/material/guias/arboles/#" role="button" id="aluDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-user-friends"></span> Alumno</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://algoritmos-rw.github.io/descargas"><span class="fa fa-file-download"></span> Descargas</a></li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.dijkstra.ar/entregas/"><span class="fa fa-file-upload"></span> Entregas</a></li>
+            <li><a class="dropdown-item" href="https://algoritmos-rw.dijkstra.ar/notas/"><span class="fa fa-pencil-alt"></span> Notas</a></li>
+          </ul>
+        </li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/encuestas/"><span class="fa fa-poll"></span> Encuestas</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/algoritmos/infraestructura/"><span class="fa fa-network-wired"></span> Infraestructura</a></li>
+        <li class="nav-item">
+          <a href="https://github.com/algoritmos-rw/algoritmos/blob/master/material/guias/arboles.md" class="nav-link" target="_blank"><span class="fab fa-github"></span> Editar en GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="container" role="main">
+      <div class="row justify-content-center">
+        <div class="col col-xl-8">
+          <h1 class="no_toc" id="árboles-binarios-abb-avl-árbol-b">Árboles Binarios, ABB, AVL, Árbol B</h1>
+
+<h2 class="no_toc" id="contenidos">Contenidos</h2>
+
+<ol id="markdown-toc">
+  <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/arboles/#ejercicio-resuelto" id="markdown-toc-ejercicio-resuelto">Ejercicio resuelto</a>    <ol>
+      <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/arboles/#soluci%C3%B3n" id="markdown-toc-solución">Solución</a></li>
+    </ol>
+  </li>
+  <li><a href="https://algoritmos-rw.github.io/algoritmos/material/guias/arboles/#ejercicios-propuestos" id="markdown-toc-ejercicios-propuestos">Ejercicios propuestos</a></li>
+</ol>
+
+<h2 id="ejercicio-resuelto">Ejercicio resuelto</h2>
+
+<p>Se tiene un árbol binario de búsqueda con cadenas como claves y
+función de comparación <code class="language-plaintext highlighter-rouge">strcmp</code>. Implementar una primitiva
+<code class="language-plaintext highlighter-rouge">func (abb *abb) Mayores(cadena string) Lista[string]</code>
+que, dados un ABB y una clave, devuelva una
+lista ordenada con las claves del árbol estrictamente mayores a la
+recibida por parámetro (que no necesariamente está en el árbol). Implementar sin utilizar el iterador Interno del ABB.</p>
+
+<p>Suponer que la estructura del TDA es:</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">abb</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">clave</span> <span class="kt">string</span>
+    <span class="n">izq</span> <span class="o">*</span><span class="n">abb</span>
+    <span class="n">der</span> <span class="o">*</span><span class="n">abb</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Aclaración</em>: se debe realizar la menor cantidad posible de comparaciones.</p>
+
+<h3 id="solución">Solución</h3>
+
+<p>La aclaración hace mención a que utilicemos la propiedad de ABB: sabemos que los nodos
+a izquierda son menores al actual, y los que estén a derecha son mayores.
+En particular, si estamos en un nodo cuya clave es menor (o igual) a la buscada, entonces es innecesario
+revisar a izquierda: todos esos nodos también serán menores. Sí tendremos siempre que revisar a derecha,
+porque no es posible descartar. Esto es similar a una búsqueda por rango, solo que sin un límite superior.</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="p">(</span><span class="n">abb</span> <span class="o">*</span><span class="n">abb</span><span class="p">)</span> <span class="n">Mayores</span><span class="p">(</span><span class="n">cadena</span> <span class="kt">string</span><span class="p">)</span> <span class="n">Lista</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span> <span class="p">{</span>
+    <span class="n">mayores</span> <span class="o">:=</span> <span class="n">TDALista</span><span class="o">.</span><span class="n">CrearListaEnlazada</span><span class="p">[</span><span class="kt">string</span><span class="p">]()</span>
+    <span class="n">abb</span><span class="o">.</span><span class="n">mayores</span><span class="p">(</span><span class="n">clave</span><span class="p">,</span> <span class="n">mayores</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">claves</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="k">func</span> <span class="p">(</span><span class="n">abb</span> <span class="o">*</span><span class="n">abb</span><span class="p">[</span><span class="kt">string</span><span class="p">])</span> <span class="n">Mayores</span><span class="p">(</span><span class="n">cadena</span> <span class="n">K</span><span class="p">,</span> <span class="n">mayores</span> <span class="n">Lista</span><span class="p">[</span><span class="kt">string</span><span class="p">])</span> <span class="p">{</span>
+    <span class="c">// caso base SIEMPRE</span>
+    <span class="k">if</span> <span class="n">abb</span> <span class="o">==</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c">// si la actual es mayor, llamamos a la izquierda y guardamos la actual</span>
+    <span class="k">if</span> <span class="n">strings</span><span class="o">.</span><span class="n">strcmp</span><span class="p">(</span><span class="n">abb</span><span class="o">.</span><span class="n">clave</span><span class="p">,</span> <span class="n">clave</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="p">{</span>
+        <span class="n">abb</span><span class="o">.</span><span class="n">izq</span><span class="o">.</span><span class="n">mayores</span><span class="p">(</span><span class="n">clave</span><span class="p">,</span> <span class="n">mayores</span><span class="p">)</span>
+        <span class="n">mayores</span><span class="o">.</span><span class="n">InsertarUltimo</span><span class="p">(</span><span class="n">abb</span><span class="o">.</span><span class="n">clave</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">abb</span><span class="o">.</span><span class="n">der</span><span class="o">.</span><span class="n">mayores</span><span class="p">(</span><span class="n">clave</span><span class="p">,</span> <span class="n">mayores</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ya que estamos, vemos la complejidad: En el peor de los casos, se pasa una clave que es menor a la mínima, por lo que se
+ven todos los nodos, así que será <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>. Por si nos interesara el mejor caso, esto sería con una clave mayor
+o igual a la máxima clave del árbol, por lo que recorreríamos la rama derecha, haciéndose en <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Omega(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">Ω</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> (recordar, la notación <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord">Ω</span></span></span></span></span> es una cota inferior, a diferencia de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">O</mi></mrow><annotation encoding="application/x-tex">\mathcal{O}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord"><span class="mord mathcal" style="margin-right: 0.02778em;">O</span></span></span></span></span></span> que es una cota superior).</p>
+
+<h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
+
+<ol>
+  <li>
+    <p>(★) Dado un árbol binario, escribir una primitiva recursiva que determine la altura del mismo. Indicar
+y justificar el orden de la primitiva.</p>
+  </li>
+  <li>
+    <p>(★) Implementar una primitiva que devuelva la suma de todos los datos (números) de un árbol binario.
+Indicar y justificar el orden de la primitiva.</p>
+  </li>
+  <li>
+    <p>(★) Se tiene un AB con números enteros como datos, y se quiere reemplazar cada dato por el resultado de multiplicarlo con los datos de los hijos.
+Hacer un seguimiento de hacer dicho procesamiento con un preorder, inorder o postorder. A continuación se deja
+la implementación mediante cada recorrido:</p>
+
+    <div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">datoONeutro</span><span class="p">(</span><span class="n">ab</span> <span class="o">*</span><span class="n">arbol</span><span class="p">[</span><span class="kt">int</span><span class="p">])</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">ab</span> <span class="o">==</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="m">1</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">ab</span><span class="o">.</span><span class="n">dato</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+    
+<span class="k">func</span> <span class="n">MultiplicarConHijosPre</span><span class="p">(</span><span class="n">arbol</span> <span class="o">*</span><span class="n">Arbol</span><span class="p">[</span><span class="kt">int</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">arbol</span> <span class="o">==</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="k">return</span>  
+    <span class="p">}</span> 
+    <span class="n">valor_izq</span> <span class="o">:=</span> <span class="n">datoONeutro</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">izq</span><span class="p">)</span>
+    <span class="n">valor_der</span> <span class="o">:=</span> <span class="n">datoONeutro</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">der</span><span class="p">)</span>
+    <span class="n">arbol</span><span class="o">.</span><span class="n">dato</span> <span class="o">*=</span> <span class="n">valor_izq</span> <span class="o">*</span> <span class="n">valor_der</span>
+    <span class="n">MultiplicarConHijosPre</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">izq</span><span class="p">)</span>
+    <span class="n">MultiplicarConHijosPre</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">der</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">MultiplicarConHijosIn</span><span class="p">(</span><span class="n">arbol</span> <span class="o">*</span><span class="n">Arbol</span><span class="p">[</span><span class="kt">int</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">arbol</span> <span class="o">==</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="k">return</span>  
+    <span class="p">}</span> 
+    <span class="n">MultiplicarConHijosIn</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">izq</span><span class="p">)</span>
+    <span class="n">valor_izq</span> <span class="o">:=</span> <span class="n">datoONeutro</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">izq</span><span class="p">)</span>
+    <span class="n">valor_der</span> <span class="o">:=</span> <span class="n">datoONeutro</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">der</span><span class="p">)</span>
+    <span class="n">arbol</span><span class="o">.</span><span class="n">dato</span> <span class="o">*=</span> <span class="n">valor_izq</span> <span class="o">*</span> <span class="n">valor_der</span>
+    <span class="n">MultiplicarConHijosIn</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">der</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">MultiplicarConHijosPos</span><span class="p">(</span><span class="n">arbol</span> <span class="o">*</span><span class="n">Arbol</span><span class="p">[</span><span class="kt">int</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">arbol</span> <span class="o">==</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="k">return</span>
+    <span class="p">}</span> 
+    <span class="n">MultiplicarConHijosPos</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">izq</span><span class="p">)</span>
+    <span class="n">MultiplicarConHijosPos</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">der</span><span class="p">)</span>
+    <span class="n">valor_izq</span> <span class="o">:=</span> <span class="n">datoONeutro</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">izq</span><span class="p">)</span>
+    <span class="n">valor_der</span> <span class="o">:=</span> <span class="n">datoONeutro</span><span class="p">(</span><span class="n">arbol</span><span class="o">.</span><span class="n">der</span><span class="p">)</span>
+    <span class="n">arbol</span><span class="o">.</span><span class="n">dato</span> <span class="o">*=</span> <span class="n">valor_izq</span> <span class="o">*</span> <span class="n">valor_der</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>(★★) Dado un árbol binario, escriba una <em>primitiva</em> recursiva que cuente la cantidad de nodos que
+tienen exactamente dos hijos directos. ¿Qué orden de complejidad tiene la función implementada?</p>
+  </li>
+  <li>
+    <p>(★★) Escribir una <em>primitiva</em> con la firma <code class="language-plaintext highlighter-rouge">func (arbol *Arbol) Invertir()</code>
+que invierta el árbol binario pasado por parámetro, de manera tal que los hijos
+izquierdos de cada nodo se conviertan en hijos derechos.</p>
+
+    <p>La estructura <code class="language-plaintext highlighter-rouge">Arbol</code> respeta la siguiente definición:</p>
+
+    <div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">type</span> <span class="n">Arbol</span> <span class="k">struct</span> <span class="p">{</span>
+        <span class="n">izq</span> <span class="o">*</span><span class="n">Arbol</span>
+        <span class="n">der</span> <span class="o">*</span><span class="n">Arbol</span>
+    <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>Indicar el orden de complejidad de la función implementada.</p>
+  </li>
+  <li>
+    <p>(★★) Suponer que se tiene un ABB <em>A</em> con una función de comparación <code class="language-plaintext highlighter-rouge">cmp1</code> con <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> claves. También, se
+tiene otro ABB vacío <em>B</em> con función de comparación <code class="language-plaintext highlighter-rouge">cmp2</code> (con <code class="language-plaintext highlighter-rouge">cmp1</code> y <code class="language-plaintext highlighter-rouge">cmp2</code> diferentes).
+¿Es posible insertar en algún orden todas las claves de <em>A</em> en <em>B</em> de tal forma que ambos tengan
+exactamente la misma estructura? Si es posible, describir un algoritmo que permita lograr esto; si no lo es, razonar por qué. (Considerar que la lógica a emplear debe funcionar para cualquier valor de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> y cualquier estructura
+que tenga el ABB <em>A</em>.)</p>
+  </li>
+  <li>
+    <p>(★★★) Se tiene un AVL con números enteros como claves (su función de comparación simplemente compara
+dichos valores de la forma tradicional). Su estado inicial puede reconstruirse a partir del
+preorder: <code class="language-plaintext highlighter-rouge">15 - 6 - 4 - 7 - 50 - 23</code>. Hacer el seguimiento de las siguientes inserciones,
+incluyendo rotaciones intermedias: <code class="language-plaintext highlighter-rouge">71 - 27 - 38 - 19 - 11 - 21 - 24 - 25</code>.</p>
+  </li>
+  <li>
+    <p>(★★★) <strong>Aclaración</strong>: Este ejercicio es sobre el tema de <em>Árboles B</em>, si no se vio el tema durante el cuatrimestre, salteá el ejercicio (si te interesa saber sobre el tema, podés consultar por slack). Mostrar cómo se modifica la estructura de un árbol B (incluyendo los pasos intermedios) con tamaño
+para 3 claves por nodo que inicialmente se encuentra vacío, al aplicar las siguientes operaciones:
+insertar 14, insertar 2, insertar 10, insertar 6, insertar 7, insertar 1, insertar 4, insertar 8,
+insertar 11, insertar 19, insertar 9, insertar 5, insertar 15, insertar 3.</p>
+  </li>
+  <li>(★★★) Definimos como <em>quiebre en un árbol binario</em> cuando ocurre que:
+    <ul>
+      <li>un hijo derecho tiene un solo hijo, y es el izquierdo</li>
+      <li>un hijo izquierdo tiene un solo hijo, y es el derecho</li>
+    </ul>
+
+    <p>Implementar una <em>primitiva</em> para el árbol binario <code class="language-plaintext highlighter-rouge">func (arbol Arbol) Quiebres() int</code>
+que, dado un árbol binario, nos devuelva la cantidad de quiebres que
+tiene. La primitiva no debe modificar el árbol. La estructura del
+tipo <code class="language-plaintext highlighter-rouge">Arbol</code> es:</p>
+
+    <div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">type</span> <span class="n">Arbol</span> <span class="k">struct</span> <span class="p">{</span>
+        <span class="n">izq</span> <span class="o">*</span><span class="n">Arbol</span>
+        <span class="n">der</span> <span class="o">*</span><span class="n">Arbol</span>
+    <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>Indicar y justificar el orden de la primitiva, e indicar el tipo de
+recorrido implementado.</p>
+  </li>
+  <li>
+    <p>(★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Indicar si las siguientes afirmaciones son verdaderas o falsas. En caso de ser verdaderas,
+justificar, en caso de ser falsas poner un contraejemplo:</p>
+
+    <ol class="lower_alpha">
+      <li>
+        <p>Si dos árboles binarios tienen el mismo recorrido inorder, entonces tienen la misma
+estructura.</p>
+      </li>
+      <li>
+        <p>Si dos árboles binarios tienen el mismo recorrido preorder, entonces tienen la misma
+estructura.</p>
+      </li>
+      <li>
+        <p>Si dos árboles binarios de búsqueda (e idéntica función de comparación) tienen el mismo
+recorrido preorder, entonces tienen la misma estructura.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>(★★) Implementar una primitiva para el ABB, que reciba el ABB y devuelva una lista con las claves
+del mismo, ordenadas tal que si insertáramos las claves en un ABB vacío (con la misma función
+de comparación), dicho ABB tendría la misma estructura que el árbol original. ¿Qué tipo de
+recorrido utilizaste? Indicar y justificar el orden de la primitiva.</p>
+  </li>
+  <li>
+    <p>(★★★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Implementar una primitiva para el AB que reciba dos arreglos (o listas) de cadenas. El primer arreglo
+corresponde al preorder de un árbol binario. El segundo al inorder del mismo árbol (ambos arreglos
+tienen los mismos elementos, sin repetidos). La función debe devolver un árbol binario que tenga dicho
+preorder e inorder. Indicar y justificar el orden de la primitiva (tener cuidado con este punto).
+Considerar que la estructura del árbol binario es:</p>
+
+    <div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">type</span> <span class="n">Arbol</span> <span class="k">struct</span> <span class="p">{</span>
+        <span class="n">izq</span> <span class="o">*</span><span class="n">Arbol</span>
+        <span class="n">der</span> <span class="o">*</span><span class="n">Arbol</span>
+    <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>(★★★★) Implementar una función que reciba un arreglo ordenado y devuelva un arreglo o lista con
+los elementos en orden para ser insertados en un ABB, de tal forma que al insertarlos en
+dicho orden se asegure que el ABB quede balanceado. ¿Cómo cambiarías tu resolución si en
+vez de querer guardarlos en un ABB se fueran a insertar en un AVL?</p>
+  </li>
+  <li>
+    <p>(★★★) Determinar cómo es el Árbol cuyo pre order es <code class="language-plaintext highlighter-rouge">EURMAONDVSZT</code>, e in order es <code class="language-plaintext highlighter-rouge">MRAUOZSVDNET</code>, e 
+indicar su recorrido post order.</p>
+  </li>
+  <li>
+    <p>(★★★) En un árbol binario, dado un nodo con dos hijos, explicar por qué su predecesor en el recorrido 
+inorder no puede tener hijo derecho, y que su sucesor (también, en el recorrido inorder) no puede tener 
+hijo izquierdo.</p>
+  </li>
+  <li>
+    <p>(★★) <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">♠</mi></mrow><annotation encoding="application/x-tex">\spadesuit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.82407em; vertical-align: -0.12963em;"></span><span class="mord">♠</span></span></span></span></span> Implementar en Go una <strong>primitiva</strong> de ABB (DiccionarioOrdenado) que funcione 
+como un iterador interno que haga un recorrido por niveles inverso. Es decir, que visite 
+los elementos del nivel más inferior hasta la raiz. Para el ABB cuyo preorder es
+<code class="language-plaintext highlighter-rouge">5, 2, 1, 3, 4, 7, 9</code> (comparación numérica habitual), el recorrido debe ser: 
+<code class="language-plaintext highlighter-rouge">4, 9, 3, 1, 7, 2, 5</code>. En el 4to nivel está sólo el <code class="language-plaintext highlighter-rouge">4</code>. En el 3er nivel están el <code class="language-plaintext highlighter-rouge">1, 3 y 9</code> pero hay 
+que leerlos de derecha a izquierda.
+Luego en el 2do el <code class="language-plaintext highlighter-rouge">2 y 7</code> con la misma lógica, y finalmente la raíz <code class="language-plaintext highlighter-rouge">5</code> al final.
+Indicar y justificar la complejidad de la primitiva implementada.</p>
+  </li>
+  <li>
+    <p>(★★★) Implementar una <strong>primitiva</strong> del ABB que dado un valor entero <code class="language-plaintext highlighter-rouge">M</code>, una clave inicial <code class="language-plaintext highlighter-rouge">inicio</code> y 
+una clave final <code class="language-plaintext highlighter-rouge">fin</code>, se devuelva una lista con todos los <strong>datos</strong> cuyas claves estén entre 
+<code class="language-plaintext highlighter-rouge">inicio</code> y <code class="language-plaintext highlighter-rouge">fin</code>, que estén <strong>dentro de los primeros <code class="language-plaintext highlighter-rouge">M</code> niveles del árbol</strong> (considerando
+a la raíz en nivel 1). 
+Indicar y justificar la complejidad temporal.</p>
+
+    <p>Por ejemplo, si tenemos el siguiente ABB con <code class="language-plaintext highlighter-rouge">M = 3</code>, <code class="language-plaintext highlighter-rouge">inicio = 5</code> y <code class="language-plaintext highlighter-rouge">fin = 15</code>:</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      10
+    /    \
+   5      15                    Un resultado final serían los datos de las 
+  / \    /  \                   claves 10, 5, 8, 15, 12 (en cualquier orden).
+ 3   8  12   20
+    /     \
+   7       14
+</code></pre></div>    </div>
+  </li>
+  <li>(★★) Realizar un seguimiento de las siguientes operaciones sobre un ABB,
+cuyo estado inicial parte del preorder 
+<code class="language-plaintext highlighter-rouge">["Elefante", "Abeja", "Burro", "Águila", "Camello", "Dromedario", "Gato", "Foca", "Orangután"]</code> 
+(con función de comparación alfanumérica): <code class="language-plaintext highlighter-rouge">Guardar("Cangrejo")</code>, <code class="language-plaintext highlighter-rouge">Borrar("Elefante")</code>,
+<code class="language-plaintext highlighter-rouge">Borrar("Gato")</code>, <code class="language-plaintext highlighter-rouge">Guardar("Lagarto")</code>, <code class="language-plaintext highlighter-rouge">Borrar("Águila")</code>.</li>
+</ol>
+
+
+        </div>
+      </div>
+    </main>
+
+    <script src="./Árboles Binarios, ABB, AVL, Árbol B_files/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+<script src="./Árboles Binarios, ABB, AVL, Árbol B_files/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+  
+
+
+</body></html>
