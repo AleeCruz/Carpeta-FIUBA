@@ -1,0 +1,147 @@
+Clase semana 8.
+----------------------------------------
+Se debe contestar las serie de preguntas que no fueron contestados en la semana pasada, contestar las preguntas importante que se pueda contestar todas las preguntas, se hace enfasis en las skills, se hace una competencias por las ofertas laborales. 
+competencia, competencia, competencia.
+
+---------------------------------------------
+
+Calidad de codigo buenas practicas de programacion, incorporar buenos habitos de programacion, un programador con buenos habitos, incorporar buenos habitos para la programacion y en general la vida.
+
+
+
+¿Por que nos importa ?
+ventajas: codigo de calidad, reduccion de errores, mejora la colaboracion  y facilita el mantenimiento.
+
+Ahorrar el tiempo, es ahorrar tiempo haciendo las cosas con la mayo calidad posible,
+
+
+
+aplicacion universal: relevante para cualquier lenguajes java , smalltalk todos los lenguajes.
+
+
+flujo de beneficios: codigo limpio -> menos bugs 
+
+
+EL codigo deve ser simple, y directo.Debe leerse como una prosa bien escrita.
+
+
+2 usar nombres descriptivos para mejorar la calidad de los trabajos, 
+
+Es importante revisar-> nombre de variables->metodos y clases->deben reflejar el proposito.
+Evitar nombres genericos.
+
+
+Las fucniones deben ser cortas y realizar una sola tarea
+Facilita la lectura prueba y reutilizacion.
+
+hacer las funciones y metodos muy simples con una sola tarea, esto debe aplicar a cualquier paradigma estructurada , poo , funcional, etc.
+Metodos que realicen una sola cosa. 
+
+5 Eliminar numeros magicos.
+->usar constantes con nombres descriptivos, para valores desccriptivos
+->mejorar la mantebilidad y claridad
+->evitar a toda costa valores hardcodeados.
+(No usar los numeros magicos )
+
+-> minimizar los comentarios(El codigo debe de ser autodocumentado el codigo debe autoexplicarse )
+-> El codigo debe de ser autoexplicativo buenos nombre y estructuras.
+->usar los comentarios solo para explicar el "por que" no el "que"
+(los comentarios deberian ser utilizados solo para explicar aquellos que no se entienda pero tener cuidado de  no sobrecomentar con las ideas obvias, no abusar, se puede perder tiempo)
+
+->usar excepciones y validaciones claras para mejorar el codigo.
+-> evitar logica confusa o silenciar errores.
+->Lanzar una excepcion es mas claro que ignorar el error.
+
+las excepciones me permiten obtener mas contexto sobre el tipo de errores que salen en terminal.
+
+7 Aprender a manejar errores apropiadamente, nuestro codigo debe de ser producto.
+
+8 Evitar codigo duplicado.
+->reutilizar codigo mediante funciones o metodos en lugar de repetir la logica
+-> Aplicar el principio conocido como DIY (Dont repeat Yourself)
+
+9 usar formato consistente
+->seguir una guia de estilo identacion, llaves y espacios.
+->mejorar la legibilidad y la colaboracion.
+
+
+10 Escribir codigo legible
+
+->Priorizar la claridad 
+(Que no se acriptico)
+
+11 Realizar pruebas
+
+->Escribir pruebas unitarias 
+->
+
+
+-----------------------------------
+Tener codigo de calidad es una inversion para los proyectos delk futuro
+
+------------------------------------
+Se recomendao varios libros
+Clean code
+The pragmatic programmer
+The art of readable code  se deberian leer 
+-------------------------------
+
+Se continuo con mocking (presentacion nueva), los simuladores que tiene que ver
+
+¿Que es un mob object ?
+'De que trata?
+
+Doble sen programacion  se llama objetos simulados a los objetos que imitan el comportamiento de objetos reales de una forma controlada.
+Que tiene que ver los dobles ?
+ahora hay objetos que simulan ser otros objetos, recordar el ejemplo de mariana y paola( aparece otro objeto que simula ser una persona).
+
+Inicio ->Aclaracion-> NO confudir mock con patron proxy(Importante)
+
+El patron proxy-> Permite proporcionar un sustituo para otro objeto.
+Un proxy controla acceso el objeto original , permitiendo jacer algo antes o despues de que la solicitud llegue al objeto original.
+EL proxy tinene una mini logica, 
+el patron proxy es una solucion que hace controles a las entradas, el nevegador utiliza este principip.
+Repasar el concepto de patron proxy.
+fin de la alcaracion
+
+
+-------------------------------
+Entonces para que sirve un mob object
+Sirve ṕara hacer pruebas de ailamientos,
+
+un poco de tecnologia
+-Pruebas unitarias
+-pruebas de integracion
+-SUT(System under testing)(importante analizar el contexto o el dominio)
+Se define el sut como una parte del contecto o del univero que vamos a analizar
+
+
+testear clases aisladas es facil,
+testear con dependencias es complicado.
+
+Clase de pruebas->Clases siendo probadas->(Se menciono el ejemplo de renaper, todos los paisen usan el mismo concepto de registro y busqueda->Baiscamente validaciones )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
