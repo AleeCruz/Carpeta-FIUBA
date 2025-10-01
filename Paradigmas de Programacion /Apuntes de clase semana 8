@@ -121,11 +121,53 @@ testear con dependencias es complicado.
 
 Clase de pruebas->Clases siendo probadas->(Se menciono el ejemplo de renaper, todos los paisen usan el mismo concepto de registro y busqueda->Baiscamente validaciones )
 
+Saquemos las dependencias solo para las pruebas (SOLO EN LAS PRUEBAS), vamos a utilizar el mock, mock, mock, mock.
+
+Se llama a un mock objects que es un objeto identico al original con las mismas funcionalidades, o sea que se imita, son objetos que se comportan de manera similar pero de una forma controlada, el codigo objeto real no deberia usarse sino solo un mobobject.
+El secereto de las pruebas sondeterministicas , objetivos del dia sacar las dependencias.
+
+¿Por que se llaman pruebas de aislamientos?
+para mi pruebas de aislamientos , se necesita un renaper controlado por mi , que imita de forma cotrolada, si lo utilizamos en las pruebas  debe de comportarse de acuero  a las pruebas.
+cada vez que probamos un renaper clone debe tener un comportmaiento identico al original.
+
+hay muchos tipos de mocks , hay muchos niveles de mockismo, testear una clase que tiene dependencias es dificil entonces usamos una clase smocking siempre , no es un objeto real pero lo imita)
+
+¿Como Logramos esto?
+¿Que serie de pasos deberiamos seguir para que?
+¡Como se hace esto selectivamente?
+mecanismo de inyeccion de dependencias
+Vamos a tener que hacer un uso del concepto de inyecciones, que abarca a todos los paradigmas, se lo conoce como Mecanismo de inyecciones al pollo.
+
+mecanismo mendiante el cual un objeto recibe dependencias desde el exterior,en lugar de crearlas por si mismos.
+esto priomueve un bajo acoplamiento, y una mayor facilidad para testear componentes, ya que pieden sutituir  las dependencias reales por simulaciones(mocks) durante las pruebas.
+
+
+Renaper mock y renaper duplicado deben tener el mismo comportamiento
+Inyecciones desde el mundo exterior.
+inyeccion por constructor, setter y por campo.
+Actualmente se usa frameworks que hace una inyeccion que es lo que hace(magic box)
+
+
+¿Como se construyen estos mocks?
+Podria hacerse a mano, codeamos desde cero, o sino lo podemos hacer utilizando un FRAMEWORKS.
+¿Como saber cual elegir ?, nosotros en la cursada usamos SUNIT.
+
+Se vio ventajas y desventajas de usar framewors mockitos o utilizar un mock manualmente.
+Se debe elegir dependiendo el proyecto(revisar el documento principal del campus )
+
+Ejemplos:
+Se utilizan personajes de pruebas , se dio un ejemplo de usar muñecos(mocks)
 
 
 
+Se utilizo la sintaxis de mockito test, se vio una interface , basado en inyerfaces, 
 
+Aprender a usar mocks para el TP2. (reeler la presentacion), ademas de usar junit se debe usar mockito,
+se vio un ejemplo de la sintaxis de mockito, example Ivehiculo, al vehiculo se lo inyecta la dependencias, gracias a las interfaces.
+hay 2 formas de testear, usar los mocks para ver los casos bordes.
+El objetivo de los mocks es para testear cuando las cosas no andan o no se comportan de manera correcta, se puede forzar un test especifico, modelar e imitar el comportamiento. 
 
+Lecturas recomendadas, mocks arent stubes, estado del arte y tendencias en test driven development(esta es obligatorio leerla para el final), recomienda el orden de lectura. 
 
 
 
