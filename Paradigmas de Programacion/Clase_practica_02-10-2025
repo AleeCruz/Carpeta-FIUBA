@@ -1,0 +1,87 @@
+Se realizo el ejercicio de vehiculos en java.
+
+
+
+------------------------------------------
+se tienen los diferente tipos de vehiculos, se vio un diagramad  de clases se vio una clase abstracta de la clase vehivulo, se vio las clases hijas, camiones, vehiculos de carga , furgom¿netas, microbuses, el caso mas leculiar fue el de vehiculo, se analio el blindaje, hay 5 clases hijas , }
+
+EL segundo problema fue el manejo de las entidades del problema, vimos varias entidades por ejemplo:
+    - agencia-> es una clase peculari donde se hacen los calculos principales
+    contiene 2 array de vehiculos y el de clientes, 
+    -alquiler-> surge de la necesidad calcular los dias que tendria cada usuario para el uso 
+    de los vehivulos.
+
+------------------------------------------------------------------------------------
+Se vera java a partir de ahora 
+
+
+Se usara el ide intelllij idea  podria loguearse con el mail fiuba para que funcione, hay que descargar el jdk de la 11 para arriba la que queramos 16 11 o 21 son las recomendadas
+Se anailizo el entorno de desarrollo, la idea que a partir de ahora vamos a usar los gestores de dependencias  o se a todas las libreiras  vamos a usar maybel en esta materia sera un archivo 
+
+vamos a utilizar la dependencia JUNIT.
+
+Vamos a emepzar por el src  por un lado tendremos el main y por otro el test.
+
+dentro de main estaran las clases de modelos que vamoas a estar utlizando, se debe crear uno a uno, otras alternativas pero no recomendadas son vsCode, etc. 
+
+
+Clase llamada alquiler de vehiculos test, 
+
+vamosa a declarar la visibilidad , PUBLIC, PROTECT, PRIVATE, el ide  ayuda evitar errores, 
+
+se analizo sobre los test con junit
+
+- test
+-metodos publico->se usaron 2 
+-siempre se deben colocar en publico -> se uso test............
+- tendra parentesis donde se usaran algunos parametros si se requiere
+- Se usara el AAA (Arrange Art y Assert)
+
+casi siempre todos los atributos seran privados,
+cunado seran protegidos=??-> solamente con clases de madre e hijas.
+
+se accedio con this.patente = patente.
+
+
+se vio sobre las varibales inmutables donde solo podemos leer no podemos modificarlos.
+
+
+
+
+se vio como implementar una interfaz y depsues se mando 2 interfaces.
+
+se usara extended para herencia
+
+
+
+java solo te permite heredar de una sola clase , la herencia es una operacion de poo muy fuerte hay que tener cuidado.
+
+
+se usaran paquetes para eviatar exceso de clases 
+se usaran un for particular que permita iterar varias clases.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
