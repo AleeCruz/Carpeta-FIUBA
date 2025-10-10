@@ -1,0 +1,83 @@
+JUnit y un poco de mocks
+
+-------------------------------------------------
+Que es JUNIT
+
+
+vamos a ver sobre las etiquetas para poder usar JUNIT, 
+
+Execution->@Test @Ignore @Deprecated
+Clean Up->@After 
+
+----------------------------------
+Lo central que vamos a ver son los mocks, se vera a los tipos como dobles, tenerlo en cuenta para el final.
+
+Dummy Object->Esta ahi para que compile el codigo simplemente va a rellenar una clase vacia
+
+Test Spy->
+Stubs ->
+
+Mock Objects-> tiene el mismo comportamiento que los stubs pero con cosas extra, se incrementa la cantidad de espectativas al tener mayor cantidad de comportamientos.
+Face-> Nos permite hacerle mas consultas, puede que nos interes el orden inclusive los comportamientois extra que tengas el objeto para alguna validacion.
+
+
+Lo principal es ailar algun comportamiento particular y simular las dependencias que pueden llegar a tener.
+
+
+Mocks
+Simular dependencias
+controlar comportamiento de las dependencias simuladas
+controlas los errores de depnedencias
+parelizacion de desarrollos 
+
+Los nombre son: molestos pero nos importa la categoria segun los comportamientos de cada uno
+
+--------------------
+
+Ejemplo : Se vio el modelos YAYO, permite contar chistes , se vio sobre las api(
+
+
+Puede que usemos APIS segun lo que sea necesario
+--------------------------------------------------------------------
+
+Se vio un diagrama de clases.
+
+
+Un mock es un modelos que nos permite evaluar nuestro codigo de manera aislada.
+
+
+Se vio como crear un mock en JUNIT, fue bastante engorroso por la cantidadde clases que pueden llegar a ver, nosotros vamos a usar mockito,
+que es mockito??
+
+Es una biblioteca, basado en una interfaz crearemos clases para que tengan comportamientos que nosotros vayamos a requerir.(Se uso MAYBEL, hay que hacer un copypaste de las dependencias, en intelIJ de mas rapido, hay que importar la biblioteca de mockito)
+
+--------------------------------------------------
+
+a los mob se les da comportamientos que nosotros necesitemos
+
+simplifica bastante en 2 lineas de codigo lo que se puede hacer en 15 aprox...
+
+Usar mockito(Obligatorio para el TP2)
+
+-----------------------------------------------------------
+
+El mock solo hace las dependencias
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
