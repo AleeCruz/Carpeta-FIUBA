@@ -1,48 +1,43 @@
+
+def sche_solucion(M_SCHE, valor, p, j, solucion):
+    if j == 0:
+        return solucion
+    if valor[j] + M_SCHE[p[j]] >= M_SCHE[j - 1]:
+        solucion.append(j)
+        return sche_solucion(M_SCHE, valor, p, p[j], solucion)
+    else:
+        return sche_solucion(M_SCHE, valor, p, j - 1, solucion)
+
+
+
 def scheduling(charlas):
-    charlas = sorted(charlas, key=lambda x: x[1])
-    n = len(charlas)
+    # Ordenamos por hora de finalización
+    scheduling_ordenado = sorted(charlas, key=lambda x: x[1])
+    n = len(scheduling_ordenado)
 
-    if n == 0:
-        return []
-    # Creamos listas indexadas desde 1 (posición 0 vacía)
-    inicio = [0] + [c[0] for c in charlas]
-    fin = [0] + [c[1] for c in charlas]
-    valor = [0] + [c[2] for c in charlas]
+    # Indexamos desde 1
+    inicios = [0] + [x[0] for x in scheduling_ordenado]
+    finalizaciones = [0] + [x[1] for x in scheduling_ordenado]
+    valores = [0] + [x[2] for x in scheduling_ordenado]
 
-    # p[j]: índice de la última charla que no se superpone con la j
+    # Calcular p[j] = última charla compatible con j
     p = [0] * (n + 1)
     for j in range(1, n + 1):
-        p[j] = 0
         for i in range(j - 1, 0, -1):
-            if fin[i] <= inicio[j]:
+            if finalizaciones[i] <= inicios[j]:
                 p[j] = i
                 break
 
-    # Programación dinámica
-    M = [0] * (n + 1)
+    # Programación dinámica: construir M_SCHE
+    M_SCHE = [0] * (n + 1)
     for j in range(1, n + 1):
-        M[j] = max(valor[j] + M[p[j]], M[j - 1])   # ← ecuación formal exacta
+        M_SCHE[j] = max(valores[j] + M_SCHE[p[j]], M_SCHE[j-1])
 
-    # Reconstrucción de la solución óptima
-    seleccionadas = []
-    j = n
-    while j > 0:
-        if valor[j] + M[p[j]] > M[j - 1]:
-            seleccionadas.append(charlas[j - 1])  # usamos charlas[j-1] porque charlas no tiene desplazamiento
-            j = p[j]
-        else:
-            j -= 1
+    # Recuperar las charlas seleccionadas
+    solucion_indices = sche_solucion(M_SCHE, valores, p, n, [])
+    solucion_indices.reverse()
 
-    seleccionadas.reverse()
+    # Traducimos índices a charlas
+    seleccionadas = [scheduling_ordenado[i - 1] for i in solucion_indices]
+
     return seleccionadas
-
-    
-    
-
-    
-charlas = [
-    (10, 12, 50),(11, 13, 80),(9, 10, 30),
-    (14, 15, 60),(12, 14, 110),(15, 17, 70),(13, 16, 120)
-]
-    
-print("La maxima ganancia es : ", scheduling(charlas))
