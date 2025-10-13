@@ -1,6 +1,6 @@
 
 
-# 📚 Apuntes y Proyectos Universitarios - [Tu Universidad/Carrera]
+# 📚 Apuntes y Proyectos Universitarios - [Ingenieria Informatica y Electrónica]
 
 Este repositorio centraliza los materiales, apuntes, ejercicios y proyectos realizados durante mi formación en [Ingenieria  Informática y Electrónica]. Está organizado por materias para facilitar la navegación y el acceso a los recursos.
 
