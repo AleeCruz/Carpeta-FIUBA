@@ -16,3 +16,12 @@ Este repositorio centraliza los materiales, apuntes, ejercicios y proyectos real
 | 6 | [Organizacion del Computador] | Organizacion del computador->estrucutura de las computadoras. |
 | 7 | [Algoritmos y Estructura de Datos] | Enfoque a las estructuras de datos junto a algoritmos basicos. |
 | 8 | [Matematica 51] | Carpeta enfocada a matematica 51. |
+
+## 📧 Contacto
+
+Si tienes alguna pregunta o sugerencia sobre los apuntes:
+
+* **LinkedIn:** [www.linkedin.com/in/alexander-cruz-87a126195]
+* **Email:** [gamma0024@gmail.com]
+
+---
