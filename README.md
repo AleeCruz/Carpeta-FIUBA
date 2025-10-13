@@ -1,10 +1,11 @@
-## 📝 Índice de Materias
+
 
 # 📚 Apuntes y Proyectos Universitarios - [Tu Universidad/Carrera]
 
-Este repositorio centraliza los materiales, apuntes, ejercicios y proyectos realizados durante mi formación en [Tu Carrera]. Está organizado por materias para facilitar la navegación y el acceso a los recursos.
+Este repositorio centraliza los materiales, apuntes, ejercicios y proyectos realizados durante mi formación en [Ingenieria  Informática y Electrónica]. Está organizado por materias para facilitar la navegación y el acceso a los recursos.
 
 ---
+## 📝 Índice de Materias
 | # | Materia | Descripción General |
 |---|---|---|
 | 1 | [Paradigmas de Programacion] | Programación Orientada a Objetos. |
