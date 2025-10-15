@@ -3,10 +3,11 @@
 "Put here the classes you want to mutate"
 classesToMutate := {
 	AlgoConsejo .
-	Futbolista_Argentino .
-	Futbolista_Conmebol.
-	Futbolista_Extranjero.
-	Futbolista_Extranjero_Mayor.
+	Futbolista .
+	Argentino .
+	Extranjero.
+	Extranjero_Veterano .
+	Conmebol . 
 	Valor.
 
 }.
