@@ -7,14 +7,17 @@ classesToMutate := {
 	Argentino .
 	Extranjero.
 	Extranjero_Veterano .
-	Conmebol . 
+	Conmebol. 
 	Valor.
+	ValorAlturaInvalido.
+	ValorEdadInvalido.
+	
 
 }.
 "Put here the test classes associated with"
 testClasses :=  {
-	AlgoConsejoTest .
-
+	AlgoConsejoTest.
+	TP1_Casos_De_Uso.
  }.
 
 analysis := MTAnalysis new
