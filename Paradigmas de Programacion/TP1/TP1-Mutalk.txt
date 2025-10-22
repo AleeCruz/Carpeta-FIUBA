@@ -9,10 +9,6 @@ classesToMutate := {
 	Extranjero_Veterano .
 	Conmebol. 
 	Valor.
-	ValorAlturaInvalido.
-	ValorEdadInvalido.
-	
-
 }.
 "Put here the test classes associated with"
 testClasses :=  {
