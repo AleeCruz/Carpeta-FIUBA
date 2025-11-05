@@ -1,7 +1,25 @@
-import sys
-# Para el caso de querer implementar un DFS, 
-# para que no hayan problemas en la prueba de volumen
-sys.setrecursionlimit(10000)
+apellido = ""
+edad = 0
+dni = 0
+carrera = ""
+cantidad_alumnos_ingresados = 0
 
-def es_bipartito(grafo):
-    return False
+condicional = 'S'
+
+while condicional == 'S':
+    
+    #Lectura de datos 
+    apellido = input("Ingrese el apellido del alumno: ")
+    edad = int(input("Ingrese la edad del alumno: "))
+    dni = int(input("Ingrese el DNI del alumno: "))
+    carrera = input("Ingrese la carrera del alumno: ")
+    
+    cantidad_alumnos_ingresados += 1
+    
+    
+    print("\n")
+    
+    condicional = input("Deseas continuar ? S/N: ")
+    
+
+printf(cantidad_alumnos_ingresados)
