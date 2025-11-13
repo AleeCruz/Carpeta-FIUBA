@@ -1,25 +1,19 @@
-apellido = ""
-edad = 0
-dni = 0
-carrera = ""
-cantidad_alumnos_ingresados = 0
 
-condicional = 'S'
-
-while condicional == 'S':
+def fizzBuzz(n):
     
-    #Lectura de datos 
-    apellido = input("Ingrese el apellido del alumno: ")
-    edad = int(input("Ingrese la edad del alumno: "))
-    dni = int(input("Ingrese el DNI del alumno: "))
-    carrera = input("Ingrese la carrera del alumno: ")
-    
-    cantidad_alumnos_ingresados += 1
-    
-    
-    print("\n")
-    
-    condicional = input("Deseas continuar ? S/N: ")
+   for i in range(1,n+1):
+       
+    if (i%3==0 and i%5==0):
+        print("FizzBuzz")
+    elif(i%3==0):
+        print("Fizz")
+    elif(i%5==0):
+        print("Buzz")
+    else: 
+        print(i)        
     
 
-printf(cantidad_alumnos_ingresados)
+if __name__ == '__main__':
+    n = int(input("Enter a number: "))
+
+    fizzBuzz(n)
