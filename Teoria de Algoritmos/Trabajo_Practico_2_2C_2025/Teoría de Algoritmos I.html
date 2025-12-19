@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://algoritmos-rw.github.io/tda_bg/tps/2025_2/tp2/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Teoría de Algoritmos I</title>
+  <meta name="description" content="Página de la materia Teoría de Algoritmos I, curso Buchwald - Genender. Facultad de Ingeniería, Universidad de Buenos Aires.">
+
+  <link rel="stylesheet" href="./Teoría de Algoritmos I_files/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh">
+  <link rel="stylesheet" href="./Teoría de Algoritmos I_files/all.css">
+  <link rel="stylesheet" href="./Teoría de Algoritmos I_files/main.css" type="text/css">
+  <link rel="shortcut icon" href="https://algoritmos-rw.github.io/tda_bg/assets/img/favicon.ico" type="image/x-icon">
+  <!-- <link rel="canonical" href="https://algoritmos-rw.github.io/tda_bg/tps/2025_2/tp2/"> -->
+
+  
+  <link rel="stylesheet" href="./Teoría de Algoritmos I_files/katex.min.css" crossorigin="anonymous" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X">
+  <script defer="" src="./Teoría de Algoritmos I_files/katex.min.js" crossorigin="anonymous" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"></script>
+  <script defer="" src="./Teoría de Algoritmos I_files/auto-render.min.js" crossorigin="anonymous" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+
+  <body>
+    <header role="banner" class="sticky-top container-fluid px-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand d-lg-none" href="https://algoritmos-rw.github.io/tda_bg/tps/2025_2/tp2/#">Teoría de Algoritmos I</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sitenav" aria-controls="sitenav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="sitenav">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 small mx-auto">
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/"><span class="fa fa-home"></span> Inicio</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/docentes/"><span class="fa fa-chalkboard-teacher"></span> Docentes</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/regimen/"><span class="fa fa-tasks"></span> Régimen</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/calendario/"><span class="fa fa-calendar-alt"></span> Calendario</a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/tps/"><span class="fa fa-briefcase"></span> TPs</a></li>
+        
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="https://algoritmos-rw.github.io/tda_bg/tps/2025_2/tp2/#" role="button" id="matDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-paperclip"></span> Material</a>
+          <ul class="dropdown-menu">
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/tda_bg/bibliografia/"><span class="fa fa-book"></span> Bibliografía</a></li>
+            <li class=""><a class="dropdown-item" href="https://algoritmos-rw.github.io/tda_bg/material/guias/"><span class="fa fa-dumbbell"></span> Guías de ejercicios</a></li>
+            <li>
+              <a class="dropdown-item" href="https://drive.google.com/drive/u/3/folders/1DtGSvPMobzgZwtzuqvWLu8Ed-K-f9Q52" target="_blank"><span class="fab fa-google-drive"></span> Drive</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.youtube.com/@algoritmos-fiuba-buchwald" target="_blank"><span class="fab fa-youtube"></span> Canal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="https://algoritmos-rw.dijkstra.ar/notas-tda/" target="_blank"><span class="fa fa-pencil-alt"> Consultar Notas</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="https://algoritmos-rw.github.io/tda_bg/encuestas/"><span class="fa fa-poll"></span> Encuestas</a></li>
+        <li class="nav-item">
+          <a href="https://github.com/algoritmos-rw/tda_bg/blob/master/tps/2025_2/tp2.md" class="nav-link" target="_blank"><span class="fab fa-github"></span> Editar en GitHub</a>
+        </li>
+        <li class="nav-item">
+          <a href="javascript:void(0)" id="toggle-theme" role="button" class="nav-link"> <span class="fa fa-moon"></span> <span class="theme-text">Tema</span> </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="container" role="main">
+      <div class="row justify-content-center">
+        <div class="col col-xl-8">
+          
+<h1 id="trabajo-práctico-2-programación-dinámica-para-el-reino-de-la-tierra">Trabajo Práctico 2: Programación Dinámica para el Reino de la Tierra</h1>
+
+<p>El presente trabajo busca evaluar el desarrollo y análisis de un algoritmo 
+de Programación Dinámica. 
+La fecha de entrega del mismo es el 13/10.</p>
+
+<h2 id="introducción">Introducción</h2>
+
+<p>Es el año 80 DG.
+Ba Sing Se es una gran ciudad del Reino de la Tierra. Allí tiene lugar el palacio Real. 
+Por esto, se trata de una ciudad fortificada, que ha logrado soportar durante más de 110
+años los ataques de la Nación del Fuego. 
+Los Dai Li (policía secreta de la ciudad) la defienden utilizando técnicas 
+de artes marciales, Tierra-control, y algunos algoritmos. Nosotros somos los jefes
+estratégicos de los Dai Li.</p>
+
+<p>Gracias a las técnicas de Tierra-control, lograron detectar que la Nación del Fuego planea 
+un ataque ráfaga con miles de soldados maestros Fuego. El ataque sería de la siguiente
+forma:</p>
+<ul>
+  <li>Ráfagas de soldados llegarían durante el transcurso de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span> minutos. En el <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.65952em; vertical-align: 0em;"></span><span class="mord mathnormal">i</span></span></span></span></span>-ésimo
+minuto llegarán <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">x_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.311664em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> soldados. Gracias a las mediciones sísmicas hechas con sus técnicas,
+los Dai Li lograron obtener los valores de <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>⋯</mo> <mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_1, x_2, \cdots, x_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>.</li>
+  <li>Cuando los integrantes del equipo juntan sus fuerzas, pueden generar fisuras que permiten
+destruir parte de las armadas enemigas. La fuerza de este ataque depende cuánto tiempo
+se utilizó para cargar energía. Más específicamente, podemos decir que hay una función 
+<span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mo>⋅</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(\cdot)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.10764em;">f</span><span class="mopen">(</span><span class="mord">⋅</span><span class="mclose">)</span></span></span></span></span> que indica que si transcurrieron <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.85396em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span></span></span></span></span> minutos desde que se utilizó este ataque, 
+entonces es capaz de eliminar hasta <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span><span class="mclose">)</span></span></span></span></span> soldados enemigos.</li>
+  <li>Si se utiliza este ataque en el <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span>-ésimo minuto, y transcurrieron <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.85396em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span></span></span></span></span> minutos desde
+su último uso, entonces se eliminará a <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>min</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo separator="true">,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\min(x_k, f(j))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.336108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal" style="margin-right: 0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.05724em;">j</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span> soldados (y luego de su uso, 
+se utilizó toda la energía que se había acumulado).</li>
+  <li>Inicialmente los Dai Li comienzan sin energía acumulada (es decir, para el primer minuto, le
+correspondería <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.10764em;">f</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span> de energía si decidieran atacar inmediatamente).</li>
+  <li>La función de recarga será una función monótona creciente.</li>
+</ul>
+
+<p>Como jefes estratégicos de los Dai Li, es nuestro deber determinar en qué momentos
+debemos realizar estos ataques de fisuras para eliminar a tantos enemigos en total como sea posible.</p>
+
+<h2 id="consigna">Consigna</h2>
+
+<ol>
+  <li>Hacer un análisis del problema, plantear la ecuación de recurrencia correspondiente
+y proponer un algoritmo por programación dinámica 
+que obtenga la solución óptima al problema planteado: Dada la secuencia de de llegadas
+de enemigos <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>⋯</mo> <mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_1, x_2, \cdots, x_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> y la función de recarga <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mo>⋅</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(\cdot)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.10764em;">f</span><span class="mopen">(</span><span class="mord">⋅</span><span class="mclose">)</span></span></span></span></span> (dada
+por una tabla, con lo cual puede considerarse directamente como una secuencia de valores),
+determinar la cantidad máxima de enemigos que se pueden atacar, y en qué momentos se harían
+los correspondientes ataques.</li>
+  <li>Escribir el algoritmo planteado. Describir y justificar la complejidad de dicho algoritmo. Analizar 
+si (y cómo) afecta a los tiempos del algoritmo planteado la variabilidad de los valores 
+de las llegadas de enemigos y recargas.</li>
+  <li>Analizar si (y cómo) afecta a la optimalidad del algoritmo planteado la variabilidad de los valores 
+de las llegadas de enemigos y recargas</li>
+  <li>Realizar ejemplos de ejecución para encontrar soluciones y corroborar lo encontrado. Adicionalmente, 
+el curso proveerá con algunos casos particulares que deben cumplirse su optimalidad también.</li>
+  <li>De las pruebas anteriores, hacer también mediciones de tiempos para corroborar la complejidad teórica 
+indicada. Realizar gráficos correspondientes. Generar todo set de datos necesarios para estas pruebas.</li>
+  <li>Agregar cualquier conclusión que parezca relevante.</li>
+</ol>
+
+<h2 id="entrega">Entrega</h2>
+
+<p>Debe enviarse al corrector asignado, por mail o slack, el link
+al repositorio donde se encuentre el código fuente, y donde debe encontrarse
+el informe en formato PDF, que debe seguir los lineamientos establecidos en el TP1.
+Debe ser claro cómo ejecutar el programa pasando por parámetro un set de datos como
+los que se dan de ejemplo. Esto puede ser dentro del <code class="language-plaintext highlighter-rouge">README.md</code> del repositorio,
+u otra forma que les parezca clara.</p>
+
+<p>La nota del trabajo práctico tendrá en cuenta tanto la presentación y calidad de lo presentado, 
+como también el desarrollo del trabajo. No será lo mismo un trabajo realizado con lo mínimo
+indispensable, que uno bien presentado, analizado, y probado con diferentes volúmenes, set de 
+datos, o estrategias de generación de sets, en el caso que corresponda.</p>
+
+
+
+        </div>
+      </div>
+    </main>
+
+    <script src="./Teoría de Algoritmos I_files/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+<script src="./Teoría de Algoritmos I_files/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+<script src="./Teoría de Algoritmos I_files/toggleTheme.js"></script>
+
+  
+
+
+</body></html>
