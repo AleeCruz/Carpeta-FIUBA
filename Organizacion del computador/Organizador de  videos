@@ -1,0 +1,99 @@
+Se esta viendo el video Estructura del computador 
+    CPU->Tienen 3 componentes principales->ALU(Operaciones de sumas/Restas Multiplicacion/Division Hace comparación)
+                                         ->Unidad de control ( NO ejecuta es el director de orquesta, maneja todo pero no ejecuta solamente dirige lo que va a ejecutar , analiza las instrucciones decodificar y mandar las instrucciones a la ALU)
+                                         
+                                         ->Memoria de Regisros (Es un tipo de memoria que almacenan los datos u operaciones
+que se realizaron a lo largo del programa)
+
+
+
+Hablemos un poco de los resgistros, Cada registro tiene una cantidad de 8 bits de o es lo mismo decir que es un byte 
+
+Tambien existen registros que tienen 16 bits  o es lo mismo decir que son 2Bytes, tambien se lo empezo a decir 
+"Word de 16 bits"
+
+
+Ejemplo Word de 32 bits o Word de 4Bytes.
+
+
+Resumiendo: Los registrosn tienen ->Poca informacion
+                                  ->Cada uno solo almacena un dato
+                                  ->Poca Cantidad de Registros
+                                  ->Son las Memorias de mayor velocidad en un Sistema Operativo.
+
+Dato_1 para un byte 
+Dato_2 para otro byte
+Dato_3 para otro byte 
+y asi sucesivamente
+
+
+
+Podriamos hablar de las categorias de las memorias, los registros son las memorias de mas alta capacidad, 
+
+Entre las cuales tambien se encuentran: ALU,FLipFLop,Registros,Cache que pueden tardar menos de 1 nanosegundo
+
+COnviene hacer las operaciones dentro de la cpu
+
+Observaciones importantes: 
+    Si se tiene muchos registros entonces no hace falta ir a una memoria externa 
+    En cambio si se tienen una cantidad minima de registros no queda de otra que usar una memoria externa 
+    para traer los datos y realizar las operaciones correspondientes.
+
+    Cuando se habla de los procesadores podremos decir que las CPUS tendran 8 16 32 64 bits se refieren a la capacidad 
+    de los registros
+
+
+    Las operaciones de un procesador realiza las operaciones de manera mas rápida aquella que tiene mayor cantidad de bits en un registros, podriamos decir que un procesador de 32 bits es mas rapido que una de 8 bits.
+
+
+Veremos sobre los procesadores de intel 8086 y 8088
+
+
+Las pcs de IBM 1981  tenian estos procesadores, Se debe tener en cuenta que se usaban solo por texto.
+
+Motorola 68000 1979-> Se alinearon con Apple, Apple mcintosh tenian imagenes, 
+
+
+Se usaron ventanitas a partir de los procesadores 80286 y 80386 a parti de ahi se genero windows con la ayuda de BillGates
+
+
+
+El codigo que se podia utilizar hace varios años atras  hoy posiblemente se pueda usar a esto se lo conoce como: 
+Ventajas y desventajas de Compatibilidad vs la NOCompatibilidad el Caso de Intel-Motorola
+
+
+
+
+Observacion: Porque se llaman procesadores vs microprocesadores ?? minuto 36:30
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
