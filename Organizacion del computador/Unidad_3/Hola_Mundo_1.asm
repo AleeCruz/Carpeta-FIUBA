@@ -1,7 +1,6 @@
 
 ;Estas son la directivas que siempre deben de estar presente
 ;--------------------------------
-name "Hello World"
 org 100h
 
 ;Vamos a activar el modo de video
