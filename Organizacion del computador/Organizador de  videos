@@ -66,6 +66,170 @@ Ventajas y desventajas de Compatibilidad vs la NOCompatibilidad el Caso de Intel
 
 Observacion: Porque se llaman procesadores vs microprocesadores ?? minuto 36:30
 
+Procesadores o microprocesadores: Se los denomina porque son de proposito general, las computadoras tiene procesadores de proposito general.
+
+Microcontroladores: Cumplen las mismas funciones que un procesador pero en esta ocasion son mucho mas especificos, se los usan en dispositivos
+muy particulares
+
+
+Ahora vamos un poco fuera de la CPU
+
+Hablando sobre las memorias ¿Qué son y para que sirven?
+Memorias electronicas sirven para almacenar programas donde son secuencias de instrucciones van a ser transmitidas a las cpu
+
+Las memorias tiene 2 partes esenciles: RAM y ROM 
+
+RAM: Es una memoria volatil una vez que la memoria deja de recibir energia esta pierde todas la informacion.
+
+ROM: Son memorias no volatiles no importa que se les corte la energia estas aun mantienen la informacion.
+un ejemplo claro de esto son las memorias ROM BIOS (Basic input output SYstem)
+
+AL encenderse las ram lo primero que carga son los sistemas operativos
+
+
+
+Hasta ahora hemos visto que para tener una computadora completa necesitamos tener una CPU(con sus 3 elementos importante ALU,Registros y Unidad de contol)
+Memoria elecctronica (con sus 2 elementos importantes RAM y ROM) y los perifericos input , Output e input/Output.
+
+
+Vamos a ver las Estructuras y CAracteristicas de la memoria principal:
+Podemos reconocerla por las direcciones de memoria y los datos almacenados en esos datos 
+
+Vamos a diferenciar 2 elementos importantes los Datos y la informacion:
+
+Dato: significa que es algo que aun no fue procesado
+Informacion: Es algo que ya fue procesado.
+
+Ejemplo puede ser la lectura de un dato desde la memoria a la CPU o la extraccion de informacion resultado del procesamiento.
+
+
+En la memoria RAM podemos agregar datos o instrucciones de memoria podemos darle un orden para que tenga sentido, podemos decir que debemos seprar las instrucciones 
+y los datos 
+
+
+Surge una pregunta imortante ¿Cómo hace el procesador para indicar cuando empieza y termina un programa?
+
+Nosotros definimos el comienzo de un programa en una determinada direccion de memoria podrias ser cualquier parte que yo especifique como programador
+y asi sucesivamente el programa se va ejecutando lina a linea instruccion por instruccion sumando en uno a las direcciones de memoria 
+
+Observacion: ¿Cómo sabe mi CPU donde termina mi programa?
+se le asigna una instruccion especial dentro del programa que indica el corte o finalizacion de una serie de instrucciones o el fin de programa
+
+obs: ¿Como se ejecuta cada instruccion ?
+
+SUponiendo que se diga que la instruccion comienza en la direccion 0000 dicha instruccion debe ser enviada a la unidad de control despues a un registro y por ultimo 
+se realiza las operaciones correspondientes con la ALU
+Se termina un programa cuando llegue a una determina instruccion que sea fin del programa y es donde finaliza despues de haber realizado todas las operaciones 
+correspondientes con la ALU, Resumiendo un fin de programa es una instruccion mas.
+
+Obs: Todas las memorias de una computadora tendras la mismas estructura ya sea una RAM ROM o inclusive las misma que esten dentro de un CPU denomianadas registros.
+
+
+
+Ahora vamos a hablar de concepto de buses de datos buses de direcciones buses de datos y buses de control.
+DIreccionalidad , Operaciones en Memoria Leer y escribir.
+
+
+
+LAs flechas o lineas negras en un esquema ideal de memorias se denominan buses de direcciones y buses de datos , dependiendo de la cantidad de bits que esten
+ almacenadas en una direccion de memoria sera la misma cantidad de cablecitos que tendrá esos buses de direcciones 
+En los buses de direcciones sera exactamente igual se tendrá 4 buses de direcicones en el mapa conceptual de los direccionamientos de memoria , en resumen la cantidad
+de buses de datos o de direcciones sera exactamente la misma que la cantidad de buses que tenga 
+La tranferencia de datos de bits sera de manera paralela por cada uno de esos buses LA tranferencia ocurre en el mismo tiempo 
+
+
+Pregunta importante: ¿Qué puede hacer la memoria ?Pueden guardar o escribir un resultado 
+DOnde se guarda un dato se lo dice a partir de las direcciones , el que guardar se lo decimo a traves de los buses de datos 
+
+OBS: La memoria tiene 2 propositos principales que son el de escribir o leer datos por medio de la CPU
+
+Los buses de direcciones son unidireccionales porque la cpu manda informacion de en que lugar o direccion esta tal instruccion /dato o etc.
+
+Los buses de datos son bidireccionales 
+
+Hay un bus especial que indica a la memoria que tipo de operaciones va a realizar el de cargar o leer un dato dependiendo del caso.
+
+Es la CPU quien manda esa informacion de que hacer o comportamientos vana a tener los buses de control, los buses de control vana a ser direccionales.
+
+El concepto de eliminar es en realidad que cuando uno escribe en una direccion particular eso que estaba ante se elimino.
+
+¿Cual seria la diferencia entonces ente una memoria RAM y ROM?
+La respuesta esta en la operaciones que pueden realizar cada una a traves de los buses Las ROM no pueden ser alteradas solo puedo recuperar 0 leer informacion 
+es imposible escribir o se debe realizar un procediento muy complejo.
+
+
+Veremos varios tipos de memoria como las velocidades las capacidades a partir del video 1H-25min-21seg.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
