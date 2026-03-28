@@ -1,25 +1,37 @@
-//Vamos a realizar nuevamente el codigo de procesamiento lineal de padre a hijo 
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
 
+/*
+ * Crea una cadena de procesos de profundidad `n`.
+ * Cada proceso imprime su nivel y su PID,
+ * luego crea un hijo que hace lo mismo con n-1.
+ */
+void cadena(int nivel, int max)
+{
+    printf("Nivel %d — PID %d\n", nivel, getpid());
 
-#include<stdio.h>
-#include<unistd.h>
-#include<sys/wait.h>
+    if (nivel == max) {   /* caso base: ya llegamos al fondo */
+        printf("Nivel %d — soy la hoja, no creo más hijos\n", nivel);
+        return;
+    }
 
+    pid_t pid = fork();   /* crear hijo */
 
-void cadena(int nivel, int maximo){
+    if (pid == 0) {
+        /* el hijo continúa la cadena */
+        cadena(nivel + 1, max);
+        return;
+    }
 
-    printf("Estas en el nivel %S")
-
-
-
-
+    /* el padre espera al hijo antes de terminar */
+    wait(NULL);
 }
 
-
-
-
-int main(){
-
-    cadena(1,6);
+int main(void)
+{
+    cadena(1, 100);   /* cadena de 4 niveles */
     return 0;
 }
+
+

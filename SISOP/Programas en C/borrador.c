@@ -1,25 +1,49 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/wait.h>
+//Vamos a hacerlo de nuevo para que quede claro la lectura y la escritura de los procesos correspondientes 
 
-int main(void)
-{
-    pid_t pid = fork();   /* crear el proceso hijo */
 
-    if (pid < 0) {
-        perror("fork");
+
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/wait.h>
+
+
+int main(){
+    //Debemos crear un vector de 2 posiciones para la los fds
+    int fds_padre_hijo[2];
+    int valor_de_pipe=0;
+    int READ = 0;
+    int WRITE = 1;
+
+    //Ahora vamos a crear nuestro pipe con el vector de dos coordenadas 
+
+    valor_de_pipe = pipe(fds_padre_hijo);
+
+    if(valor_de_pipe<0){
+        perror("Ocurrio un erro con el pipe ");
         return 1;
     }
 
-    if (pid == 0) {
-        /* este bloque lo ejecuta el HIJO */
-        printf("Soy el hijo, mi PID es %d\n",getpid());
-    } else {
-        /* este bloque lo ejecuta el PADRE */
-        printf("Soy el padre, mi PID es %d, y cree un hijo con PID %d\n",
-               getpid(), pid);
-        wait(NULL);   /* esperar a que el hijo termine */
+    //Ahora vamos a clonar ambos procesos 
+    pid_t pid = fork();
+
+    if(pid<0){
+        printf("Ocurrio un error en la creacion de los procesos\n");
+        return;
     }
+
+    if(pid ==0 ){
+        //La unica tarea del hijo es que solo pueda leer 
+        close(fds_padre_hijo[WRITE])
+
+
+    }else{
+        //La unica tarea del padre es que solo pueda escribir 
+
+
+    }
+
+
+
 
     return 0;
 }
