@@ -142,7 +142,7 @@
         close(fds_PadreA_HijoB[READ]);//Recordar que el procesoA-Padre (NO LEE)/ESCRIBE
 
         
-        for (int i =1;i<=10;i++){
+        for (int i =1;i<=100;i++){
             write(fds_PadreA_HijoB[WRITE],&i,sizeof(i));
         }
         //Una vez que termina de leer cierra del FDS de 

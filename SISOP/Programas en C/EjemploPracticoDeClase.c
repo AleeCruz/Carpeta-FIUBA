@@ -5,7 +5,7 @@
 #include<unistd.h>
 
 
-/**
+/*
  * Tabla de FDS
  * 0: stdin (Es un FDS a algo que apunta a la cosa)
  * 1: stdout 
