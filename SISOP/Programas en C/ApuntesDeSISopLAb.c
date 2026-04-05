@@ -11,7 +11,7 @@
  * 
  * Ademas podemos ver sobre el famosisimo systemcall pipe(2)
  * 
- * ¿QUe hace exactamente pipe(2)?
+ * ¿QUe hace exactamente pipe(2)?   
  * 
  * 
  * EL pipie proporciona un mecanismo de comunicacion entre dos procesos 
