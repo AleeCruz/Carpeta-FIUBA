@@ -2,7 +2,7 @@
 #include<unistd.h>
 #include<stdlib.h>
 
-int main(){
+int main(int argc , char *){
 
     printf("Hola Mundo\n");
 
