@@ -1,0 +1,7 @@
+@startuml
+actor Usuario
+participant Sistema
+
+Usuario -> Sistema: Solicita datos
+Sistema --> Usuario: Entrega datos
+@enduml

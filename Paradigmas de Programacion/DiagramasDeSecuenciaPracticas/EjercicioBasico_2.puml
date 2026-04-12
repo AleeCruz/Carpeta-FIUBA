@@ -1,0 +1,20 @@
+@startuml
+participant AppMovila
+participant Cuenta
+
+activate AppMovila #LightBlue
+
+AppMovila -> Cuenta: solicitarSaldo()
+
+activate Cuenta #LightGreen
+Cuenta -> BaseDeDatos: Está el saldo disponible?
+
+
+desactivate Cuenta
+
+AppMovila -> Cuenta: solicitarExtrato()
+
+
+
+deactivate AppMovila
+@enduml

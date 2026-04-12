@@ -1,0 +1,7 @@
+@startuml
+Usuario -> Aplicacion_Bancaria: 1: transferir(monto,cbuDebitar,cbuAcreditar)
+Aplicacion_Bancaria -> BaseCuentas: 1.1: cuentaDebitar = buscarCuenta(cbuDebitar)
+Aplicacion_Bancaria -> BaseCuentas: 1.2: cuentaAcreditar = buscarCuenta(cbuAcreditar)
+Aplicacion_Bancaria -> CuentaDebitar: 1.3: extraer(monto)
+Aplicacion_Bancaria -> CuentaAcreditar: 1.4: acreditar(monto)
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+participant Usuario
+participant AplicacionBancaria
+participant BaseClientes
+participant Cliente 
+participant Cuenta
+
+
+activate Usuario #Gray
+
+activate AplicacionBancaria #LightBlue
+Usuario -> AplicacionBancaria: 1: abrirCuenta(Persona)
+
+activate BaseClientes #LightGreen
+AplicacionBancaria -> BaseClientes: 1.1: existe = esCliente(Persona)
+
+deactivate BaseClientes
+
+
+
+
+deactivate AplicacionBancaria
+
+deactivate Usuario
+
+
+@enduml
