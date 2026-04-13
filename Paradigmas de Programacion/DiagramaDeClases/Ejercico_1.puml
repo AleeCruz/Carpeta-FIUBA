@@ -1,0 +1,23 @@
+@startuml
+skinparam ClassAttributeIconSize 0
+
+class Jugador{
+    - nombre: String
+    - habilidad: int
+    - cansancio: int
+    - experiencia: int
+    - calidad :int 
+    + nombreHabilidadCansancioExperiencia(nombre:String, habilidad:Int, cansancio:Int, experiencia:Int): void
+    +nombreHabilidadCalidadExperiencia (nombre:String, habilidad:Int, calidad:Int,experiencia:Int): void
+    + nombre():String
+}
+
+
+class ElegirPateador{
+    futbolistas: List<Jugador>
+
+    +cantidadDeJugadores(): Int
+    +habiendoEmpatadoComo(equipo: List<Jugador>): List<Jugador>
+    +mejorPateador(): Jugador
+}   
+@enduml
