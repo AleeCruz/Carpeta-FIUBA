@@ -25,3 +25,30 @@ analysis run.
 "To inspect the results"
 analysis generalResult inspect.
 
+
+
+
+
+
+
+
+test10AgregandoDosJugadoresExperiemntadosUnJugadorSuplenteYUnJugadorSinExperiencia
+"Arrange"
+	| equipo eleccion jugadorAPatear |
+
+"Act"
+	
+	equipo := { 
+	Jugador nombre: 'Angel Di Maria' habilidad: 81 cansancio: 70 experiencia: 5.
+	Jugador nombre: 'Lionel Messi' habilidad: 90 cansancio: 20 experiencia: 7.
+	
+	Jugador nombre: 'Paulo Dybala' habilidad: 90 calidad: 0.9 experiencia:  5.
+	Jugador nombre: 'Guido Rodriguez' habilidad: 60 cansancio: 50 experiencia: 2.
+	}.
+
+	eleccion := ElegirPateador habiendoEmpatadoComo: equipo .
+	jugadorAPatear:= eleccion mejorPateador .
+	
+"Assert"
+self assert: equipo  equals: 1.
+

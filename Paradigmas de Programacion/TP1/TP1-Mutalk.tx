@@ -1,0 +1,22 @@
+"Put here the classes you want to mutate"
+classesToMutate := { 
+	Jugador .
+	JugadorNovato .
+	JugadorSuplente .
+	JugadorTitular .
+	ElegirPateador .
+ }.
+"Put here the test classes associated with"
+testClasses :=  {
+	AlgoPenalesTest .
+	CasosDeUso . 
+	 }.
+
+analysis := MTAnalysis new
+    classesToMutate: classesToMutate;
+    testClasses: testClasses.
+
+analysis run.
+
+"To inspect the results"
+analysis generalResult inspect.
