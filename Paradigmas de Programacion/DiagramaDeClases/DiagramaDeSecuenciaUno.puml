@@ -1,0 +1,50 @@
+@startuml
+
+title El equipo está empatando, se actualiza el rendimiento
+
+actor Usuario
+participant "InterfazPrograma" as Programa
+participant "ElegirPateador" as Elegir
+participant "Jugador"
+participant "Suplente"
+
+Usuario -> Programa : elMejorPateador
+activate Programa
+
+Programa -> Elegir : habiendoEmpatadoComo(equipo)
+activate Elegir
+Elegir -> Elegir : jugadores = equipo
+Elegir --> Programa
+deactivate Elegir
+
+Programa -> Elegir : mejorPateador()
+activate Elegir
+
+loop por cada jugador 
+    Elegir -> Jugador : decimeTuRendimiento
+    activate Jugador
+    Jugador --> Elegir : rendimiento
+    deactivate Jugador
+    
+    note right of Elegir: Compara y guarda el máximo
+end
+activate Elegir
+Elegir->Suplente:actualizarEvaluacion()
+
+activate Suplente
+Suplente->Suplente: evaluacion=80000
+Suplente->Suplente:ActualizaSuRendimiento
+Suplente-->Elegir: JugadorConRendimientoActualizado
+deactivate Suplente
+
+
+
+Elegir-->Programa:elMejorPateador
+deactivate Elegir
+
+
+
+Programa --> Usuario : mejorPateador
+deactivate Programa
+
+@enduml

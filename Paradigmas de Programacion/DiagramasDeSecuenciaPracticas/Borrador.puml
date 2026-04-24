@@ -1,0 +1,23 @@
+@startuml
+title Diagrama de Secuencia: mejorPateador (detectMax)
+
+participant "unTest: CasosDeUso" as T
+participant "eleccion: ElegirPateador" as EP
+participant "algunJugador: Jugador" as J
+
+T -> EP : mejorPateador()
+activate EP
+
+note over EP: jugadores detectMax: [ :j | j decimeTuRendimiento ]
+
+loop Para cada jugador en 'jugadores'
+    EP -> J : decimeTuRendimiento()
+    activate J
+    J --> EP : rendimiento (Number)
+    deactivate J
+    note right of EP: Se compara con el\nmáximo actual
+end
+
+EP --> T : elMejorPateador (Jugador)
+deactivate EP
+@enduml

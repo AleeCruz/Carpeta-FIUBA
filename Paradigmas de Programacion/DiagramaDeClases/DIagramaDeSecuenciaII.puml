@@ -1,0 +1,39 @@
+@startuml
+skinparam style strictuml
+title Diagrama de Secuencia: mejorPateador (Habiendo Perdido)
+
+actor "Test / Cliente" as Cliente
+participant "ElegirPateador class" as ClassPateador
+participant "unElegirPateador: ElegirPateador" as InstanciaPateador
+participant "unEquipo: Collection" as Coleccion
+participant "unJugador: JugadorTitular" as Jugador
+
+Cliente -> ClassPateador : habiendoPerdidoComo: unEquipo
+activate ClassPateador
+    ClassPateador -> InstanciaPateador** : new
+    ClassPateador -> InstanciaPateador : habiendoPerdidoComo: unEquipo
+    activate InstanciaPateador
+        
+        loop por cada jugador en unEquipo
+            InstanciaPateador -> Coleccion : collect: [block]
+            activate Coleccion
+                Coleccion -> Jugador : reducirCansancio
+                activate Jugador
+                    Jugador -> Jugador : cansancio := cansancio - experiencia
+                    Jugador --> Coleccion : jugadorActualizado
+                deactivate Jugador
+            deactivate Coleccion
+        end
+        
+        InstanciaPateador -> InstanciaPateador : jugadores := resultadoCollect
+    deactivate InstanciaPateador
+    ClassPateador --> Cliente : unElegirPateador
+deactivate ClassPateador
+
+Cliente -> InstanciaPateador : mejorPateador
+activate InstanciaPateador
+    InstanciaPateador -> InstanciaPateador : detectMax: [rendimiento]
+    InstanciaPateador --> Cliente : elMejorPateador
+deactivate InstanciaPateador
+
+@enduml

@@ -1,23 +1,18 @@
 @startuml
-skinparam ClassAttributeIconSize 0
 
-class Jugador{
-    - nombre: String
-    - habilidad: int
-    - cansancio: int
-    - experiencia: int
-    - calidad :int 
-    + nombreHabilidadCansancioExperiencia(nombre:String, habilidad:Int, cansancio:Int, experiencia:Int): void
-    +nombreHabilidadCalidadExperiencia (nombre:String, habilidad:Int, calidad:Int,experiencia:Int): void
-    + nombre():String
-}
+actor Usuario
 
 
-class ElegirPateador{
-    futbolistas: List<Jugador>
 
-    +cantidadDeJugadores(): Int
-    +habiendoEmpatadoComo(equipo: List<Jugador>): List<Jugador>
-    +mejorPateador(): Jugador
-}   
+participant "Sistema de Login" as  Login
+
+Usuario-> Login: Ingrese credenciales 
+
+activate Login
+
+Login-> Login:ValidarDatos
+Login --> Usuario: accesoConcedido
+
+
+
 @enduml

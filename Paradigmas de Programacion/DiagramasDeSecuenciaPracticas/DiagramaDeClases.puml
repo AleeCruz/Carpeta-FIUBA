@@ -1,0 +1,113 @@
+@startuml
+skinparam ClassAttributeIconSize 0
+
+
+class ElegirPateador{
+    -jugadores: OrderedCollection
+
+    +{static} habiendoEmpatadoComo(Equipo: OrderedCollection)
+    +{static} habiendoGanadoComo(Equipo: OrderedCollection)
+    +{static} habiendoPerdidoComo(Equipo: OrderedCollection)
+    + mejorPateador(): Jugador
+    + peorPateador(): Jugador
+}
+
+class Manager{
+    -jugadores: OrderedCollection
+    +agregarA(algunJugador: Jugador, unEquipo:OrderedCollection )
+}
+
+
+class Novato{
+    
+    - nombre:String
+    - habilidad:Int
+    - cansancio:Int
+    - experiencia:Int
+
+    + nombre():String
+    + tienesCalidad(): Boolean
+    + decimeTuRendimiento(): Float
+ 
+    
+}
+
+class Titular{
+
+    - nombre:String
+    - habilidad:Int
+    - cansancio:Int
+    - experiencia:Int
+
+    + nombre():String
+    + tienesCalidad(): Boolean
+    + decimeTuRendimiento(): Float
+    + cansancio(): Int 
+    + reducirCansancio(): Void
+    
+}
+
+
+
+
+
+class Suplente{
+    
+    - nombre:String
+    - habilidad:Int
+    - calidad:Int
+    - experiencia:Int
+    - evaluación:Int
+
+    + nombre():String
+    + tienesCalidad(): Boolean
+    + decimeTuRendimiento(): Float
+    + actualizarEvaluacion(): Void
+    
+}
+
+abstract class Jugador{
+    + {static} Jugador(nombre:String,habilidad:Int,cansancio:Int,experiencia:Int):void 
+    + {static} Jugador(nombre:String,habilidad:Int,calidad:Int,experiencia:Int):void 
+}
+
+exception HabilidadInvalida {
+
+}
+exception CansancioInvalido{
+
+}
+exception CalidadInvalida{
+
+}
+exception ExperienciaInvalida{
+
+}
+
+Manager ..> Jugador:agrega
+
+
+Jugador <|-- Titular
+Jugador <|-- Suplente
+Jugador <|-- Novato
+
+
+ElegirPateador "1" --> "*" Jugador : maneja
+
+
+Titular ..>HabilidadInvalida
+Titular ..>CansancioInvalido
+
+Novato ..>HabilidadInvalida
+Novato ..>CansancioInvalido
+
+Titular ..>ExperienciaInvalida
+Novato ..>ExperienciaInvalida
+Suplente ..> ExperienciaInvalida
+
+
+Suplente ..>HabilidadInvalida
+Suplente ..>CalidadInvalida
+
+
+@enduml

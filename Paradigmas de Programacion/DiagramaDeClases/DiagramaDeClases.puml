@@ -1,0 +1,65 @@
+@startuml
+skinparam style strictuml
+title Diagrama de Clases - TP1 AlgoPenales
+
+abstract class Jugador {
+  # nombre: String
+  # habilidad: Number
+  # experiencia: Number
+  {static} + nombre:habilidad:cansancio:experiencia()
+  {static} + nombre:habilidad:calidad:experiencia()
+  {abstract} + decimeTuRendimiento(): Number
+  {abstract} + tienesCalidad(): Boolean
+  + nombre(): String
+}
+
+class JugadorTitular {
+  - cansancio: Number
+  + decimeTuRendimiento(): Number
+  + tienesCalidad(): Boolean
+  + reducirCansancio()
+  + cansancio(): Number
+}
+
+class JugadorNovato {
+  - cansancio: Number
+  + decimeTuRendimiento(): Number
+  + tienesCalidad(): Boolean
+}
+
+class JugadorSuplente {
+  - calidad: Number
+  - evaluacion: Number
+  + decimeTuRendimiento(): Number
+  + tienesCalidad(): Boolean
+  + actualizarEvaluaion()
+}
+
+class ElegirPateador {
+  - jugadores: Collection
+  {static} + habiendoEmpatadoComo(unEquipo)
+  {static} + habiendoGanadoComo(unEquipo)
+  {static} + habiendoPerdidoComo(unEquipo)
+  + mejorPateador(): Jugador
+  + peorPateador(): Jugador
+}
+
+' Relaciones
+Jugador <|-- JugadorTitular
+Jugador <|-- JugadorNovato
+Jugador <|-- JugadorSuplente
+ElegirPateador --> "0..*" Jugador : maneja
+
+note bottom of JugadorTitular
+  Rendimiento: (habilidad ^ 2) * cansancio
+end note
+
+note bottom of JugadorNovato
+  Rendimiento: ((habilidad ^ 2) * cansancio) / 2
+end note
+
+note bottom of JugadorSuplente
+  Rendimiento: (habilidad ** (2 + calidad)) + evaluacion
+end note
+
+@enduml

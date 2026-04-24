@@ -1,0 +1,28 @@
+@startuml
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+
+actor Usuario
+participant "unaEleccion : ElegirPateador" as E
+participant "unJugador : JugadorTitular" as JT
+participant "otroJugador : JugadorNovato" as JN
+
+Usuario -> E : mejorPateador()
+activate E
+
+note over E : El objeto itera sobre la \ncolección 'jugadores'
+
+E -> JT : decimeTuRendimiento()
+activate JT
+JT --> E : rendimiento (habilidad^2 * cansancio)
+deactivate JT
+
+E -> JN : decimeTuRendimiento()
+activate JN
+JN --> E : rendimiento ((habilidad^2 * cansancio) / 2)
+deactivate JN
+
+E -> E : detectMax: [ ... ]
+Usuario <-- E : elJugadorConRendimientoMaximo
+deactivate E
+@enduml

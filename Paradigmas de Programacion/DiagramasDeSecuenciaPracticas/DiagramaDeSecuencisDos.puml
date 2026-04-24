@@ -1,0 +1,43 @@
+@startuml
+skinparam style strictuml
+
+participant "ElegirPateador class" as EC
+participant "unaEleccion : ElegirPateador" as E
+participant "unSuplente : JugadorSuplente" as JS
+participant "unTitular : JugadorTitular" as JT
+
+[-> EC : habiendoGanadoComo: unEquipo
+activate EC
+
+EC -> E : new
+activate E
+E --> EC : unaEleccion
+deactivate E
+
+EC -> E : habiendoGanadoComo: unEquipo
+activate E
+
+note over E : Itera sobre la colección de jugadores
+
+E -> JS : tienesCalidad()
+activate JS
+JS --> E : true
+deactivate JS
+
+E -> JS : actualizarEvaluaion()
+activate JS
+note right: evaluacion := 80000
+JS --> E : ok
+deactivate JS
+
+E -> JT : tienesCalidad()
+activate JT
+JT --> E : false
+deactivate JT
+
+E --> EC : unaEleccion
+deactivate E
+
+[<-- EC : unaEleccion
+deactivate EC
+@enduml

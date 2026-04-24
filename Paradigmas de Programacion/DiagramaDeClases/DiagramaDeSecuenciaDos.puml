@@ -1,0 +1,76 @@
+@startuml
+
+title Al agregar un Jugador Titular con una habilidad inconsistente entonces lanza una exception
+        note right of Usuario: nombre="Messi"
+        note right of Usuario: habilidad=-2
+        note right of Usuario: cansancio = 10
+        note right of Usuario: experiencia = 8
+
+
+
+actor Usuario
+
+participant "Programa" as Programa
+participant "Manager" as Manager
+participant "Jugador" as Jugador 
+participant "JugadorTitular" as Titular
+participant "HabilidadInvalida" as Excepcion
+
+
+Usuario -> Programa:agregarJugador("Messi",-2,10,8)
+activate Programa
+
+create Manager
+Programa->Manager: crear()
+
+activate Manager
+create Jugador
+Manager->Jugador:crear()
+Manager->Jugador: agregar("Messi",-2,10,8)
+
+create Titular
+
+activate Jugador
+
+Jugador->Titular:crear()
+
+Jugador -> Titular: Jugador("Messi",-2,10,8)
+activate Titular 
+Titular -> Titular :nombre="Messi"
+Titular -> Titular :habilidad=-2
+
+
+
+create Excepcion
+
+
+Titular -> Excepcion:lanzar
+Excepcion--> Titular: 
+
+Titular -> Titular :cansancio =10
+
+Titular -> Titular :experiencia=8
+
+Titular --> Jugador: creacionFinalizada
+deactivate Titular
+
+
+Jugador-->Manager: seAgregoUnJugador
+deactivate Jugador
+
+
+Manager-->Programa: SeAgregoUnJugador
+deactivate Manager
+
+Programa-->Usuario: FinDelPrograma
+deactivate Programa
+
+
+
+
+
+
+
+
+
+@enduml

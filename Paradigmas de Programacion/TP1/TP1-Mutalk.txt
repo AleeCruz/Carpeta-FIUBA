@@ -5,6 +5,11 @@ classesToMutate := {
 	JugadorSuplente .
 	JugadorTitular .
 	ElegirPateador .
+	Manager.
+	CansancioInvalido .
+	HabilidadInvalida .
+	ExperienciaInvalida .
+	CalidadInvalida .
  }.
 "Put here the test classes associated with"
 testClasses :=  {
