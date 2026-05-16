@@ -1,0 +1,24 @@
+"Ejercicio de tenis de progrmacion orientada a objetos"
+
+--------------------------------------------------------------
+
+
+"Nos centramos solo en el manejo  del marcador de un partido de tenis. La puntuacion en el tenis tiene una tendencia  del tipo 'Tira y afloja ' 
+
+EN un partido de tennis. Un jugador empieza con una puntuacion de 0. Con cada pelota exitosa, el jugador gana mas puntos de la siguiente manera 
+0->15->30->40
+
+Si un jugador llega a los 40 puntos y vuelve a obtener una pelota exitosa, ganara un game .(En la medida que el otro jugador no tenga 40 puntos tambien) 
+
+SI ambos jugadores alcanzan 40 puntos que se conoce como deuce 
+
+Deuce: Una pelota exitosa obtenida  en un estado de deuce ,otorga una ventaja al jugador. Si el jugador contrario marcara nuevamente el marcador vuelve a deuce 
+Si un jugador se encuentra en ventaja y marca otra vez ese jugador gana el game 
+"
+
+
+----------------------------------------------------------------
+
+
+
+"El objetivo de TDD es codear unicamente cuando una prueba falla, no podemos hacer, solo en esas condiciones nosotros estamos habilitados a codear sino no tienen sentido"
