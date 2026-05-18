@@ -49,7 +49,7 @@ altura_normalizada = altura_experimento / altura_0
 
 # --- 2. FILTRO DEL 10% ---
 # ¡Solo usamos los datos buenos para CREAR los modelos!
-mascara = altura_experimento > 0.5
+mascara = altura_experimento > 0.5             
 mejor_tiempo = tiempo_experimento[mascara]
 mejor_altura = altura_normalizada[mascara]
 mejores_valores = len(mejor_tiempo)
