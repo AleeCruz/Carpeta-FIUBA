@@ -1,0 +1,2 @@
+pdftoppm -png -r 300 "nombre_del_archivo.pdf" pagina
+
