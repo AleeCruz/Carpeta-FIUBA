@@ -1,0 +1,72 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class AlgoTek{
+    'Atributos
+    +evento: String
+    +artistaNacional: String 
+    +tarifaArtista: Number 
+
+    'Metodos
+    +paraEventoRegistrarUbicacionPlateaPreferencialTarifa(String,String,Number)
+    +paraEventoRegistrarUbicacionCampoTarifa(Strign,String,Number)
+    +paraEventoRegistarUbicacionVipTarifaLugaresDisponibles(String,String,Number,Number)
+    +costoEntradaParaEnUbicacionPagadoCon(String,String,efectivo:Efectivo)
+    +entradaMasBarataPagadoCon(String,efectivo:Efectivo)
+    {static}+registrarEventoDeArtistaNacionalConTarifaArtista(String,String,Number):AlgoTek
+    {static}+registrarEventoDeArtistaInternacionalConTarifaArtista(String,String,Number):AlgoTek
+}
+
+class Evento{
+
+}
+
+class Ubicacion{
+
+}
+
+class PlateaPreferencial{
+
+}
+class Campo{
+
+}
+class VIP{
+    
+}
+
+
+class Tarifa{
+
+}
+
+
+Class MedioDePago{
+
+}
+class Efectivo{
+
+}
+Class Tarjeta{
+    +nombre:String
+    {static}+conNombre(String)
+
+}
+
+
+
+Class Artista{
+
+}
+
+Class Nacional{
+
+}
+Class Internacional{
+
+}
+
+
+
+
+@enduml

@@ -1,1 +1,179 @@
-TestCase subclass: #AlgoPenalesTest	instanceVariableNames: 'precision'	classVariableNames: ''	package: 'TP1-Tests'!!AlgoPenalesTest methodsFor: 'tests' stamp: 'DS 3/21/2026 21:17'!test01UnJugadorConCiertoCansancioYCiertaHabilidadEsElEncargadoDePatearElPenal			| jugadorEsperado jugadorAPatear eleccion  equipo |		"Arrange"	equipo := { Jugador nombre: 'Paredes' habilidad: 70 cansancio: 90 experiencia: 5 } .	eleccion := ElegirPateador habiendoEmpatadoComo: equipo.	"Inicialmente el partido esta 0-0"			"Act"		jugadorAPatear := eleccion mejorPateador.		"Assert"	jugadorEsperado := 'Paredes'.	self assert: jugadorAPatear nombre equals: jugadorEsperado.! !!AlgoPenalesTest methodsFor: 'tests' stamp: 'DS 3/21/2026 21:16'!test07SiElEquipoEstaPerdiendoElJugadorEstaMasNerviosoParaPatear	"Arrange"	| jugadorEsperado eleccion jugadorAPatear equipo |	equipo := { 		Jugador nombre: 'Dario Benedetto' habilidad: 78 cansancio: 80 experiencia: 15.		Jugador nombre: 'Leandro Paredes' habilidad: 78 cansancio: 75 experiencia: 5.	}.	eleccion := ElegirPateador habiendoPerdidoComo: equipo.	"	Argentina cae ante Portugal. 	Al cansancio de los jugadores se les resta la experiencia.	"	"Act"		jugadorAPatear := eleccion mejorPateador.		"Assert"	jugadorEsperado := 'Leandro Paredes'.	self assert: jugadorAPatear nombre equals: jugadorEsperado	"	Valuación de Benedetto: 78^2 * (80 - 15) = 395,460 	Valuación de Paredes:   78^2 * (75 - 5) =  425,880 	Benedetto patea el penal debido a que 89^2 * 20 - 1000 < 78^2 * 80 - 1000"! !!AlgoPenalesTest methodsFor: 'tests' stamp: 'DS 3/21/2026 21:17'!test03EntreDosJugadoresTitularesDeDistintaHabilidadPeroCiertoCansancioPateaElIndicado	| jugadorEsperado jugadorAPatear eleccion  equipo |		"Arrange"	equipo := { 		Jugador nombre: 'Lionel Messi' habilidad: 90 cansancio: 20 experiencia: 7.		Jugador nombre: 'Angel Di Maria' habilidad: 81 cansancio: 70 experiencia: 6. 	}.	eleccion := ElegirPateador habiendoEmpatadoComo: equipo . "Inicialmente el partido esta 0-0"		"Act"		jugadorAPatear := eleccion mejorPateador.		"Assert"	jugadorEsperado := 'Angel Di Maria'.	self assert: jugadorAPatear nombre equals: jugadorEsperado	"	Valoración de Lionel: 90^2 * 20 = 162,000.	Valoración de Angel: 81^2 * 70 = 459,270"! !!AlgoPenalesTest methodsFor: 'tests' stamp: 'DS 4/7/2026 20:03'!test02EntreDosJugadoresTitularesDeMismaHabilidadYMismaExperienciaPateaElMenosCansado	| jugadorEsperado jugadorAPatear eleccion  equipo |		"Arrange"	equipo := { 					Jugador nombre: 'Lautaro' habilidad: 70 cansancio: 50 experiencia: 3.					Jugador nombre: 'Julian Alvarez' habilidad: 70 cansancio: 90 experiencia: 3.									}.	eleccion := ElegirPateador habiendoEmpatadoComo: equipo. "Inicialmente el partido esta 0-0"		"Act"	jugadorAPatear := eleccion mejorPateador.	"	Queremos elegir un jugador que seguro patee bien, 	por lo que pateará el que obtenga	un mayor resultado analizando su habilidad al cuadrado multiplicado por su cansancio	"		"Assert"	jugadorEsperado := 'Julian Alvarez'.	self assert: jugadorAPatear nombre equals: jugadorEsperado		"	Valoración de Julian: 70^2 * 90 = 441,000.	Valoración de Lautaro: 70^2 * 50 = 245,000"! !!AlgoPenalesTest methodsFor: 'tests' stamp: 'DS 3/21/2026 22:11'!test06SiElEquipoEstaGanandoElPartidoELJugadorEstaMasConfiadoParaPatear	"Arrange"	| jugadorEsperado eleccion jugadorAPatear equipo |	equipo := {		Jugador nombre: 'Guido Rodriguez' habilidad: 60 cansancio: 50 experiencia: 2.		Jugador nombre: 'Dibu Martinez' habilidad: 20 cansancio: 70 experiencia: 5.		Jugador nombre: 'Paulo Dybala' habilidad: 90 calidad: 0.1 experiencia: 5. 	}.	eleccion := ElegirPateador habiendoGanadoComo: equipo .	"Argentina toma la ventaja. Se incrementá en 80,000 la evaluación de los suplentes"		"Act"		jugadorAPatear := eleccion mejorPateador.		"Assert"	jugadorEsperado := 'Paulo Dybala'.	self assert: jugadorAPatear nombre equals: jugadorEsperado	"	Valoración de Dibu:  20^2 * 70      = 28,000.	Valoración de Guido: (60^2 * 50)/2  = 90,000.	Valoración de Pablo: 90^(2 + .1)    = 12,703.08692273562 + 80,000 de Plus.	Guido patea el penal debido a que 20^2 * 70 + 1000 < (60^2 * 50)/2 + 1000"! !!AlgoPenalesTest methodsFor: 'tests' stamp: 'DS 3/21/2026 21:49'!test04EntreUnJugadorTitularYUnoQueEntroDeSuplentePateaElIndicado	| jugadorEsperado jugadorAPatear eleccion  equipo |		"Arrange"	equipo := { 		"Suplente nombre: 'Paulo Dybala' habilidad: 90 calidad: 0.9 experiencia:  5."		Jugador nombre: 'Paulo Dybala' habilidad: 90 calidad: 0.9 experiencia:  5.		Jugador nombre: 'Angel Di Maria' habilidad: 81 cansancio: 70 experiencia: 5.	}.	eleccion := ElegirPateador habiendoEmpatadoComo: equipo. "Inicialmente el partido esta 0-0"	"Act"		jugadorAPatear := eleccion mejorPateador.		"Assert"	jugadorEsperado := 'Paulo Dybala'.	self assert: jugadorAPatear nombre equals: jugadorEsperado	"	Si el jugador tiene calidad de suplente, 	no se lo puede evaluar de la misma manera que a los titulares, 	por lo que para ver si va a patear se evaluará su habilidad 	elevado a dos más su calidad de suplente	Valoración de Dybala: 90^(2 + 0.9) = 464,839.7697280635	Valoración de Angel:  81^2 * 70    = 459,270	"! !!AlgoPenalesTest methodsFor: 'tests' stamp: 'DS 3/21/2026 21:16'!test05EntreUnJugadorExperimentadoYUnoSinExperienciaDeMismaTitularidadPateaElIndicado	"Arrange"	| jugadorEsperado eleccion jugadorAPatear equipo |	equipo := { 		Jugador nombre: 'Guido Rodriguez' habilidad: 60 cansancio: 50 experiencia: 2.		"		Un jugador con menos de 3 anios de experiencia no es experimentado, 		por lo que para evaluar si puede patear, 		deberá hacerse el mismo cálculo que para los demás jugadores 		pero dividiendo el total por dos		"		Jugador nombre: 'Nicolas Otamendi' habilidad: 40 cansancio: 70 experiencia: 5. 	}.	eleccion := ElegirPateador habiendoEmpatadoComo: equipo. "Inicialmente el partido esta 0-0"		"Act"		jugadorAPatear := eleccion mejorPateador.		"Assert"	jugadorEsperado := 'Nicolas Otamendi'.	self assert: jugadorAPatear nombre equals: jugadorEsperado	"Guido patea el penal debido a que 40^2 * 70 > (60^2 * 50)/2"! !
+TestCase subclass: #AlgoTekTest	instanceVariableNames: 'precision'	classVariableNames: ''	package: 'TP1-Tests'!!AlgoTekTest methodsFor: 'tests' stamp: 'Joaquin 9/13/2023 20:51'!test07SacarUnaEntradaPagandoConTarjetaTieneUnDescuento	
+	| costoAPagar costoEsperado ubicacionElegida algoTek evento tarjeta |
+	
+	"Arrange"
+	evento := 'The Eras Tour, en River'.
+	algoTek := AlgoTek registrarEvento: evento deArtistaInternacional: 'Taylor Swift' conTarifaArtista: 100000.
+
+	ubicacionElegida := 'M912'.
+	tarjeta := Tarjeta conNombre: 'Patagonia'.	
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: ubicacionElegida tarifa: 25000.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: 'D018' tarifa: 20000.
+	algoTek paraEvento: evento registrarUbicacionCampo: 'Campo Delantero' tarifa: 75000. "ay amiga, + sErVIcE CHanGe"
+	algoTek paraEvento: evento registrarUbicacionCampo: 'Campo Trasero' tarifa: 40000.
+	algoTek paraEvento: evento registrarUbicacionViP: 'Karma is my Boyfriend' tarifa: 155000 lugaresDisponibles: 2.
+	algoTek paraEvento: evento registrarUbicacionViP: 'Its a Love Story' tarifa: 85000 lugaresDisponibles: 2.
+
+
+	"Al ser un artista internacional, el impuesto 'al disfrute' te vacuna"
+	costoEsperado := (100000 * 2) / 5 + 1000.
+	
+	"Al ser platea, se sacan los dos ultimos numeros de la ubicacion y se multiplica por la tarifa de platea"
+	costoEsperado := costoEsperado + (12 * 25000).
+
+	"Al pagar con tarjeta Patagonia, hay descuento del 20%"
+	costoEsperado := costoEsperado * 0.8.
+
+	"Act"	
+	costoAPagar := algoTek costoEntradaPara: evento enUbicacion: ubicacionElegida pagandoCon: tarjeta.
+	
+	"Assert"
+	self assert: costoAPagar closeTo: costoEsperado precision: 0.0001 ! !!AlgoTekTest methodsFor: 'tests' stamp: 'Joaquin 9/13/2023 20:51'!test04SacarUnaEntradaParaUnArtistaInternacionalEnPlateaPoseeElSiguienteCosto	
+	| costoAPagar costoEsperado ubicacionElegida algoTek evento efectivo |
+	
+	"Arrange"
+	evento := 'The Eras Tour, en River'.	efectivo := Efectivo new.
+	algoTek := AlgoTek registrarEvento: evento deArtistaInternacional: 'Taylor Swift' conTarifaArtista: 100000.
+
+	ubicacionElegida := 'M912'.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: ubicacionElegida tarifa: 25000.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: 'D018' tarifa: 20000.
+	algoTek paraEvento: evento registrarUbicacionCampo: 'Campo Delantero' tarifa: 75000. "ay amiga, + sErVIcE CHanGe"
+	algoTek paraEvento: evento registrarUbicacionCampo: 'Campo Trasero' tarifa: 40000.
+	algoTek paraEvento: evento registrarUbicacionViP: 'Karma is my Boyfriend' tarifa: 155000 lugaresDisponibles: 2.
+	algoTek paraEvento: evento registrarUbicacionViP: 'Its a Love Story' tarifa: 85000 lugaresDisponibles: 2.
+
+
+	"Al ser un artista internacional, el impuesto 'al disfrute' te vacuna"
+	costoEsperado := (100000 * 2) / 5 + 1000.
+	
+	"Al ser platea, se sacan los dos ultimos numeros de la ubicacion y se multiplica por la tarifa de platea"
+	costoEsperado := costoEsperado + (12 * 25000).
+
+	"Act"	
+	costoAPagar := algoTek costoEntradaPara: evento enUbicacion: ubicacionElegida pagandoCon: efectivo.
+	
+	"Assert"
+	self assert: costoAPagar closeTo: costoEsperado precision: 0.0001 ! !!AlgoTekTest methodsFor: 'tests' stamp: 'Joaquin 9/13/2023 20:49'!test01SacarUnaEntradaParaUnArtistaEnUnaUbicacionEnParticularPoseeElSiguienteCosto	
+	| costoAPagar costoEsperado ubicacionElegida algoTek evento efectivo |
+	
+	"Arrange"
+	evento := 'La Ultima Noche Magica En River'.	efectivo := Efectivo new.
+	algoTek := AlgoTek registrarEvento: evento deArtistaNacional: 'Tan Bionica' conTarifaArtista: 50000.
+
+	ubicacionElegida := 'D018'.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: 'M912' tarifa: 25000.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: ubicacionElegida tarifa: 2000.
+	algoTek paraEvento: evento registrarUbicacionCampo: 'Campo General' tarifa: 16000.
+	algoTek paraEvento: evento registrarUbicacionViP: 'Hospitality' tarifa: 40000 lugaresDisponibles: 2.
+	
+	"Al ser un artista nacional, se subsidia su tarifa de artista"
+	costoEsperado := 50000 log.
+	
+	"Al ser platea, se sacan los dos ultimos numeros de la ubicacion y se multiplica por la tarifa de platea"
+	costoEsperado := costoEsperado + (18 * 2000).
+
+	"Act"	
+	costoAPagar := algoTek costoEntradaPara: evento enUbicacion: ubicacionElegida pagandoCon: efectivo.
+	
+	"Assert"
+	self assert: costoAPagar closeTo: costoEsperado precision: 0.0001 ! !!AlgoTekTest methodsFor: 'tests' stamp: 'Joaquin 9/13/2023 20:50'!test02SacarUnaEntradaParaUnArtistaNacionalEnCampoPoseeElSiguienteCosto	
+	| costoAPagar costoEsperado ubicacionElegida algoTek evento efectivo |
+	
+	"Arrange"
+	evento := 'La Ultima Noche Magica En River'.	efectivo := Efectivo new.
+	algoTek := AlgoTek registrarEvento: evento deArtistaNacional: 'Tan Bionica' conTarifaArtista: 50000.
+
+	ubicacionElegida := 'Campo General'.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: 'M912' tarifa: 2000.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: 'D018' tarifa: 25000.
+	algoTek paraEvento: evento registrarUbicacionCampo: 'Campo General' tarifa: 16000.
+	algoTek paraEvento: evento registrarUbicacionViP: 'Hospitality' tarifa: 40000 lugaresDisponibles: 2.
+	
+	"Al ser un artista nacional, se subsidia su tarifa de artista"
+	costoEsperado := 50000 log.
+	
+	"Al ser campo, el costo es fijo"
+	costoEsperado := costoEsperado + 16000.
+
+	"Act"	
+	costoAPagar := algoTek costoEntradaPara: evento enUbicacion: ubicacionElegida pagandoCon: efectivo.
+	
+	"Assert"
+	self assert: costoAPagar closeTo: costoEsperado precision: 0.0001 ! !!AlgoTekTest methodsFor: 'tests' stamp: 'Joaquin 9/13/2023 20:51'!test03SacarUnaEntradaParaUnArtistaNacionalEnViPPoseeElSiguienteCosto	
+	| costoAPagar costoEsperado ubicacionElegida algoTek evento efectivo |
+	
+	"Arrange"
+	evento := 'La Ultima Noche Magica En River'.	efectivo := Efectivo new.
+	algoTek := AlgoTek registrarEvento: evento deArtistaNacional: 'Tan Bionica' conTarifaArtista: 50000.
+
+	ubicacionElegida := 'Hospitality'.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: 'M912' tarifa: 2000.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: 'D018' tarifa: 25000.
+	algoTek paraEvento: evento registrarUbicacionCampo: 'Campo General' tarifa:  16000.
+	algoTek paraEvento: evento registrarUbicacionViP: 'Hospitality' tarifa:  40000 lugaresDisponibles: 10.
+	
+	"Al ser un artista nacional, se subsidia su tarifa de artista"
+	costoEsperado := 50000 log.
+	
+	"Al ser Hospitality, la tarifa se va encareciendo a medida que se van ocupando los lugares"
+	costoEsperado := costoEsperado + (40000 / 10).
+
+	"Act"	
+	costoAPagar := algoTek costoEntradaPara: evento enUbicacion: ubicacionElegida pagandoCon: efectivo.
+	
+	"Assert"
+	self assert: costoAPagar closeTo: costoEsperado precision: 0.0001 ! !!AlgoTekTest methodsFor: 'tests' stamp: 'Joaquin 9/13/2023 20:52'!test05LaEntradaMasBarataParaUnArtistaInternacionalPoseeElSiguienteCosto	
+	| costoAPagar costoEsperado algoTek evento efectivo |
+	
+	"Arrange"
+	evento := 'The Eras Tour, en River'.	efectivo := Efectivo new.
+	algoTek := AlgoTek registrarEvento: evento deArtistaInternacional: 'Taylor Swift' conTarifaArtista: 100000.
+
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: 'M912' tarifa: 25000.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: 'D018' tarifa: 20000.
+	algoTek paraEvento: evento registrarUbicacionCampo: 'Campo Delantero' tarifa: 75000. "ay amiga, + sErVIcE CHanGe"
+	algoTek paraEvento: evento registrarUbicacionCampo: 'Campo Trasero' tarifa: 40000.
+	algoTek paraEvento: evento registrarUbicacionViP: 'Karma is my Boyfriend' tarifa: 155000 lugaresDisponibles: 2.
+	algoTek paraEvento: evento registrarUbicacionViP: 'Its a Love Story' tarifa: 85000 lugaresDisponibles: 2.
+
+
+	"Al ser un artista internacional, el impuesto 'al disfrute' te vacuna"
+	costoEsperado := (100000 * 2) / 5 + 1000.
+	
+	"La entrada mas barata pertenece a la ubicacion de campo trasero en este caso"
+	costoEsperado := costoEsperado + 40000.
+
+	"Act"	
+	costoAPagar := algoTek entradaMasBarataPara: evento pagandoCon: efectivo.
+	
+	"Assert"
+	self assert: costoAPagar closeTo: costoEsperado precision: 0.0001 ! !!AlgoTekTest methodsFor: 'tests' stamp: 'AV 9/18/2023 20:08'!test06SacarUnaEntradaParaUnArtistaInternacionalEnViPVaAumentandoSegunLocalidadesDisponibles	
+	| costoAPagar costoEsperado ubicacionElegida algoTek evento efectivo |
+	
+	"Arrange"
+	evento := 'The Eras Tour, en River'.	efectivo := Efectivo new.
+	algoTek := AlgoTek registrarEvento: evento deArtistaInternacional: 'Taylor Swift' conTarifaArtista: 100000.
+
+	ubicacionElegida := 'Its a Love Story'.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: 'A011' tarifa: 25000.
+	algoTek paraEvento: evento registrarUbicacionPlateaPreferencial: 'D018' tarifa: 20000.
+	algoTek paraEvento: evento registrarUbicacionCampo: 'Campo Delantero' tarifa: 75000.
+	algoTek paraEvento: evento registrarUbicacionCampo: 'Campo Trasero' tarifa: 40000.
+	algoTek paraEvento: evento registrarUbicacionViP: 'Karma is my Boyfriend' tarifa: 155000 lugaresDisponibles: 2.
+	algoTek paraEvento: evento registrarUbicacionViP: 'Its a Love Story' tarifa: 85000 lugaresDisponibles: 2.
+
+	"Ya se saco esta el 'Its a Love Story', por lo tanto se reduce el lugar disponible"
+	algoTek costoEntradaPara: evento enUbicacion: ubicacionElegida pagandoCon: efectivo.
+
+	"Al ser un artista internacional, el impuesto 'al disfrute'"
+	costoEsperado := (100000 * 2) / 5 + 1000.
+	
+	"Al ser 'Its a Love Story', la tarifa se va encareciendo a medida que se van ocupando los lugares"
+	costoEsperado := costoEsperado + (85000 / 1).
+
+	"Act"	
+	costoAPagar := algoTek costoEntradaPara: evento enUbicacion: ubicacionElegida pagandoCon: efectivo.
+	
+	"Assert"
+	self assert: costoAPagar closeTo: costoEsperado precision: 0.0001 ! !

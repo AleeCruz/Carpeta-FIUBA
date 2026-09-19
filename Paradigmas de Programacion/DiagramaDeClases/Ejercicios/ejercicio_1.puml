@@ -1,0 +1,65 @@
+'Este sera el inicio de plantUMl
+@startuml 
+skinparam classAttributeIconSize 0
+hide circle
+show stereotype
+
+Jugador <|-- Titular
+Jugador <|-- Suplente
+class Jugador{
+    'Atributos 
+    +nombre: String 
+    +habilidad: Number
+    +experiencia: Number
+    +nivelDeExperiencia: NivelDeExperiencia 
+
+    'Metodos
+    +Jugador(nombre:String,habilidad:Number,experiencia:Number,nivelDeExperiencia:NivelDeExperiencia)
+    +valoracionParaRematar(unEstado:EstadoPartido):Number
+    +calcularBasePateador(unEstado:EstadoPartido):Number
+    +nombre():String
+    +experiencia():Number
+    +initialize():Jugador 
+    {static} +nombreHabilidadCalidadExperiencia(String,Number,Number,Number):Suplente
+    {static} +nombreHabilidadCansancioExperiencia(String,Number,Number,Number):Titular
+}
+
+class Titular{
+    + cansancio: Number 
+
+    +Titular(nombre:String,habilidad:Numbermber, cansancio:Number, experiencia: Number ,nivelDeExperiencia:NivelDeExperiencia)
+    +calcularBasePateador(unEstado: EstadoPartido):Number
+
+}
+class Suplente{
+    +calidad: Number
+
+    +Suplente(nombre:String,habilidad:Number,calidad:Number,experiencia:Number,nivelDeExperiencia:NivelDeExperiencia)
+}
+
+NivelDeExperiencia <|.. Novato
+
+NivelDeExperiencia <|.. Experimentado
+
+
+
+interface NivelDeExperiencia <<interface>>{
+    +afectar(unValorBase:Number):Number
+}
+
+class Novato{
+
+}
+class Experiementado{
+
+}
+
+
+
+
+
+
+
+
+@enduml 
+'Este sera la finalizacion de plantuml
