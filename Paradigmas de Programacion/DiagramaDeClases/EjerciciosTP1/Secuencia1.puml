@@ -1,0 +1,42 @@
+@startuml
+autonumber
+skinparam style strictuml
+skinparam sequenceMessageScale 0.9
+
+actor Cliente
+participant ":AlgoTek" as AlgoTek
+participant "unEvento:Evento" as Evento
+participant "ubicaciones:Collection" as Collection
+participant "unaUbicacion:Ubicacion" as Ubicacion
+participant "unArtista:Artista" as Artista
+
+Cliente -> AlgoTek : entradaMasBarataPara: 'River' pagandoCon: unMedioDePago
+activate AlgoTek
+
+AlgoTek -> AlgoTek : buscarEventoLlamado: 'River'
+activate AlgoTek
+AlgoTek --> AlgoTek : unEvento
+deactivate AlgoTek
+
+AlgoTek -> Evento : entradaMasBarataPagandoCon: unMedioDePago
+activate Evento
+
+loop para cada ubicación en la colección
+    Evento -> Ubicacion : calcularPrecio
+    activate Ubicacion
+    Ubicacion --> Evento : precioUbicacion
+    deactivate Ubicacion
+end
+
+Evento -> Artista : calcularCosto
+activate Artista
+Artista --> Evento : costoArtista
+deactivate Artista
+
+Evento --> AlgoTek : tarifaMinima + costoArtista
+deactivate Evento
+
+AlgoTek --> Cliente : tarifaMinima + costoArtista
+deactivate AlgoTek
+
+@startuml

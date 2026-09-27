@@ -1,72 +1,123 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class AlgoTek{
-    'Atributos
-    +evento: String
-    +artistaNacional: String 
-    +tarifaArtista: Number 
 
-    'Metodos
-    +paraEventoRegistrarUbicacionPlateaPreferencialTarifa(String,String,Number)
-    +paraEventoRegistrarUbicacionCampoTarifa(Strign,String,Number)
-    +paraEventoRegistarUbicacionVipTarifaLugaresDisponibles(String,String,Number,Number)
-    +costoEntradaParaEnUbicacionPagadoCon(String,String,efectivo:Efectivo)
-    +entradaMasBarataPagadoCon(String,efectivo:Efectivo)
-    {static}+registrarEventoDeArtistaNacionalConTarifaArtista(String,String,Number):AlgoTek
-    {static}+registrarEventoDeArtistaInternacionalConTarifaArtista(String,String,Number):AlgoTek
+class AlgoTek {
+    -eventos: Collection
+    --
+    {static}+registrarEvento:deArtistaNacional:conTarifaArtista:(String, String, Number)
+    {static}+registrarEvento:deArtistaInternacional:conTarifaArtista:(String, String, Number)
+    +paraEvento:registrarUbicacionCampo:tarifa:(String, String, Number)
+    +paraEvento:registrarUbicacionPlateaPreferencial:tarifa:(String, String, Number)
+    +paraEvento:registrarUbicacionViP:tarifa:lugaresDisponibles:(String, String, Number, Number)
+    +costoEntradaPara:enUbicacion:pagandoCon:(String, String, MedioDePago): Number
+    +entradaMasBarataPara:pagandoCon:(String, MedioDePago): Number
+    +cantidadDeEvento(): Number
+    +cantidadDeUbicacionesRegistradasPara(String): Number
+    -buscarEventoLlamado(String): Evento
 }
 
-class Evento{
-
+class Evento {
+    -nombreDelEvento: String
+    -artistas: Collection
+    -ubicaciones: Collection
+    --
+    +conNombre(String): Boolean
+    +registraUnArtistaNacionalDeNombre:conUnaTarifaDe:(String, Number)
+    +registraUnArtistaInteracionalDeNombre:conUnaTarifaDe:(String, Number)
+    +paraEvento:registrarUbicacionCampo:tarifa:(String, String, Number)
+    +paraEvento:registrarUbicacionPlateaPreferencial:tarifa:(String, String, Number)
+    +paraEvento:registrarUbicacionViP:tarifa:lugaresDisponibles:(String, String, Number, Number)
+    +calcularEntradaDe:con:(String, MedioDePago): Number
+    +entradaMasBarataPagandoCon(MedioDePago): Number
+    +cantidadDeUbicaciones(): Number
+    +cantidadDeArtistas(): Number
 }
 
-class Ubicacion{
+' --- JERARQUÍA DE ARTISTA ---
 
+abstract class Artista {
+    #nombre: String
+    #tarifaArtista: Number
+    --
+    +{abstract} calcularCosto(): Number
+    +conNombre:conTarifaDe:(String, Number)
 }
 
-class PlateaPreferencial{
-
-}
-class Campo{
-
-}
-class VIP{
-    
+class Nacional {
+    +calcularCosto(): Number
+    +nombre(): String
+    {static} +conNombre:conTarifaDe:(String, Number): Nacional
 }
 
-
-class Tarifa{
-
+class Internacional {
+    +calcularCosto(): Number
+    {static} +conNombre:conTarifaDe:(String, Number): Internacional
 }
 
+' --- JERARQUÍA DE UBICACIÓN ---
 
-Class MedioDePago{
-
-}
-class Efectivo{
-
-}
-Class Tarjeta{
-    +nombre:String
-    {static}+conNombre(String)
-
+abstract class Ubicacion {
+    #nombre: String
+    #tarifaUbicacion: Number
+    --
+    +{abstract} calcularPrecio(): Number
+    {static}+conLugarEn:yUnaTarifaDe:(String, Number)
+    +conNombre(String): Boolean
 }
 
-
-
-Class Artista{
-
+class Campo {
+    +calcularPrecio(): Number
+    {static} +conLugarEn:yUnaTarifaDe:(String, Number): Campo
 }
 
-Class Nacional{
-
-}
-Class Internacional{
-
+class Platea {
+    +calcularPrecio(): Number
+    {static} +conLugarEn:yUnaTarifaDe:(String, Number): Platea
 }
 
+class Vip {
+    -cantidadDeLugaresDisponibles: Number
+    --
+    +calcularPrecio(): Number
+    +conLugarEn:yUnaTarifaDe:lugaresDisponibles:(String, Number, Number)
+    {static} +conLugarEn:yUnaTarifaDe:lugaresDisponibles:(String, Number, Number): Vip
+}
 
+' --- JERARQUÍA DE MEDIO DE PAGO ---
 
+abstract class MedioDePago {
+    +{abstract} obtenerBeneficio(precioDeEntrada: Number): Number
+}
+
+class Efectivo {
+    +obtenerBeneficio(precioDeEntrada: Number): Number
+}
+
+class Tarjeta {
+    -nombre: String
+    -beneficio: Number
+    --
+    +obtenerBeneficio(precioDeEntrada: Number): Number
+    +conNombre(String)
+    {static} +conNombre(String): Tarjeta
+}
+
+' --- RELACIONES Y MULTIPLICIDADES ---
+AlgoTek "1" -right-> "1" MedioDePago
+
+AlgoTek "1" o-- "0..*" Evento : contiene >
+Evento "1" o-- "1..*" Artista : tiene registrado >
+Evento "1" o-- "0..*" Ubicacion : posee >
+
+Artista <|-- Nacional
+Artista <|-- Internacional
+
+Ubicacion <|-- Campo
+Ubicacion <|-- Platea
+Ubicacion <|-- Vip
+
+MedioDePago <|-- Efectivo
+MedioDePago <|-- Tarjeta
 
 @enduml

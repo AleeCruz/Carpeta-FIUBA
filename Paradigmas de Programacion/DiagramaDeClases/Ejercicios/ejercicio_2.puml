@@ -1,0 +1,105 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+package "Sistema Principal" {
+  class AlgoTek {
+    - eventos: Dictionary
+    {static} + registrarEvento(unNombre, unArtista, unaTarifa): AlgoTek
+    {static} + registrarEvento(unNombre, unArtistaInternacional, unaTarifa): AlgoTek
+    + initialize()
+    + paraEventoRegistrarUbicacionPlateaPreferencial(unEvento, unaUbicacion, unaTarifa)
+    + paraEventoRegistrarUbicacionCampo(unEvento, unaUbicacion, unaTarifa)
+    + paraEventoRegistrarUbicacionViP(unEvento, unaUbicacion, unaTarifa, lugares): 
+    + costoEntradaParaEnUbicacionPagandoCon(unEvento, unaUbicacion, unMedioDePago): Number
+    + entradaMasBarataParaPagandoCon(unEvento, unMedioDePago): Number
+  }
+
+  class Evento {
+    - nombre: String
+    - ubicaciones: Dictionary
+    {static} + conNombreArtista(unNombre, unArtista): Evento
+    + registrarUbicacionPlateaPreferencial(unNombre, unaTarifa)
+    + registrarUbicacionCampo(unNombre, unaTarifa)
+    + registrarUbicacionViP(unNombre, unaTarifa, lugares)
+    + costoEntradaEnUbicacionPagandoCon(unaUbicacion, unMedioDePago): Number
+    + costoEntradaMasBarataPagandoCon(unMedioDePago): Number
+  }
+}
+
+package "Artistas" {
+  abstract class Artista {
+    # nombre: String
+    # tarifa: Number
+    {static} + conNombreTarifa(unNombre, unaTarifa): Artista
+    {abstract} + costoBase(): Number
+  }
+
+  class ArtistaNacional {
+    + costoBase(): Number
+  }
+
+  class ArtistaInternacional {
+    + costoBase(): Number
+  }
+}
+
+package "Ubicaciones" {
+  abstract class Ubicacion {
+    # nombre: String
+    # tarifa: Number
+    {abstract} + costoUbicacion(): Number
+  }
+
+  class PlateaPreferencial {
+    + costoUbicacion(): Number
+  }
+
+  class Campo {
+    + costoUbicacion(): Number
+  }
+
+  class UbicacionVIP {
+    - lugaresDisponibles: Integer
+    {static} + conNombreTarifaLugares(unNombre, unaTarifa, lugares): UbicacionVIP
+    + costoUbicacion(): Number
+  }
+}
+
+package "Medios de Pago" {
+  abstract class MedioDePago {
+    {abstract} + aplicarDescuentoA(unMonto): Number
+  }
+
+  class Efectivo {
+    + aplicarDescuentoA(unMonto): Number
+  }
+
+  class Tarjeta {
+    - banco: String
+    {static} + conNombre(unNombreBanco): Tarjeta
+    + aplicarDescuentoA(unMonto): Number
+  }
+}
+
+' Relaciones entre componentes
+AlgoTek "1" *-- "*" Evento : administra >
+Evento "1" o-- "1" Artista : tiene >
+Evento "1" *-- "*" Ubicacion : contiene >
+
+' Herencias
+Artista <|-- ArtistaNacional
+Artista <|-- ArtistaInternacional
+
+Ubicacion <|-- PlateaPreferencial
+Ubicacion <|-- Campo
+Ubicacion <|-- UbicacionVIP
+
+MedioDePago <|-- Efectivo
+MedioDePago <|-- Tarjeta
+
+' Dependencias de cálculo
+AlgoTek ..> MedioDePago : usa >
+Evento ..> MedioDePago : usa >
+
+@enduml

@@ -4,8 +4,28 @@ skinparam classAttributeIconSize 0
 hide circle
 show stereotype
 
-Jugador <|-- Titular
-Jugador <|-- Suplente
+
+ElegirPateador "1" o-left-> "1" EstadoPartido
+ElegirPateador "1" o-right-> "1..*" Jugador:selecciona
+
+class ElegirPateador{
+    +equipo:Collection
+    +estadoDePartido:EstadoPartido
+
+    +mejorPateador():Jugador
+    +initialize():ElegirPateador
+    +establecerEquipo(unEquipo:Collection, estadoDePartido:EstadoPartido)
+    {static}+habiendoGanadoComo(unEquipo:Collection):ElegirPateador
+    {static}+habiendoEmpatadoComo(unEquipo:Collection):ElegirPateador
+    {static}+habiendoPerdidoComo(unEquipo:Collection):ElegirPateador
+
+}
+
+
+Jugador <|--down-- Titular
+Jugador <|--down-- Suplente
+
+Jugador "1" --right--> "1" NivelDeExperiencia:verifica
 class Jugador{
     'Atributos 
     +nombre: String 
@@ -27,20 +47,49 @@ class Jugador{
 class Titular{
     + cansancio: Number 
 
-    +Titular(nombre:String,habilidad:Numbermber, cansancio:Number, experiencia: Number ,nivelDeExperiencia:NivelDeExperiencia)
+    +Titular(nombre:String,habilidad:Number, cansancio:Number, experiencia: Number ,nivelDeExperiencia:NivelDeExperiencia)
     +calcularBasePateador(unEstado: EstadoPartido):Number
-
+    +initialize():Titular
+    {static}+nombreHabilidadCansancioExperienciaNivel(String,Number,Number,Number,NivelDeExperiencia):Titular
 }
 class Suplente{
     +calidad: Number
 
     +Suplente(nombre:String,habilidad:Number,calidad:Number,experiencia:Number,nivelDeExperiencia:NivelDeExperiencia)
+    +calcularBasePateador(unEstado:EstadoPartido):Number
+    +initialize():Suplente
+    {static}+nombreHabilidadCalidadExperienciaNivel(String,Number,Number,Number,NivelDeExperiencia):Suplente
 }
+
+
+
+
+EstadoPartido <|-- EstadoGanado
+EstadoPartido <|-- EstadoEmpatado
+EstadoPartido <|-- EstadoPerdiendo
+class EstadoPartido{
+
+}
+class EstadoGanado{
+
+    +bonificar(unValor):Number
+
+}
+
+class EstadoEmpatado{
+
+}
+
+class EstadoPerdiendo{
+    +penalizar(unCansancio:Number,unaExperiencia:Number):Number
+}
+
+
+
 
 NivelDeExperiencia <|.. Novato
 
-NivelDeExperiencia <|.. Experimentado
-
+NivelDeExperiencia <|.. Experiementado
 
 
 interface NivelDeExperiencia <<interface>>{
@@ -53,9 +102,6 @@ class Novato{
 class Experiementado{
 
 }
-
-
-
 
 
 

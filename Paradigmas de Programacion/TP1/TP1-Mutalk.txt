@@ -1,0 +1,33 @@
+classesToMutate := {
+   AlgoTek.
+	Artista.
+	Internacional.
+	Nacional.
+	Efectivo.
+	Evento.
+	Tarjeta.
+	Ubicacion.
+	Campo.
+	Platea.
+	Vip.
+	MedioDePago .
+	
+}.
+"Put here the test classes associated with"
+testClasses :=  {
+	AlgoTekTest.
+	AlgoTekTestPropios.
+	ArtistaTest .
+	EventoTest .
+	UbicacionTest 
+	
+ }.
+
+analysis := MTAnalysis new
+    classesToMutate: classesToMutate;
+    testClasses: testClasses.
+
+analysis run.
+
+"To inspect the results"
+analysis generalResult inspect.
