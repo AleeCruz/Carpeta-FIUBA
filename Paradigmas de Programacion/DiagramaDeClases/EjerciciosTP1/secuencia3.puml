@@ -1,0 +1,59 @@
+@startuml
+autonumber
+title TestAlgoTek: test13AUnEventoPuedeCalcularLaEntradaMasBarataParaUnaUbicacionPlateaPagadaConEfectivo
+
+skinparam style strictuml
+skinparam sequenceMessageScale 1.0
+
+actor "Cliente" as Cliente
+
+participant "e : Evento" as Evento
+participant "ubicacion : Ubicacion" as Ubicacion
+participant "artista : Artista" as Artista
+participant "efectivo : Efectivo" as Tarjeta
+
+
+activate Cliente
+
+Cliente -> Evento : entradaMasBarataPagandoCon: efectivo
+activate Evento
+
+alt  ubicacion encontrada
+
+    loop  se detecta la ubicacion minima en ubicaciones
+        Evento -> Ubicacion : calcularPrecio
+        activate Ubicacion
+        Ubicacion --> Evento : boolean
+        deactivate Ubicacion
+        activate Evento
+    end
+    Evento->Evento:unaUbicacion
+    deactivate Evento
+
+
+
+    Evento -> Artista : calcularCosto()
+    activate Artista
+    Artista --> Evento : costoArtista
+    deactivate Artista
+
+    Evento -> Evento : costoBase = tarifaMinima + costoArtista
+
+    Evento -> Tarjeta : obtenerBeneficio(costoBase)
+    activate Tarjeta
+    Tarjeta --> Evento : monto
+    deactivate Tarjeta
+
+    Evento --> Cliente : monto
+
+else  ubicacion no encontrada
+
+    Evento --> Cliente : UbicacionNoEncontrada signal
+
+end
+
+deactivate Evento
+
+deactivate Cliente
+
+@enduml

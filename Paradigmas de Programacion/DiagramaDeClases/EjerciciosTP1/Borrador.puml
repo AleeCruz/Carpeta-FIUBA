@@ -1,0 +1,108 @@
+@startuml
+autonumber
+title TestEvento: test01AUnEventoPuedeCalcularLaEntradaParaUnArtistaNacionalEnUnaUbicacionPlateaPagdoConEfectivo
+
+skinparam style strictuml
+
+actor "Cliente" as Cliente
+
+
+participant ":Nacional" as NacionalClass
+participant ":Platea" as PlateaClass
+participant ":Evento" as EventoClass
+
+participant "unArtista : Nacional" as NacionalInst
+participant "unaUbicacion : Platea" as Plateainst
+participant "unEvento : Evento" as EventoInst
+participant ":Efectivo" as EfectivoClass
+participant "unEfectivo:Efectivo" as EfectivoInst
+
+
+
+
+
+
+Cliente -> EfectivoClass: new
+activate EfectivoClass
+EfectivoClass->EfectivoInst**:<<Create>>
+deactivate EfectivoClass
+
+Cliente->NacionalClass: conNombreYUnaTarifaDe('Tan Bionica',50000)
+activate NacionalClass
+NacionalClass->NacionalInst**:<<create>>
+NacionalClass-->Cliente:unArtista
+deactivate NacionalClass
+
+Cliente->PlateaClass: conNombreYUnaTarifaDe('M912',25000)
+activate PlateaClass
+PlateaClass->Plateainst**:<<create>>
+activate Plateainst
+PlateaClass-->Cliente:unaUbicacion
+deactivate Plateainst
+deactivate PlateaClass
+
+
+Cliente->PlateaClass: conNombreYUnaTarifaDe('M912',25000)
+activate PlateaClass
+PlateaClass->Plateainst**:<<create>>
+PlateaClass-->Cliente:unaUbicacion_1
+deactivate PlateaClass
+
+
+Cliente->PlateaClass: conNombreYUnaTarifaDe('M912',25000)
+activate PlateaClass
+PlateaClass->Plateainst**:<<create>>
+PlateaClass-->Cliente:unaUbicacion_2
+
+deactivate PlateaClass
+
+Cliente->EventoClass: deNombreConUnArtista(String,unArtista)
+activate EventoClass
+EventoClass->EventoInst**:<<create>>
+EventoClass-->Cliente:unEvento
+deactivate EventoClass
+
+activate EventoInst
+Cliente->EventoInst:registrarUbicacion(unaUbicacion)
+
+EventoInst->EventoInst:add(unaUbicacion)
+activate EventoInst
+deactivate EventoInst
+
+
+Cliente->EventoInst:registrarUbicacion(unaUbicacion)
+
+EventoInst->EventoInst:add(unaUbicacion_1)
+activate EventoInst
+deactivate EventoInst
+
+
+Cliente->EventoInst:registrarUbicacion(unaUbicacion)
+
+EventoInst->EventoInst:add(unaUbicacion_2)
+activate EventoInst
+deactivate EventoInst
+
+
+Cliente->EventoInst:CalcularEntradaDeCon('M912',unEfectivo)
+
+
+loop para cada ubicacion en ubicaciones
+    EventoInst->Plateainst:conNombre(unNombre:String)
+end
+    Plateainst-->EventoInst:unaUbicacion
+    EventoInst->Plateainst: calcularPrecio()
+    Plateainst-->EventoInst
+    EventoInst->NacionalInst:CalcularCosto()
+    NacionalInst-->EventoInst
+
+    EventoInst->EfectivoInst:obtenerBeneficio()
+    EfectivoInst-->EventoInst
+    EventoInst-->Cliente:resultado
+deactivate EventoInst
+
+
+
+
+
+@enduml

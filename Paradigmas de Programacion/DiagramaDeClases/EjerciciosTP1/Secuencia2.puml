@@ -1,0 +1,80 @@
+@startuml
+autonumber
+title TestAlgoTek: test07AlgoTekCalculaElCostoDeUnaEntradaEnUnaUbicacionPlateaPagadoConTarjetaConDescuento
+
+skinparam style strictuml
+
+actor "Cliente" as Cliente
+
+participant "algoTek:AlgoTek" as AlgoTek
+participant "e:Evento" as Evento
+participant "ubi:Ubicacion" as Ubicacion
+participant "artista:Artista" as Artista
+participant "tarjeta:Tarjeta" as Efectivo
+
+Cliente -> AlgoTek : costoDeEntradaPara:evento enUbicacion:unaUbicacion pagadoCon:tarjeta
+activate Cliente
+activate AlgoTek
+
+AlgoTek -> AlgoTek : buscarEventoLlamado(unNombre)
+activate AlgoTek
+
+loop para unEvento en Eventos
+    AlgoTek -> Evento : conNombre(unNombre)
+    activate Evento
+    Evento --> AlgoTek : booleano
+    deactivate Evento
+end
+
+alt  Evento Encontrado
+    AlgoTek --> AlgoTek : unEvento
+    deactivate AlgoTek
+
+    AlgoTek -> Evento : calcularEntradaDeCon(unNombreUbicacion, tarjeta)
+    activate Evento
+
+    loop para unaUbicacion en ubicaciones
+        Evento -> Ubicacion : conNombre(unNombre)
+        activate Ubicacion
+        Ubicacion --> Evento : booleano
+        deactivate Ubicacion
+    end
+
+    alt  Ubicación Encontrada
+        Evento -> Artista : calcularCosto()
+        activate Artista
+        Artista --> Evento : costo
+        deactivate Artista
+
+        Evento -> Ubicacion : calcularPrecio()
+        activate Ubicacion
+        Ubicacion --> Evento : precio
+        deactivate Ubicacion
+
+        Evento -> Evento : costoBase = costo + precio
+
+        Evento -> Efectivo : obtenerBeneficio(costoBase)
+        activate Efectivo
+        Efectivo --> Evento : monto
+        deactivate Efectivo
+
+        Evento --> AlgoTek : monto
+        deactivate Evento
+
+        AlgoTek --> Cliente : monto
+
+    else  Ubicación No Encontrada
+        Evento --> AlgoTek : UbicacionNoEncontrada signal
+        deactivate Evento
+        AlgoTek --> Cliente : UbicacionNoEncontrada signal
+    end
+
+else  Evento No Encontrado
+    AlgoTek --> Cliente : EventoNoEncontrado signal
+    deactivate AlgoTek
+end
+
+deactivate AlgoTek
+deactivate Cliente
+
+@enduml

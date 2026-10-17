@@ -1,0 +1,33 @@
+@startuml
+autonumber
+title TestArtista; test01UnArtistaNacionalSabeQueElEstadoLoSubsidia 
+
+skinparam style strictuml
+
+actor "Cliente" as Cliente
+participant ": Nacional" as NacionalClass
+participant "unArtista : Nacional" as NacionalInst
+
+Cliente -> NacionalClass : conNombreyUnaTarifaDe(Tan Bionica,50000)
+activate NacionalClass
+
+' Creación del objeto usando el operador **
+NacionalClass -> NacionalInst ** : <<create>>
+activate NacionalInst
+NacionalInst -> NacionalInst : conNombreyUnaTarifaDe(Tan Bionica,50000)
+
+NacionalInst --> NacionalClass : unArtista
+
+deactivate NacionalInst
+
+NacionalClass --> Cliente : unArtista
+deactivate NacionalClass
+
+
+Cliente->NacionalInst:calcularCosto()
+activate NacionalInst
+NacionalInst-->Cliente: costoTotal
+deactivate NacionalInst
+
+
+@enduml

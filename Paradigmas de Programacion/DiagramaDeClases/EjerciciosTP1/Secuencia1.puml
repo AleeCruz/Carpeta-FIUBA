@@ -39,4 +39,4 @@ deactivate Evento
 AlgoTek --> Cliente : tarifaMinima + costoArtista
 deactivate AlgoTek
 
-@startuml
+@enduml
