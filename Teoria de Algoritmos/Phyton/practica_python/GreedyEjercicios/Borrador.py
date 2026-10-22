@@ -1,31 +1,25 @@
-def cambio_cambio_opt(monedas, x):
-    # OPT[0] = 0
-    OPT = [float('inf')] * (x + 1)
-    OPT[0] = 0
+import matplotlib.pyplot as plt
+import numpy as np
 
-    # Desde i = 1 a x
-    for i in range(1, x + 1):
-        minimo = float('inf')
+# Constantes
+R = 0.05  # 5 cm
+lam = 0.1e-6  # 0.1 uC/m
+eps0 = 8.854e-12
 
-        # Desde j = 1 a n (iterando sobre cada moneda en C)
-        for c_j in monedas:
-            # Corregimos 'X' del seudocódigo por 'i' (el subproblema actual)
-            resto = i - c_j
+# Distancia z (de -20 cm a 20 cm)
+z = np.linspace(-0.2, 0.2, 1000)
 
-            # si resto >= 0 y minimo > OPT[resto]
-            if resto >= 0 and minimo > OPT[resto]:
-                minimo = OPT[resto]
+# Campo eléctrico E(z)
+E = (lam * R * z) / (2 * eps0 * (R**2 + z**2) ** 1.5)
 
-        # OPT[i] = 1 + minimo
-        OPT[i] = 1 + minimo
-
-    # Retornar OPT[x]
-    return OPT[x]
-
-
-# --- Ejemplo de uso ---
-C = [1, 5, 6, 9]  # Monedas C
-x = 11            # Monto x
-
-resultado = cambio_cambio_opt(C, x)
-print(f"OPT[{x}] = {resultado}")  # Imprime: OPT[11] = 2
+# Graficar
+plt.figure(figsize=(8, 5))
+plt.plot(z * 100, E, label="Campo Eléctrico $E(z)$", color="blue")
+plt.axhline(0, color="black", linewidth=0.8, linestyle="--")
+plt.axvline(0, color="black", linewidth=0.8, linestyle="--")
+plt.xlabel("Distancia $z$ (cm)")
+plt.ylabel("Campo Eléctrico $E$ (N/C)")
+plt.title("Campo Eléctrico en el eje de un anillo cargado")
+plt.grid(True)
+plt.legend()
+plt.show()
