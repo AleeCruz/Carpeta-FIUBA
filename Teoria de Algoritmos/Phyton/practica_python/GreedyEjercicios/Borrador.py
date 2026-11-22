@@ -1,129 +1,45 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
-def graficar_campo_electrico_disco():
-    # ---------------------------------------------------------
-    # 1. Definición de Parámetros Físicos (Valores del ejercicio)
-    # ---------------------------------------------------------
-    R_cm = 30.0               # Radio en cm
-    Q_uC = 0.2                # Carga total en micro-Coulombs
-    epsilon0 = 8.854e-12      # Permitividad del vacío en C^2/(N*m^2)
+# 1. Valores posibles de Y y sus probabilidades p_Y(y)
+y_values = np.array([-1.0, -0.75, -0.5, -0.25, 0.0, 0.25, 0.5, 0.75, 1.0])
+probabilities = np.array([0, 1/36, 1/18, 1/12, 1/9, 5/36, 1/6, 7/36, 2/9])
 
-    # Convertir a unidades del Sistema Internacional (SI)
-    R = R_cm / 100.0          # m
-    Q = Q_uC * 1e-6           # C
+# Etiquetas en formato de fracción para el eje horizontal
+y_labels = [r'$-1$', r'$-\frac{3}{4}$', r'$-\frac{1}{2}$', r'$-\frac{1}{4}$', 
+            r'$0$', r'$\frac{1}{4}$', r'$\frac{1}{2}$', r'$\frac{3}{4}$', r'$1$']
 
-    # Calcular densidades y constantes
-    area = np.pi * R**2       # m^2
-    sigma = Q / area          # C/m^2
-    constante_E = sigma / (2 * epsilon0) # V/m
+# 2. Configurar la figura
+plt.figure(figsize=(9, 5))
 
-    # Imprimir valores para verificación
-    print(f"--- Parámetros Calculados ---")
-    print(f"Radio (R): {R} m")
-    print(f"Densidad de carga (sigma): {sigma:.4e} C/m^2")
-    print(f"Constante sigma/(2*epsilon0): {constante_E/1000:.2f} kV/m")
+# Graficar el diagrama de bastones (stem plot)
+markerline, stemlines, baseline = plt.stem(y_values, probabilities, basefmt=" ")
 
-    # ---------------------------------------------------------
-    # 2. Definición de la Función del Campo Eléctrico E_z(z)
-    # ---------------------------------------------------------
-    def campo_z(z_m):
-        """
-        Calcula la componente z del campo eléctrico en el eje.
-        Entrada: z_m (posición en metros, puede ser un array de numpy).
-        Salida: E_z (campo en V/m).
-        """
-        # Usamos np.where para manejar el salto en z=0 de forma segura con arrays
-        # sgn(z) * [ 1 - |z| / sqrt(R^2 + z^2) ]
-        
-        term_raiz = np.abs(z_m) / np.sqrt(R**2 + z_m**2)
-        # sgn es +1 para z>0, -1 para z<0, 0 para z=0
-        sgn_z = np.sign(z_m)
-        
-        Ez = constante_E * sgn_z * (1.0 - term_raiz)
-        return Ez
+# Estilizar las líneas y puntos
+plt.setp(markerline, color='#1f77b4', markersize=7)
+plt.setp(stemlines, color='#1f77b4', linewidth=2)
 
-    # ---------------------------------------------------------
-    # 3. Preparación de Datos para la Gráfica
-    # ---------------------------------------------------------
-    # Definimos el rango de visualización en cm para el eje X
-    rango_vista_cm = 80.0
-    
-    # Creamos un array de puntos para z (en cm)
-    # Usamos muchos puntos para que la curva se vea suave.
-    z_grafica_cm = np.linspace(-rango_vista_cm, rango_vista_cm, 1000)
-    
-    # IMPORTANTE: Para graficar correctamente la discontinuidad en z=0,
-    # no debemos incluir el punto exacto 0, o manejarlo por separado.
-    # Una forma sencilla es usar dos arrays, uno para z < 0 y otro para z > 0.
-    
-    z_neg_cm = np.linspace(-rango_vista_cm, -0.01, 500) # De -80 a casi 0
-    z_pos_cm = np.linspace(0.01, rango_vista_cm, 500)  # De casi 0 a 80
+# Añadir la línea horizontal de cero
+plt.axhline(0, color='gray', linewidth=1, linestyle='--')
 
-    # Convertir a metros para el cálculo
-    z_neg_m = z_neg_cm / 100.0
-    z_pos_m = z_pos_cm / 100.0
+# 3. Configuración de ejes y etiquetas
+plt.xticks(y_values, y_labels, fontsize=11)
+plt.xlabel('Valores de $Y$ ($y = 2x - 1$)', fontsize=12, labelpad=10)
+plt.ylabel('Probabilidad Puntual $p_Y(y)$', fontsize=12, labelpad=10)
+plt.title('Función de Probabilidad Puntual $p_Y(y)$ para $Y = 2X - 1$', fontsize=13, fontweight='bold', pad=15)
 
-    # Calcular el campo para ambas regiones (en V/m)
-    Ez_neg = campo_z(z_neg_m)
-    Ez_pos = campo_z(z_pos_m)
+# Limites del eje Y con margen superior
+plt.ylim(-0.01, 0.26)
+plt.grid(axis='y', linestyle=':', alpha=0.7)
 
-    # Convertir el resultado a kV/m para una escala más legible en el eje Y
-    Ez_neg_kV = Ez_neg / 1000.0
-    Ez_pos_kV = Ez_pos / 1000.0
+# Mostrar etiquetas numéricas/fraccionarias sobre cada bastón
+frac_labels = ['0', r'$\frac{1}{36}$', r'$\frac{1}{18}$', r'$\frac{1}{12}$', 
+               r'$\frac{1}{9}$', r'$\frac{5}{36}$', r'$\frac{1}{6}$', r'$\frac{7}{36}$', r'$\frac{2}{9}$']
 
-    # ---------------------------------------------------------
-    # 4. Creación de la Gráfica con Matplotlib
-    # ---------------------------------------------------------
-    # Configurar el tamaño de la figura
-    plt.figure(figsize=(10, 6))
+for y_val, prob, label in zip(y_values, probabilities, frac_labels):
+    plt.annotate(label, (y_val, prob), textcoords="offset points", 
+                 xytext=(0, 6), ha='center', fontsize=9.5, color='#333333')
 
-    # Graficar la región z < 0
-    plt.plot(z_neg_cm, Ez_neg_kV, color='blue', linewidth=2.5, label=r'$E_z(z)$')
-    
-    # Graficar la región z > 0 (con el mismo color)
-    plt.plot(z_pos_cm, Ez_pos_kV, color='blue', linewidth=2.5)
-
-    # --- Estilo y Etiquetas ---
-    
-    # Título principal y etiquetas de los ejes (con formato LaTeX)
-    plt.title(f'Campo Eléctrico $E_z$ en el eje de un Disco Cargado\n'
-              f'($Q = {Q_uC}\ \mu C$, $R = {R_cm}\ cm$)', fontsize=14)
-    plt.xlabel('Posición en el eje, $z$ (cm)', fontsize=12)
-    plt.ylabel('Componente $E_z$ (kV/m)', fontsize=12)
-
-    # Añadir líneas de los ejes X e Y principales (en gris, discontinuas)
-    plt.axhline(0, color='gray', linestyle='--', linewidth=1)
-    plt.axvline(0, color='gray', linestyle='--', linewidth=1)
-
-    # Configurar los límites de los ejes para que se vea bien
-    lim_y = constante_E / 1000.0 * 1.1 # Un 10% más arriba del máximo
-    plt.ylim(-lim_y, lim_y)
-    plt.xlim(-rango_vista_cm, rango_vista_cm)
-
-    # Añadir una cuadrícula de fondo
-    plt.grid(True, which='both', linestyle=':', alpha=0.6)
-
-    # Añadir anotaciones para puntos clave
-    valor_max_kV = constante_E / 1000.0
-    # Anotación en z = 0^+
-    plt.annotate(f'+{valor_max_kV:.1f} kV/m', 
-                 xy=(0, valor_max_kV), xytext=(10, valor_max_kV*0.8),
-                 arrowprops=dict(facecolor='black', shrink=0.05, width=1, headwidth=5))
-    # Anotación en z = 0^-
-    plt.annotate(f'-{valor_max_kV:.1f} kV/m', 
-                 xy=(0, -valor_max_kV), xytext=(-35, -valor_max_kV*0.8),
-                 arrowprops=dict(facecolor='black', shrink=0.05, width=1, headwidth=5))
-
-    # Mostrar una leyenda (opcional aquí, ya que solo hay una curva)
-    # plt.legend()
-
-    # Ajustar el diseño para que no se corten las etiquetas
-    plt.tight_layout()
-
-    # Mostrar la gráfica
-    print("\nMostrando gráfica...")
-    plt.show()
-
-if __name__ == "__main__":
-    graficar_campo_electrico_disco()
+# Ajustar diseño y mostrar
+plt.tight_layout()
+plt.show()
